@@ -9,12 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var ApplicationComponent = (function () {
     function ApplicationComponent() {
     }
     ApplicationComponent = __decorate([
         core_1.Component({
-            template: "\n    <h2>APPs</h2>\n    <p>Please show apps here</p>"
+            template: "\n        \u516C\u5171\u5934\u90E8\n        \u516C\u5171\u5DE6\u4FA7\u83DC\u5355\n        <router-outlet></router-outlet>\n    ",
+            directives: [router_1.ROUTER_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
     ], ApplicationComponent);

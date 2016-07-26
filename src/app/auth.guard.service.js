@@ -30,4 +30,4 @@ var AuthGuard = (function () {
     return AuthGuard;
 }());
 exports.AuthGuard = AuthGuard;
-//# sourceMappingURL=auth.guard.js.map
+//# sourceMappingURL=auth.guard.service.js.map

@@ -2,15 +2,23 @@
 var router_1 = require('@angular/router');
 var login_component_ts_1 = require('./login.component.ts');
 var application_component_1 = require("./application/application.component");
-var auth_guard_1 = require("./auth.guard");
+var auth_guard_service_1 = require("./auth.guard.service");
 var auth_service_1 = require("./auth.service");
+var application_list_component_1 = require("./application/application-list.component");
+var application_detail_component_1 = require("./application/application-detail.component");
+var channel_setting_component_1 = require("./application/setting/channel-setting.component");
+var authProviders = [auth_guard_service_1.AuthGuard, auth_service_1.AuthService];
 var routes = [
+    { path: '', redirectTo: 'apps', pathMatch: 'full' },
     { path: 'login', component: login_component_ts_1.LoginComponent },
-    { path: 'apps', component: application_component_1.ApplicationComponent, canActivate: [auth_guard_1.AuthGuard] }
+    { path: 'apps', component: application_list_component_1.ApplicationListComponent /*, canActivate: [AuthGuard]*/ },
+    { path: 'apps/:id', component: application_component_1.ApplicationComponent /*,canActivate: [AuthGuard]*/, children: [
+            { path: '', component: application_detail_component_1.ApplicationDetailComponent },
+            { path: 'channel-setting', component: channel_setting_component_1.ChannelSettingComponent },
+        ] }
 ];
 exports.appRouterProviders = [
     router_1.provideRouter(routes),
-    auth_guard_1.AuthGuard,
-    auth_service_1.AuthService
+    authProviders
 ];
 //# sourceMappingURL=app.routes.js.map
