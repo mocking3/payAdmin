@@ -10,13 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var header_component_1 = require('../inc/header.component');
+var app_left_menu_component_1 = require('../inc/app-left-menu.component');
 var ApplicationComponent = (function () {
     function ApplicationComponent() {
     }
     ApplicationComponent = __decorate([
         core_1.Component({
-            template: "\n        \u516C\u5171\u5934\u90E8\n        \u516C\u5171\u5DE6\u4FA7\u83DC\u5355\n        <router-outlet></router-outlet>\n    ",
-            directives: [router_1.ROUTER_DIRECTIVES]
+            template: "\n        <my-header></my-header>\n        <my-app-left-menu></my-app-left-menu>\n        <router-outlet></router-outlet>\n    ",
+            directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent, app_left_menu_component_1.AppLeftMenuComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], ApplicationComponent);

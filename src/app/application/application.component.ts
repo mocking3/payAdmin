@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
+
+import {HeaderComponent} from '../inc/header.component';
+import {AppLeftMenuComponent} from '../inc/app-left-menu.component';
 
 @Component({
     template: `
-        公共头部
-        公共左侧菜单
+        <my-header></my-header>
+        <my-app-left-menu></my-app-left-menu>
         <router-outlet></router-outlet>
     `,
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, HeaderComponent, AppLeftMenuComponent]
 })
-export class ApplicationComponent { }
+export class ApplicationComponent {
+}
