@@ -21,9 +21,8 @@ var LoginComponent = (function () {
         this.message = 'Trying to log in ...';
         this.authService.login().subscribe(function () {
             if (_this.authService.isLoggedIn) {
-                // Todo: capture where the user was going and nav there.
-                // Meanwhile redirect the user to the crisis admin
-                _this.router.navigate(['/apps']);
+                var redirect = _this.authService.redirectUrl ? _this.authService.redirectUrl : '/apps';
+                _this.router.navigate([redirect]);
             }
         });
     };

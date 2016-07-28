@@ -8,6 +8,8 @@ import 'rxjs/add/operator/delay';
 @Injectable()
 export class AuthService {
     isLoggedIn: boolean = false;
+    // 登录后重定向的页面
+    redirectUrl: string;
 
     login() {
         return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);

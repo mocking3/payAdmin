@@ -20,9 +20,8 @@ export class LoginComponent {
         this.message = 'Trying to log in ...';
         this.authService.login().subscribe(() => {
             if (this.authService.isLoggedIn) {
-                // Todo: capture where the user was going and nav there.
-                // Meanwhile redirect the user to the crisis admin
-                this.router.navigate(['/apps']);
+                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/apps';
+                this.router.navigate([redirect]);
             }
         });
     }
