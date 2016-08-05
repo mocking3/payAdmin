@@ -17,7 +17,7 @@ var ApplicationComponent = (function () {
     }
     ApplicationComponent = __decorate([
         core_1.Component({
-            template: "\n        <my-header></my-header>\n        <my-app-left-menu></my-app-left-menu>\n        <router-outlet></router-outlet>\n    ",
+            template: "\n        <div class=\"epay\">\n            <my-header></my-header>\n            <div class=\"epay_con clearfix\">\n                <my-app-left-menu></my-app-left-menu>\n                <div class=\"epay_right\">\n                    <router-outlet></router-outlet>\n                </div>\n            </div>\n        </div>\n    ",
             directives: [router_1.ROUTER_DIRECTIVES, header_component_1.HeaderComponent, app_left_menu_component_1.AppLeftMenuComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -6,10 +6,17 @@ import {AppLeftMenuComponent} from '../inc/app-left-menu.component';
 
 @Component({
     template: `
-        <my-header></my-header>
-        <my-app-left-menu></my-app-left-menu>
-        <router-outlet></router-outlet>
+        <div class="epay">
+            <my-header></my-header>
+            <div class="epay_con clearfix">
+                <my-app-left-menu></my-app-left-menu>
+                <div class="epay_right">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
     `,
+
     directives: [ROUTER_DIRECTIVES, HeaderComponent, AppLeftMenuComponent]
 })
 export class ApplicationComponent {

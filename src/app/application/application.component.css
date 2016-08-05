@@ -10,7 +10,7 @@ html,body{
 ul,li{
     list-style-type: none;
 }
-a:link{
+a:hover{
     text-decoration: none;
     color: #ffffff;
 }
