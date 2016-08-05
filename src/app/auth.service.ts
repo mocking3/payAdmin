@@ -10,7 +10,7 @@ export class AuthService extends BaseService {
     // 登录后重定向的页面
     redirectUrl: string;
 
-    private url = '/pa/session';
+    private url = 'http://localhost:7082/session';
 
     constructor(private http:Http) {
         super();

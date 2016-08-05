@@ -22,7 +22,7 @@ var AuthService = (function (_super) {
         _super.call(this);
         this.http = http;
         this.isLoggedIn = false;
-        this.url = '/pa/session';
+        this.url = 'http://localhost:7082/session';
     }
     AuthService.prototype.login = function (username, password) {
         //
