@@ -5,7 +5,6 @@ import {BaseService} from "./base.service";
 
 @Injectable()
 export class AuthService extends BaseService {
-    isLoggedIn: boolean = false;
     token: string;
     // 登录后重定向的页面
     redirectUrl: string;
@@ -17,20 +16,27 @@ export class AuthService extends BaseService {
     }
 
     login(username: string, password: string) {
-        //
-        this.url = '/api/session-post.json';
-        let body = { username: username, password: password};
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        // let body = { username: username, password: password};
+        let body = 'username=' + username + '&password=' + password;
+        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(this.url, body, options)
             .map(this.extractData).map(data => {
-                this.token = data.token;
-                this.isLoggedIn = true;
+                this.setToken(data.authorization);
             }).catch(this.handleError);
     }
 
-    // logout() {
-    //     this.isLoggedIn = false;
-    // }
+    setToken(token: string) {
+        this.token = token;
+        localStorage.setItem('token', this.token);
+    }
+
+    getToken(): string {
+        return localStorage.getItem('token');
+    }
+
+    isLoggedIn(): boolean {
+        return !!localStorage.getItem('token');
+    }
 }

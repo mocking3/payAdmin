@@ -21,21 +21,28 @@ var AuthService = (function (_super) {
     function AuthService(http) {
         _super.call(this);
         this.http = http;
-        this.isLoggedIn = false;
         this.url = 'http://localhost:7082/session';
     }
     AuthService.prototype.login = function (username, password) {
         var _this = this;
-        //
-        this.url = '/api/session-post.json';
-        var body = { username: username, password: password };
+        // let body = { username: username, password: password};
+        var body = 'username=' + username + '&password=' + password;
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this.http.post(this.url, body, options)
             .map(this.extractData).map(function (data) {
-            _this.token = data.token;
-            _this.isLoggedIn = true;
+            _this.setToken(data.authorization);
         }).catch(this.handleError);
+    };
+    AuthService.prototype.setToken = function (token) {
+        this.token = token;
+        localStorage.setItem('token', this.token);
+    };
+    AuthService.prototype.getToken = function () {
+        return localStorage.getItem('token');
+    };
+    AuthService.prototype.isLoggedIn = function () {
+        return !!localStorage.getItem('token');
     };
     AuthService = __decorate([
         core_1.Injectable(), 

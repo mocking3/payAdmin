@@ -15,7 +15,7 @@ export class WebhookSettingService {
         return this.http.get(this.url).map(this.extractData).map(data => data.callback).catch(this.handleError);
     }
 
-    saveAddress(appId: number, address: string):Observable<any> {
+    saveAddress(appId: number, address: string):Observable<string> {
         this.url = '/api/webhook-setting-put.json';
         let body = JSON.stringify({ address });
         let headers = new Headers({ 'Content-Type': 'application/json' });

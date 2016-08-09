@@ -39,10 +39,10 @@ export class LoginComponent {
     onSubmit() {
         this.message = 'Trying to log in ...';
         this.authService.login(this.model.username, this.model.password).subscribe(() => {
-            if (this.authService.isLoggedIn) {
+            if (this.authService.isLoggedIn()) {
                 let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/apps';
                 this.router.navigate([redirect]);
             }
-        });
+        }, error => this.message = <any>error);
     }
 }

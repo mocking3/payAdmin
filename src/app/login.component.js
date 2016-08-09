@@ -22,11 +22,11 @@ var LoginComponent = (function () {
         var _this = this;
         this.message = 'Trying to log in ...';
         this.authService.login(this.model.username, this.model.password).subscribe(function () {
-            if (_this.authService.isLoggedIn) {
+            if (_this.authService.isLoggedIn()) {
                 var redirect = _this.authService.redirectUrl ? _this.authService.redirectUrl : '/apps';
                 _this.router.navigate([redirect]);
             }
-        });
+        }, function (error) { return _this.message = error; });
     };
     LoginComponent = __decorate([
         core_1.Component({
