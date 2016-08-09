@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {WebhookSettingService} from "./webhook-setting.service";
 @Component({
     template: `
-        {{errorMessage}}
+        {{message}}
         <!-- webhook -->
         <div class="usual_setting">
             <p class="drawback_order_title">webhook设置</p>
@@ -19,7 +19,7 @@ import {WebhookSettingService} from "./webhook-setting.service";
 })
 export class WebhookSettingComponent implements OnInit {
     address: string;
-    errorMessage: string;
+    message: string;
 
     constructor(private webhookSettingService: WebhookSettingService) {
     }
@@ -31,12 +31,12 @@ export class WebhookSettingComponent implements OnInit {
     getAddress() {
         this.webhookSettingService.getAddress(1).subscribe(
             address => this.address = address,
-            error => this.errorMessage = <any>error);
+            error => this.message = <any>error);
 
     }
 
     saveAddress() {
-        // this.webhookSettingService.saveAddress(this.address).subscribe(
-        //     error =>  this.errorMessage = <any>error);
+        this.webhookSettingService.saveAddress(1, this.address).subscribe(
+            error =>  this.message = <any>error);
     }
 }

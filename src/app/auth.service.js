@@ -27,22 +27,14 @@ var AuthService = (function (_super) {
         var _this = this;
         // let body = { username: username, password: password};
         var body = 'username=' + username + '&password=' + password;
-        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        var options = new http_1.RequestOptions({ headers: headers });
+        var options = new http_1.RequestOptions({ headers: this.getHeaders() });
         return this.http.post(this.url, body, options)
             .map(this.extractData).map(function (data) {
             _this.setToken(data.authorization);
         }).catch(this.handleError);
     };
-    AuthService.prototype.setToken = function (token) {
-        this.token = token;
-        localStorage.setItem('token', this.token);
-    };
-    AuthService.prototype.getToken = function () {
-        return localStorage.getItem('token');
-    };
     AuthService.prototype.isLoggedIn = function () {
-        return !!localStorage.getItem('token');
+        return !!this.getToken();
     };
     AuthService = __decorate([
         core_1.Injectable(), 

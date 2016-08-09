@@ -14,8 +14,8 @@ var authProviders = [auth_guard_service_1.AuthGuard, auth_service_1.AuthService]
 var routes = [
     { path: '', redirectTo: 'apps', pathMatch: 'full' },
     { path: 'login', component: login_component_ts_1.LoginComponent },
-    { path: 'apps', component: application_list_component_1.ApplicationListComponent /*, canActivate: [AuthGuard]*/ },
-    { path: 'apps/:id', component: application_component_1.ApplicationComponent /*, canActivate: [AuthGuard]*/, children: [
+    { path: 'apps', component: application_list_component_1.ApplicationListComponent, canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'apps/:id', component: application_component_1.ApplicationComponent, canActivate: [auth_guard_service_1.AuthGuard], children: [
             { path: '', component: today_analysis_component_1.TodayAnalysisComponent },
             { path: 'detail', component: application_detail_component_1.ApplicationDetailComponent },
             { path: 'channel-setting', component: channel_setting_component_1.ChannelSettingComponent },

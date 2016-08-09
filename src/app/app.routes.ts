@@ -16,8 +16,8 @@ const authProviders = [AuthGuard, AuthService];
 const routes:RouterConfig = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
-    {path: 'apps', component: ApplicationListComponent/*, canActivate: [AuthGuard]*/},
-    {path: 'apps/:id', component: ApplicationComponent/*, canActivate: [AuthGuard]*/, children: [
+    {path: 'apps', component: ApplicationListComponent, canActivate: [AuthGuard]},
+    {path: 'apps/:id', component: ApplicationComponent, canActivate: [AuthGuard], children: [
         {path: '', component: TodayAnalysisComponent},
         {path: 'detail', component: ApplicationDetailComponent},
         {path: 'channel-setting', component: ChannelSettingComponent},
