@@ -8,6 +8,6 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": false
+    "suppressImplicitAnyIndexErrors": true
   }
 }
