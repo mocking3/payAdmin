@@ -1,4 +1,6 @@
-import {Component, OnInit, ElementRef}  from '@angular/core';
+import {Component, OnInit, OnDestroy, ElementRef}  from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import * as echarts from 'echarts';
 
 @Component({
@@ -39,11 +41,25 @@ import * as echarts from 'echarts';
     `
     
 })
-export class TodayAnalysisComponent implements OnInit {
+export class TodayAnalysisComponent implements OnInit, OnDestroy {
+    sub: any;
+    appId: number;
     myChart: any;
-    constructor(private elementRef:ElementRef) {
+
+    constructor(private route: ActivatedRoute, private elementRef:ElementRef) {
     }
+
     ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.appId = +params['id'];
+        });
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
+    ngOnInit1() {
         // this.myChart = echarts.init(this.elementRef.nativeElement.querySelector('#main'));
         //
         // let option = {

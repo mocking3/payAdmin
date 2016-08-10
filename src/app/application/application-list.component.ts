@@ -24,5 +24,9 @@ export class ApplicationListComponent implements OnInit {
             data => this.applications = data.data,
             error => this.message = <any>error);
     }
+
+    createApp() {
+        
+    }
     
 }
