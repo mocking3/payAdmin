@@ -12,21 +12,21 @@ export class WebhookSettingService extends BaseService {
     }
 
     getAddress(appId: number):Observable<string> {
-        this.url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '');
+        let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '');
         // this.url = '/api/webhook-setting-get.json';
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-        return this.http.get(this.url, options).map(this.extractData).map(data => data.callback).catch(this.handleError);
+        return this.http.get(url, options).map(this.extractData).map(data => data.callback).catch(this.handleError);
     }
 
     saveAddress(appId: number, address: string):Observable<any> {
-        this.url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '');
+        let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '');
         // this.url = '/api/webhook-setting-put.json';
         let body = 'callbackUrl=' + address;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(this.url, body, options)
+        return this.http.put(url, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     }

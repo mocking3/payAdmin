@@ -3,6 +3,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {HeaderComponent} from "../inc/header.component";
 import {ApplicationService} from "./application.service";
 import {ApplicationModel} from "../model/Application";
+import {UploadService} from "../upload/upload.service";
 
 @Component({
     templateUrl: './application-list.component.html',
@@ -16,7 +17,11 @@ export class ApplicationListComponent implements OnInit {
     // 是否显示新建弹出框
     showAdd: boolean = false;
 
-    constructor(private applicationService: ApplicationService) {
+    application: ApplicationModel = new ApplicationModel();
+
+    uploadProgress: number;
+
+    constructor(private applicationService: ApplicationService, private uploadService: UploadService) {
     }
 
     ngOnInit() {
@@ -25,8 +30,29 @@ export class ApplicationListComponent implements OnInit {
             error => this.message = <any>error);
     }
 
-    createApp() {
-        
+    upload($event: any) {
+        this.uploadService.getObserver().subscribe(progress =>  {
+            this.uploadProgress = progress;
+            console.log(progress);
+        });
+        this.uploadService.upload($event.target.files[0]).subscribe(
+            url => this.application.logo = url,
+            error => this.message = <any>error
+        );
     }
-    
+
+    createApp() {
+        this.applicationService.createApplication(this.application.name, this.application.logo).subscribe(
+            data => {
+                this.application = new ApplicationModel();
+                this.showAdd = false;
+                this.applications.push(data);
+            },
+            error => this.message = <any>error);
+    }
+
+    cancal() {
+        this.application = new ApplicationModel();
+        this.showAdd = false;
+    }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {BaseService} from "../base.service";
+import {ApplicationModel} from "../model/Application";
 
 @Injectable()
 export class ApplicationService extends BaseService {
@@ -18,4 +19,25 @@ export class ApplicationService extends BaseService {
         let options = new RequestOptions({headers: headers});
         return this.http.get(this.url, options).map(this.extractData).catch(this.handleError);
     }
+
+
+    createApplication(appName: string, appLogo: string):Observable<ApplicationModel> {
+        // this.url = '/api/webhook-setting-put.json';
+        let body = `appName=${appName}&appLogo=${appLogo}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.url, body, options)
+            .map(this.extractData).map(data => {
+                let application = new ApplicationModel();
+                application.id = data.id;
+                application.appKey = data.appKey;
+                application.name = appName;
+                application.logo = appLogo;
+                application.createTime = new Date().getTime();
+                return application;
+            })
+            .catch(this.handleError);
+    }
+    
 }

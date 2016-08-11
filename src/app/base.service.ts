@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Headers, Response} from '@angular/http';
 
-import {Observable}     from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class BaseService {
-    token: string;
-    
+    token:string;
+
     protected extractData(res:Response) {
         let body = res.json() || {};
         // 如果返回错误
@@ -19,27 +19,27 @@ export class BaseService {
 
     protected handleError(error:any) {
         let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+            error.status ? `${error.status} - ${error.statusText}` : '系统异常';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
     }
 
-    getHeaders(): Headers {
+    getHeaders():Headers {
         return new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     }
 
-    getAuthHeaders(): Headers {
+    getAuthHeaders():Headers {
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         headers.set('authorization', this.getToken());
         return headers;
     }
 
-    setToken(token: string) {
+    setToken(token:string) {
         this.token = token;
         localStorage.setItem('token', this.token);
     }
 
-    getToken(): string {
+    getToken():string {
         return localStorage.getItem('token');
     }
 }

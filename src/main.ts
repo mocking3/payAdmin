@@ -4,14 +4,13 @@ import { enableProdMode } from '@angular/core';
 import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
 import { AppComponent } from './app/app.component';
-import { appRouterProviders } from './app/app.routes';
-
+import { appProviders } from './app/app.provider';
 
 if (process.env.ENV === 'production') {
     enableProdMode();
 }
 bootstrap(AppComponent, [
-    appRouterProviders,
+    appProviders,
     HTTP_PROVIDERS,
     disableDeprecatedForms(),
     provideForms()

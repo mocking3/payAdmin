@@ -24,24 +24,30 @@
     </div>
     <!--创建应用的弹出层-->
     <div class="create_app_mask" [hidden]="!showAdd" >
-        <div class="create_app">
-            <p class="create_app_title">创建应用</p>
-            <div class="app_name clearfix">
-                <p>应用名称</p>
-                <input type="text" placeholder="输入你的应用名称"/>
-            </div>
-            <div class="app_logo clearfix">
-                <p class="app_logo_title">应用LOGO</p>
-                <div class="app_logo_img">
-                    <img src="/public/images/logo_up.png" alt="" />
-                    <input type="file" class="file" accept="image/*"/>
+        <form (ngSubmit)="createApp()" #appCreateForm="ngForm">
+            <div class="create_app">
+                <p class="create_app_title">创建应用</p>
+                <div class="app_name clearfix">
+                    <p>应用名称</p>
+                    <input type="text" name="appName" required [(ngModel)]="application.name" #appName="ngModel"
+                           placeholder="输入你的应用名称" />
+                    <div [hidden]="appName.valid || appName.pristine">应用名称必填</div>
                 </div>
-                <p class="app_logo_btn">上传</p>
+                <div class="app_logo clearfix">
+                    <p class="app_logo_title">应用LOGO</p>
+                    <div class="app_logo_img">
+                        <img *ngIf="application.logo" src="{{application.logo}}" alt=""/>
+                        <input type="file" class="file" accept="image/*"  (change)="upload($event)" />
+                    </div>
+                    <!-- 隐藏logo url -->
+                    <input type="hidden" name="appLogo" required [(ngModel)]="application.logo"/>
+                    <!--<p class="app_logo_btn" (click)="upload($event)" >上传</p>-->
+                </div>
+                <div class="submit_btn clearfix">
+                    <button class="cancel_btn" (click)="cancal()">取消</button>
+                    <button type="submit" class="sure_btn" [disabled]="!appCreateForm.form.valid">保存</button>
+                </div>
             </div>
-            <div class="submit_btn clearfix">
-                <p class="cancel_btn" (click)="showAdd = false">取消</p>
-                <p class="sure_btn">保存</p>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
