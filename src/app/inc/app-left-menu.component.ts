@@ -6,7 +6,9 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     template: `
         <div class="epay_left">
 			<div class="epay_homepage">
-				<p class="epay_homepage_title"><span></span>主页</p>
+			    <a routerLink="today-analysis">
+				    <p class="epay_homepage_title"><span></span>主页</p>
+				</a>
 			</div>
 			<div class="order_manage">
 				<p class="order_manage_title"><span></span>订单管理</p>

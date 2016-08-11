@@ -3,10 +3,11 @@ import {Http, RequestOptions} from '@angular/http';
 
 import {Observable}     from 'rxjs/Observable';
 import {BaseService} from "../../base.service";
+import {SERVER_URL} from "../../app.constants";
 
 @Injectable()
 export class WebhookSettingService extends BaseService {
-    private url = 'http://localhost:7082/apps/${appId}/webhook-setting';
+    private url = SERVER_URL + '/apps/${appId}/webhook-setting';
     constructor(private http:Http) {
         super();
     }

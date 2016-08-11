@@ -16,12 +16,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var base_service_1 = require("./base.service");
+var app_constants_1 = require("./app.constants");
 var AuthService = (function (_super) {
     __extends(AuthService, _super);
     function AuthService(http) {
         _super.call(this);
         this.http = http;
-        this.url = 'http://localhost:7082/session';
+        this.url = app_constants_1.SERVER_URL + '/session';
     }
     AuthService.prototype.login = function (username, password) {
         var _this = this;

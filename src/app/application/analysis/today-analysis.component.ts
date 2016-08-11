@@ -1,7 +1,8 @@
 import {Component, OnInit, OnDestroy, ElementRef}  from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import * as echarts from 'echarts';
+import {AnalysisService} from "./analysis.service";
 
 @Component({
     template: `
@@ -14,19 +15,19 @@ import * as echarts from 'echarts';
             <ul class="trade_data clearfix">
                 <li>
                     <p class="data_name">发起订单（笔）</p>
-                    <p class="data_figure">167</p>
+                    <p class="data_figure">{{dataSummary.preOrderCount}}</p>
                 </li>
                 <li>
                     <p class="data_name">成功订单（笔）</p>
-                    <p class="data_figure">125</p>
+                    <p class="data_figure">{{dataSummary.orderCount}}</p>
                 </li>
                 <li>
                     <p class="data_name">成交金额（元）</p>
-                    <p class="data_figure">976</p>
+                    <p class="data_figure">{{dataSummary.orderTotalFee}}</p>
                 </li>
                 <li>
                     <p class="data_name">订单转化率</p>
-                    <p class="data_figure">78%</p>
+                    <p class="data_figure">{{dataSummary.conversion}}%</p>
                 </li>
             </ul>
             <div class="homepage_title chart_back">
@@ -38,20 +39,45 @@ import * as echarts from 'echarts';
                 <p class="homepage_title_time">2016 年 7 月 18 日 0 点至 24 点</p>
             </div>
         </div>
-    `
+    `,
+    providers: [AnalysisService]
     
 })
 export class TodayAnalysisComponent implements OnInit, OnDestroy {
+    message: string;
     sub: any;
     appId: number;
+    dataSummary: any = {
+        preOrderCount: 0,
+        orderTotalFee: 0,
+        orderCount: 0,
+        conversion: 0.00
+    };
+
     myChart: any;
 
-    constructor(private route: ActivatedRoute, private elementRef:ElementRef) {
+    constructor(private router: Router,
+                private route: ActivatedRoute,
+                private elementRef:ElementRef,
+                private analysisService: AnalysisService) {
     }
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
+        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
             this.appId = +params['id'];
+
+            this.analysisService.getDataSummary(this.appId).subscribe(
+                data => this.dataSummary = data,
+                error => this.message = <any>error
+            );
+            this.analysisService.getChargeChangeWithCount(this.appId).subscribe(
+                data => {},
+                error => this.message = <any>error
+            );
+            this.analysisService.getChargeChangeWithFee(this.appId).subscribe(
+                data => {},
+                error => this.message = <any>error
+            );
         });
     }
 

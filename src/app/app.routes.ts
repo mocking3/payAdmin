@@ -16,6 +16,7 @@ export const routes:RouterConfig = [
     {path: 'apps', component: ApplicationListComponent, canActivate: [AuthGuard]},
     {path: 'apps/:id', component: ApplicationComponent, canActivate: [AuthGuard], children: [
         {path: '', component: TodayAnalysisComponent},
+        {path: 'today-analysis', component: TodayAnalysisComponent},
         {path: 'detail', component: ApplicationDetailComponent},
         {path: 'channel-setting', component: ChannelSettingComponent},
         {path: 'webhook-setting', component: WebhookSettingComponent},

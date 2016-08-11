@@ -14,6 +14,7 @@ exports.routes = [
     { path: 'apps', component: application_list_component_1.ApplicationListComponent, canActivate: [auth_guard_service_1.AuthGuard] },
     { path: 'apps/:id', component: application_component_1.ApplicationComponent, canActivate: [auth_guard_service_1.AuthGuard], children: [
             { path: '', component: today_analysis_component_1.TodayAnalysisComponent },
+            { path: 'today-analysis', component: today_analysis_component_1.TodayAnalysisComponent },
             { path: 'detail', component: application_detail_component_1.ApplicationDetailComponent },
             { path: 'channel-setting', component: channel_setting_component_1.ChannelSettingComponent },
             { path: 'webhook-setting', component: webhook_setting_component_1.WebhookSettingComponent },

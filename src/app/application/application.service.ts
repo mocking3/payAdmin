@@ -3,11 +3,12 @@ import {Http, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {BaseService} from "../base.service";
 import {ApplicationModel} from "../model/Application";
+import {SERVER_URL} from "../app.constants";
 
 @Injectable()
 export class ApplicationService extends BaseService {
 
-    private url = 'http://localhost:7082/apps';
+    private url = SERVER_URL + '/apps';
 
     constructor(private http:Http) {
         super();

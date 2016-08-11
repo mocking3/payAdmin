@@ -2,10 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
+import {SERVER_URL} from "../app.constants";
 
 @Injectable()
 export class UploadService {
-    private url: string = 'http://localhost:7082/fileUpload';
+    private url: string = SERVER_URL + '/fileUpload';
     private progress$:Observable<number>;
     private progress:number = 0;
     private progressObserver:Observer<number>;
