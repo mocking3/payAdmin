@@ -12,22 +12,25 @@ export class AnalysisService extends BaseService {
         super();
     }
 
-    getDataSummary(appId: number):Observable<any> {
-        let url = SERVER_URL + `/statistics/${appId}/order/data`;
+    getDataSummary(appId: number, currentDate: Date):Observable<any> {
+        let dateTime = currentDate.toLocaleDateString();
+        let url = SERVER_URL + `/statistics/${appId}/order/data?timeBegin=${dateTime}&timeEnd=${dateTime}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
     }
 
-    getChargeChangeWithCount(appId: number):Observable<any> {
-        let url = SERVER_URL + `/statistics/${appId}/order/count`;
+    getChargeChangeWithCount(appId: number, currentDate: Date):Observable<any> {
+        let dateTime = currentDate.toLocaleDateString();
+        let url = SERVER_URL + `/statistics/${appId}/order/count?dateTime=${dateTime}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
     }
 
-    getChargeChangeWithFee(appId: number):Observable<any> {
-        let url = SERVER_URL + `/statistics/${appId}/order/fee`;
+    getChargeChangeWithFee(appId: number, currentDate: Date):Observable<any> {
+        let dateTime = currentDate.toLocaleDateString();
+        let url = SERVER_URL + `/statistics/${appId}/order/fee?dateTime=${dateTime}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
