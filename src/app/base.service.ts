@@ -34,9 +34,14 @@ export class BaseService {
         return headers;
     }
 
-    setToken(token:string) {
+    setToken(token:string): void {
         this.token = token;
         localStorage.setItem('token', this.token);
+    }
+
+    removeToken(): void {
+        this.token = null;
+        localStorage.removeItem('token');
     }
 
     getToken():string {

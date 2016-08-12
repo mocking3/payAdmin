@@ -15,6 +15,14 @@ var app_left_menu_component_1 = require('../inc/app-left-menu.component');
 var ApplicationComponent = (function () {
     function ApplicationComponent() {
     }
+    ApplicationComponent.prototype.ngOnInit = function () {
+        this.headerComponent.showAppBack = true;
+        this.headerComponent.showSearch = true;
+    };
+    __decorate([
+        core_1.ViewChild(header_component_1.HeaderComponent), 
+        __metadata('design:type', header_component_1.HeaderComponent)
+    ], ApplicationComponent.prototype, "headerComponent", void 0);
     ApplicationComponent = __decorate([
         core_1.Component({
             template: "\n        <div class=\"epay\">\n            <my-header></my-header>\n            <div class=\"epay_con clearfix\">\n                <my-app-left-menu></my-app-left-menu>\n                <div class=\"epay_right\">\n                    <router-outlet></router-outlet>\n                </div>\n            </div>\n        </div>\n    ",

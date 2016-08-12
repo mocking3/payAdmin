@@ -28,4 +28,11 @@ export class AuthService extends BaseService {
     isLoggedIn(): boolean {
         return !!this.getToken();
     }
+    
+    logout() {
+        let options = new RequestOptions({ headers: this.getAuthHeaders() });
+        return this.http.delete(this.url, options).map(this.extractData).map(() => {
+            this.removeToken();
+        }).catch(this.handleError);
+    }
 }

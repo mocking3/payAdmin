@@ -37,6 +37,13 @@ var AuthService = (function (_super) {
     AuthService.prototype.isLoggedIn = function () {
         return !!this.getToken();
     };
+    AuthService.prototype.logout = function () {
+        var _this = this;
+        var options = new http_1.RequestOptions({ headers: this.getAuthHeaders() });
+        return this.http.delete(this.url, options).map(this.extractData).map(function () {
+            _this.removeToken();
+        }).catch(this.handleError);
+    };
     AuthService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

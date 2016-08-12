@@ -82,7 +82,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                         preOrderData[data.preOrder[i].hours] = data.preOrder[i].total;
                     }
                     for(let i=0; i<data.order.length; i++) {
-                        orderData[data.order[i].hours] = data.order[i].total;
+                        orderData[data.order[i].hours] = data.order[i].total / 100;
                     }
                     this.initCountChart(preOrderData, orderData);
                 },
@@ -173,7 +173,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                 trigger: 'axis'
             },
             legend: {
-                data: ['成功订单']
+                // data: ['金额']
             },
             toolbox: {
                 // feature: {
@@ -201,7 +201,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
             ],
             series : [
                 {
-                    name:'成功订单',
+                    name:'金额',
                     type:'line',
                     stack: '总量',
                     areaStyle: {normal: {}},
