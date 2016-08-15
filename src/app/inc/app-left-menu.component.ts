@@ -13,7 +13,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 			<div class="order_manage">
 				<p class="order_manage_title"><span></span>订单管理</p>
 				<div class="order_manage_min">
-					<p>线上订单</p>
+					<p><a routerLink="orders">线上订单</a></p>
 					<p>退款订单</p>
 				</div>
 			</div>

@@ -1,0 +1,38 @@
+<div class="drawback_order block_show">
+    <p class="drawback_order_title">线上订单</p>
+    <div class="drawback_order_search clearfix">
+        <p class="order_search_date">2016-07-17 至 2016-07-23<span></span></p>
+        <p class="order_search_status">退款状态<span></span></p>
+        <p class="order_search_type">渠道类型<span></span></p>
+        <div class="order_search_id">
+            <label for="order_id">订单ID:</label>
+            <input type="text" id="order_id">
+        </div>
+        <p class="order_search_btn">查询</p>
+    </div>
+    <table class="drawback_order_table">
+        <tbody><tr class="table_title">
+            <td>商户订单号</td>
+            <td>订单主题</td>
+            <td>订单金额</td>
+            <td>创建时间</td>
+            <td>支付渠道</td>
+            <td>是否有退款</td>
+            <td>操作</td>
+        </tr>
+        <!--<tr *ngFor="let orderInfo of orderInfos  | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: p, totalItems: total }">-->
+        <tr *ngFor="let orderInfo of orderInfos | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNum, totalItems: total }">
+            <td>{{orderInfo.outTradeNo}}</td>
+            <td>{{orderInfo.subject}}</td>
+            <td>{{orderInfo.totalFee / 100}}</td>
+            <td>{{orderInfo.orderTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{orderInfo.channel}}</td>
+            <td>{{orderInfo.refund ? '是' : '否'}}</td>
+            <td>查看</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="page_wrap">
+        <pagination-controls id="pagination" (pageChange)="search($event)"></pagination-controls>
+    </div>
+</div>

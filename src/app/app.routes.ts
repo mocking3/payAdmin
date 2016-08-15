@@ -9,6 +9,7 @@ import {ChannelSettingComponent} from "./application/setting/channel-setting.com
 import {WebhookSettingComponent} from "./application/setting/webhook-setting.component";
 import {TodayAnalysisComponent} from "./application/analysis/today-analysis.component";
 import {PageNotFoundComponent} from "./page-not-found.component";
+import {OrderComponent} from "./application/order/order.component";
 
 export const routes:RouterConfig = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
@@ -18,6 +19,7 @@ export const routes:RouterConfig = [
         {path: '', component: TodayAnalysisComponent},
         {path: 'today-analysis', component: TodayAnalysisComponent},
         {path: 'detail', component: ApplicationDetailComponent},
+        {path: 'orders', component: OrderComponent},
         {path: 'channel-setting', component: ChannelSettingComponent},
         {path: 'webhook-setting', component: WebhookSettingComponent},
 

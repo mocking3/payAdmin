@@ -8,6 +8,7 @@ var channel_setting_component_1 = require("./application/setting/channel-setting
 var webhook_setting_component_1 = require("./application/setting/webhook-setting.component");
 var today_analysis_component_1 = require("./application/analysis/today-analysis.component");
 var page_not_found_component_1 = require("./page-not-found.component");
+var order_component_1 = require("./application/order/order.component");
 exports.routes = [
     { path: '', redirectTo: 'apps', pathMatch: 'full' },
     { path: 'login', component: login_component_ts_1.LoginComponent },
@@ -16,6 +17,7 @@ exports.routes = [
             { path: '', component: today_analysis_component_1.TodayAnalysisComponent },
             { path: 'today-analysis', component: today_analysis_component_1.TodayAnalysisComponent },
             { path: 'detail', component: application_detail_component_1.ApplicationDetailComponent },
+            { path: 'orders', component: order_component_1.OrderComponent },
             { path: 'channel-setting', component: channel_setting_component_1.ChannelSettingComponent },
             { path: 'webhook-setting', component: webhook_setting_component_1.WebhookSettingComponent },
         ] },

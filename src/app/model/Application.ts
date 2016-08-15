@@ -7,5 +7,5 @@ export class ApplicationModel {
     public masterSecret: string;
     public status: number;
     public creator: number;
-    public createTime: any;
+    public createTime: number;
 }

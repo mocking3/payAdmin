@@ -812,3 +812,8 @@ tr.table_title{
     background-color: #fafbfe;
     color: #4596e4;
 }
+.page_wrap {
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 60px;
+}
