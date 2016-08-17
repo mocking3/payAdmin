@@ -7,11 +7,8 @@ import {AnalysisService} from "./analysis.service";
 @Component({
     template: `
         <!--主页内容-->
-        <div class="home_page">
-            <div class="homepage_title">
-                <p class="drawback_order_title">当天交易数据</p>
-                <!--<p class="homepage_title_time">截止2016-07-28&nbsp;20:00前</p>-->
-            </div>
+        <div class="pannel">
+            <p class="common_title">当天交易数据</p>
             <ul class="trade_data clearfix">
                 <li>
                     <p class="data_name">发起订单（笔）</p>
@@ -42,6 +39,59 @@ import {AnalysisService} from "./analysis.service";
             </div>
         </div>
     `,
+    styles: [`
+        /*主页内容*/
+        .home_page{
+            width: 100%;
+        }
+        .homepage_title{
+            width: 100%;
+            background-color: #fafbfe;
+        }
+        .homepage_title_infor{
+            font-size: 20px;
+            line-height: 25px;
+            color: #354285;
+            padding-top: 28px;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+        .homepage_title_time{
+            font-size: 14px;
+            line-height: 15px;
+            color: #354285;
+            margin-top: 6px;
+            margin-left: 25px;
+        }
+        .trade_data{
+            width: 97%;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #eef1f9;
+        }
+        .trade_data li{
+            float: left;
+            width: 100px;
+            margin-right: 60px;
+        }
+        .data_name{
+            font-size: 14px;
+            line-height: 15px;
+            color: #4696e4;
+        }
+        .data_figure{
+            width: 80px;
+            font-size: 20px;
+            line-height: 20px;
+            color: #354285;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .chart_back{
+            background-color: #ffffff;
+        }
+    `],
     providers: [AnalysisService]
     
 })

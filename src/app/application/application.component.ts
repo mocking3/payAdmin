@@ -3,7 +3,6 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 
 import {HeaderComponent} from '../inc/header.component';
 import {AppLeftMenuComponent} from '../inc/app-left-menu.component';
-
 @Component({
     template: `
         <div class="epay">

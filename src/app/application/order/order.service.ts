@@ -12,8 +12,10 @@ export class OrderService extends BaseService {
         super();
     }
 
-    getOrders(appId: number, pageNum: number, pageSize: number):Observable<any> {
-        let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') + `?pageNum=${pageNum}&pageSize=${pageSize}`;
+    getOrders(appId: number, orderTimeBegin: string, orderTimeEnd: string, channel: string, outTradeNo: string,
+              pageNum: number, pageSize: number):Observable<any> {
+        let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') +
+            `?orderTimeBegin=${orderTimeBegin}&orderTimeEnd=${orderTimeEnd}&channel=${channel}&outTradeNo=${outTradeNo}&pageNum=${pageNum}&pageSize=${pageSize}`;
         // this.url = '/api/webhook-setting-get.json';
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });

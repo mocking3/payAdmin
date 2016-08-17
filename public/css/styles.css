@@ -14,6 +14,15 @@ a:link{
     text-decoration: none;
     color: #ffffff;
 }
+input,select {
+    /* width: 195px; */
+    height: 40px;
+    outline: none;
+    border: 0;
+    border: 1px solid #eef1f9;
+    background-color: #fafbfe;
+    border-radius: 3px;
+}
 /*清除浮动*/
 .clearfix{
     *zoom: 1;
@@ -26,377 +35,12 @@ a:link{
 .clearfix:after{
     clear: both;
 }
-
-.epay{
+.pannel {
     width: 100%;
-    position: relative;
+    padding-bottom: 20px;
 }
-.epay_head{
-    width: 100%;
-    height: 78px;
-    border-bottom: 1px solid #edf1fa;
-}
-.epay_logo{
-    float: left;
-    width: 14%;
-    height: 100%;
-    border-right: 1px solid #edf1fa;
-    text-align: center;
-    font-size: 12px;
-    line-height: 78px;
-    color: #3088ef;
-}
-.epay_head_list{
-    float: right;
-    width: 85.9%;
-    height: 100%;
-}
-.epay_search{
-    float: right;
-    width: 380px;
-    height: 40px;
-    border: 1px solid #edf1fa;
-    background-color: #fafbfe;
-    margin-top: 20px;
-    border-radius: 5px;
-}
-.epay_search span{
-    display: block;
-    float: left;
-    height: 25px;
-    width: 25px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: 0 -251px;
-    margin-top: 7px;
-    margin-left: 10px;
-}
-.epay_search input{
-    display: block;
-    float: left;
-    height: 40px;
-    outline: none;
-    border: 0;
-    width: 340px;
-    background-color: transparent;
-}
-.epay_search_btn{
-    float: right;
-    width: 70px;
-    height: 25px;
-    border-radius: 3px;
-    font-size: 14px;
-    line-height: 25px;
-    color: #ffffff;
-    text-align: center;
-    background-color: #1997ea;
-    margin-top: 28px;
-    margin-left: 14px;
-}
-.go_back_list{
-    float: right;
-    width: 72px;
-    height: 34px;
-    font-size: 18px;
-    line-height: 34px;
-    color: #8296ca;
-    padding-left: 45px;
-    margin-top: 22px;
-    margin-left: 12px;
-    border-left: 1px solid #eef1f9;
-    position: relative;
-}
-.go_back_list span{
-    display: block;
-    position: absolute;
-    left: 13px;
-    top: 6px;
-    width: 25px;
-    height: 25px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: 0 -229px;
-}
-.account_center{
-    float: right;
-    width: 72px;
-    height: 34px;
-    font-size: 18px;
-    line-height: 34px;
-    color: #8296ca;
-    padding-left: 45px;
-    margin-top: 22px;
-    margin-left: 12px;
-    border-left: 1px solid #eef1f9;
-    position: relative;
-}
-.account_center span{
-    display: block;
-    position: absolute;
-    left: 13px;
-    top: 6px;
-    width: 25px;
-    height: 25px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: 0 -276px;
-}
-.go_back{
-    float: right;
-    width: 72px;
-    height: 34px;
-    font-size: 18px;
-    line-height: 34px;
-    color: #8296ca;
-    padding-left: 13px;
-    margin-top: 22px;
-    margin-left: 12px;
-    border-left: 1px solid #eef1f9;
-    margin-right: 30px;
-}
-.epay_con{
-    width: 100%;
-}
-/*左侧导航栏*/
-.epay_left{
-    float: left;
-    width: 14%;
-    border-right: 1px solid #edf1fa;
-}
-.epay_homepage{
-    width: 100%;
-}
-.epay_homepage_title{
-    width: 155px;
-    margin: 0 auto;
-    padding-left: 30px;
-    font-size: 18px;
-    line-height: 22px;
-    height: 22px;
-    color: #354285;
-    position: relative;
-    margin-top: 30px;
-}
-.epay_homepage_title:hover,
-.data_analysis_title:hover,
-.app_setting_title:hover,
-.order_manage_title:hover{
-    color: #4696e4;
-    font-weight: bold;
-    cursor: pointer;
-}
-.epay_homepage_title span{
-    display: block;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: -39px -192px;
-}
-.order_manage{
-    width: 100%;
-}
-.order_manage_title{
-    width: 155px;
-    margin: 0 auto;
-    padding-left: 30px;
-    font-size: 18px;
-    line-height: 22px;
-    height: 22px;
-    color: #354285;
-    position: relative;
-    margin-top: 30px;
-}
-.order_manage_title span{
-    display: block;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: 0 -362px;
-}
-.order_manage_min{
-    width: 100%;
-}
-.order_manage_min p{
-    width: 100%;
-    font-size: 18px;
-    line-height: 30px;
-    height: 30px;
-    color: #616fbc;
-    text-align: center;
-    margin-top: 15px;
-    cursor: pointer;
-}
-.order_manage_min p a{
-    color: #616fbc;
-}
-.order_manage_min p:hover{
-    background-color: #fafbfe;
-    color: #4596e4;
-}
-.data_analysis{
-    width: 100%;
-}
-.data_analysis_title{
-    width: 155px;
-    margin: 0 auto;
-    padding-left: 30px;
-    font-size: 18px;
-    line-height: 22px;
-    height: 22px;
-    color: #354285;
-    position: relative;
-    margin-top: 30px;
-}
-.data_analysis_title span{
-    display: block;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: 0 -342px;
-}
-.data_analysis_min{
-    width: 100%;
-}
-.data_analysis_min p{
-    width: 100%;
-    font-size: 18px;
-    line-height: 30px;
-    height: 30px;
-    color: #616fbc;
-    text-align: center;
-    margin-top: 15px;
-    cursor: pointer;
-}
-.data_analysis_min p a{
-    color: #616fbc;
-}
-.data_analysis_min p:hover{
-    background-color: #fafbfe;
-    color: #4596e4;
-}
-.app_setting{
-    width: 100%;
-}
-.app_setting_title{
-    width: 155px;
-    margin: 0 auto;
-    padding-left: 30px;
-    font-size: 18px;
-    line-height: 22px;
-    height: 22px;
-    color: #354285;
-    position: relative;
-    margin-top: 30px;
-}
-.app_setting_title span{
-    display: block;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: url("/public/images/sprite.png") no-repeat;
-    background-position: 0 -304px;
-}
-.app_setting_min{
-    width: 100%;
-}
-.app_setting_min p{
-    width: 100%;
-    font-size: 18px;
-    line-height: 30px;
-    height: 30px;
-    color: #616fbc;
-    text-align: center;
-    margin-top: 15px;
-    cursor: pointer;
-}
-.app_setting_min p a{
-    color: #616fbc;
-}
-.app_setting_min p:hover{
-    background-color: #fafbfe;
-    color: #4596e4;
-}
-/*右侧内容*/
-.epay_right{
-    width: 85.9%;
-    float: left;
-}
-/*主页内容*/
-.home_page{
-    width: 100%;
-}
-.homepage_title{
-    width: 100%;
-    background-color: #fafbfe;
-}
-.homepage_title_infor{
-    font-size: 20px;
-    line-height: 25px;
-    color: #354285;
-    padding-top: 28px;
-    margin-left: 25px;
-    font-weight: bold;
-}
-.homepage_title_time{
-    font-size: 14px;
-    line-height: 15px;
-    color: #354285;
-    margin-top: 6px;
-    margin-left: 25px;
-}
-.trade_data{
-    width: 97%;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid #eef1f9;
-}
-.trade_data li{
-    float: left;
-    width: 100px;
-    margin-right: 60px;
-}
-.data_name{
-    font-size: 14px;
-    line-height: 15px;
-    color: #4696e4;
-}
-.data_figure{
-    width: 80px;
-    font-size: 20px;
-    line-height: 20px;
-    color: #354285;
-    margin-top: 15px;
-    text-align: center;
-}
-.chart_back{
-    background-color: #ffffff;
-}
-
-/*线上退订*/
-.drawback_order{
-    width: 100%;
-    padding-bottom: 30px;
-    display: none;
-}
-
-/*退款订单*/
-.drawback_order{
-    width: 100%;
-    padding-bottom: 30px;
-    display: none;
-}
-.drawback_order_title{
+.common_title {
     padding-left: 25px;
-    width: 98.55%;
     text-align: left;
     height: 70px;
     line-height: 70px;
@@ -405,415 +49,455 @@ a:link{
     font-weight: bold;
     background-color: #fafbfe;
 }
-.drawback_order_search{
-    margin-left: 25px;
-    height: 40px;
-    margin-top: 30px;
-}
-.drawback_order_search p{
-    float: left;
-    border: 1px solid #eef1f9;
-    background-color: #fafbfe;
-    line-height: 38px;
-    font-size: 14px;
-    color: #354285;
-    height: 38px;
-    padding-left: 10px;
-    margin-right: 17px;
-    border-radius: 3px;
-}
-.drawback_order_search p span{
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background: url("/public/images/sprite.png") no-repeat;
-}
-p.order_search_date{
-    width: 206px;
-    position: relative;
-}
-p.order_search_date span{
-    width: 20px;
-    height: 15px;
-    background-position: -53px -214px;
-}
-p.order_search_status{
-    width: 84px;
-    position: relative;
-}
-p.order_search_status span{
-    width: 10px;
-    height: 15px;
-    background-position: -40px -236px;
-}
-p.order_search_type{
-    width: 84px;
-    position: relative;
-}
-p.order_search_type span{
-    width: 10px;
-    height: 15px;
-    background-position: -40px -236px;
-}
-p.order_search_btn{
-    width: 67px;
-    height: 24px;
-    background-color: #4696e4;
-    color: #ffffff;
-    line-height: 24px;
-    text-align: center;
-    padding-left: 0px;
-    margin-top: 7px;
-    margin-left: 27px;
-}
-.order_search_id{
-    float: left;
-}
-.order_search_id label{
-    color: #354285;
-    font-size: 14px;
-    line-height: 40px;
-}
-.order_search_id input{
-    width: 95px;
-    height: 40px;
-    outline: none;
-    border: 0;
-    border: 1px solid #eef1f9;
-    background-color: #fafbfe;
-    border-radius: 3px;
-}
-.drawback_order_table{
-    width: 95.55%;
-    margin-left: 25px;
-    margin-top: 20px;
-    border: 1px solid #eef1f9;
-    background-color: #fafbfe;
-}
-.drawback_order_table tr{
-    width: 100%;
-    font-size: 16px;
-    color: #354285;
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-}
-.drawback_order_table tr:nth-child(2n){
-    background-color: #f6f8fd;
-}
-tr.table_title{
-    color: #4696e4;
-}
-
-/*收入总计*/
-.income_total{
-    width: 100%;
-    padding-bottom: 30px;
-    display: none;
-}
-.income_total_date{
-    border: 1px solid #eef1f9;
-    background-color: #fafbfe;
-    line-height: 38px;
-    font-size: 14px;
-    color: #354285;
-    height: 38px;
-    padding-left: 10px;
-    margin-right: 17px;
-    border-radius: 3px;
-    width: 206px;
-    position: relative;
-    margin-top: 30px;
-    margin-left: 25px;
-}
-.income_total_date span{
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background: url("/public/images/sprite.png") no-repeat;
-    width: 20px;
-    height: 15px;
-    background-position: -53px -214px;
-}
-.income_data{
-    padding-top: 20px;
-    border-top: 1px solid #eef1f9;
-    margin-top: 20px;
-    padding-bottom: 20px;
-}
-
-/*渠道总计*/
-.channel_total{
-    width: 100%;
-    padding-bottom: 20px;
-    display: none;
-}
-
-/*渠道选择*/
-.channel_choice{
-    width: 100%;
-    padding-bottom: 20px;
-    display: none;
-}
-.epay_type{
-    margin-top: 45px;
-    margin-left: 25px;
-}
-.epay_type li{
-    float: left;
-    width: 238px;
-    height: 143px;
-    border: 1px solid #eef1f9;
-    border-radius: 3px;
-    margin-left: 30px;
-}
-.epay_type li:hover{
-    border: 1px solid #4696e4;
-}
-.epay_type_logo{
-    background: url("/public/images/sprite.png") no-repeat;
-    width: 130px;
-    height: 40px;
-    background-position: 0 -78px;
-    margin-top: 23px;
-    margin-left: 53px;
-}
-.epay_type_app{
-    width: 60px;
-    margin: 0 auto;
-    height: 20px;
-    margin-top: 15px;
-}
-.epay_type_app label{
-    font-size: 14px;
-    color: #354285;
-}
-.epay_type_account{
-    width: 200px;
-    margin: 0 auto;
-    height: 33px;
-    line-height: 33px;
-    margin-top: 5px;
-    border-top: 1px solid #eef1f9;
-    position: relative;
-    font-size: 14px;
-    color: #354285;
-}
-.epay_type_account span{
-    display: block;
-    position: absolute;
-    right: 0px;
-    top: 10px;
-    background: url("/public/images/sprite.png") no-repeat;
-    width: 15px;
-    height: 15px;
-    background-position: -83px -195px;
-    cursor: pointer;
-}
-.wechat_logo{
-    background-position: 0 -116px;
-}
-.zhifubao_logo{
-    background-position: 0 -154px;
-}
-
-/*常用设置*/
-.usual_setting{
-    width: 100%;
-    padding-bottom: 20px;
-}
-.usual_setting_list{
-    margin-left: 25px;
-    margin-top: 20px;
-}
-.usual_setting_list li{
-    margin-bottom: 20px;
-}
-.list_name{
-    display: inline-block;
-    width: 110px;
-    text-align: right;
-    height: 40px;
-    line-height: 40px;
-    font-size: 16px;
-    color: #354285;
-    margin-right: 20px;
-}
-.usual_setting_list input{
-    width: 430px;
-    height: 40px;
-    padding-left: 10px;
-    outline: none;
-    border: 0;
-    border: 1px solid #eef1f9;
-    background-color: #fafbfe;
-    border-radius: 3px;
-}
-.list_sure_btn{
-    font-size: 16px;
-    color: #ffffff;
-    width: 150px;
-    height: 30px;
-    margin: 0 auto;
-    margin-top: 40px;
-    line-height: 30px;
-    text-align: center;
-    background-color: #4696e4;
-    border-radius: 3px;
-}
-.file_up{
-    display: inline-block;
-    position: relative;
-}
-.file_up_img{
-    display: block;
-    float: left;
-    width: 170px;
-    height: 65px;
-    border-radius: 3px;
-}
-.file_up input{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 170px;
-    height: 65px;
-    opacity: 0;
-    z-index: 10;
-}
-.file_up_btn{
-    float: left;
-    font-size: 16px;
-    color: #ffffff;
-    width: 70px;
-    height: 23px;
-    margin: 0 auto;
-    margin-top: 20px;
-    line-height: 23px;
-    text-align: center;
-    background-color: #4696e4;
-    border-radius: 3px;
-    margin-left: 22px;
-}
-.logo_name{
-    position: relative;
-    top: -25px;
-}
-.channel_choice_mask{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(178,178,178,.7);
-}
-
-/*渠道选择中的弹出层*/
-.channel_choice_mask{
-    display: none;
-    width: 100%;
-    height: 100%;
-}
-.has_account{
-    width: 440px;
-    height: 280px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    margin-top: 100px;
-    display: none;
-}
-.has_account_title{
-    font-size: 20px;
-    color: #354285;
-    font-weight: bold;
-    width: 395px;
-    margin: 0 auto;
-    height: 60px;
-    line-height: 60px;
-    border-bottom: 1px solid #eef1f9;
-}
-.account_list{
-    margin-left: 20px;
-    margin-top: 23px;
-}
-.account_list li{
-    margin-bottom: 10px;
-}
-.account_list label{
-    font-size: 16px;
-    color: #354285;
-}
-.add_btn{
-    margin-top: 40px;
-}
-.add_account_btn{
-    float: left;
-    width: 148px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-    font-size: 16px;
-    color: #4696e4;
-    border: 1px solid #4696e4;
-    margin-left: 70px;
-}
-.add_sure_btn{
-    float: left;
-    width: 95px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #4696e4;
-    margin-left: 50px;
-}
-.none_account{
-    width: 440px;
-    height: 280px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    margin-top: 100px;
-    display: none;
-}
-.has_none_account{
-    font-size: 16px;
-    color: #354285;
-    text-align: center;
-    margin-top: 60px;
-}
-.add_account{
-    width: 150px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #4696e4;
-    margin: 0 auto;
-    margin-top: 50px;
-}
-.add_account a{
-    color: #ffffff;
-}
-.add_account_btn a{
-    color: #4696e4;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.block_show{
-    display: block;
-}
-.nav_show{
-    background-color: #fafbfe;
-    color: #4596e4;
-}
 .page_wrap {
     text-align: right;
     margin-top: 20px;
     margin-right: 60px;
 }
+.epay{
+    width: 100%;
+    height: 78px;
+    position: relative;
+}
+.epay_right{
+    width: 85.9%;
+    float: left;
+}
+
+
+/*!*线上退订*!*/
+/*.drawback_order{*/
+    /*width: 100%;*/
+    /*padding-bottom: 30px;*/
+    /*display: none;*/
+/*}*/
+
+/*!*退款订单*!*/
+/*.drawback_order{*/
+    /*width: 100%;*/
+    /*padding-bottom: 30px;*/
+    /*display: none;*/
+/*}*/
+/*.drawback_order_title{*/
+    /*padding-left: 25px;*/
+    /*width: 98.55%;*/
+    /*text-align: left;*/
+    /*height: 70px;*/
+    /*line-height: 70px;*/
+    /*font-size: 20px;*/
+    /*color: #354285;*/
+    /*font-weight: bold;*/
+    /*background-color: #fafbfe;*/
+/*}*/
+/*.drawback_order_search{*/
+    /*margin-left: 25px;*/
+    /*height: 40px;*/
+    /*margin-top: 30px;*/
+/*}*/
+/*.drawback_order_search p{*/
+    /*float: left;*/
+    /*border: 1px solid #eef1f9;*/
+    /*background-color: #fafbfe;*/
+    /*line-height: 38px;*/
+    /*font-size: 14px;*/
+    /*color: #354285;*/
+    /*height: 38px;*/
+    /*padding-left: 10px;*/
+    /*margin-right: 17px;*/
+    /*border-radius: 3px;*/
+/*}*/
+/*.drawback_order_search p span{*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+    /*top: 10px;*/
+    /*background: url("/public/images/sprite.png") no-repeat;*/
+/*}*/
+/*p.order_search_date{*/
+    /*width: 206px;*/
+    /*position: relative;*/
+/*}*/
+/*p.order_search_date span{*/
+    /*width: 20px;*/
+    /*height: 15px;*/
+    /*background-position: -53px -214px;*/
+/*}*/
+/*p.order_search_status{*/
+    /*width: 84px;*/
+    /*position: relative;*/
+/*}*/
+/*p.order_search_status span{*/
+    /*width: 10px;*/
+    /*height: 15px;*/
+    /*background-position: -40px -236px;*/
+/*}*/
+/*p.order_search_type{*/
+    /*width: 84px;*/
+    /*position: relative;*/
+/*}*/
+/*p.order_search_type span{*/
+    /*width: 10px;*/
+    /*height: 15px;*/
+    /*background-position: -40px -236px;*/
+/*}*/
+/*p.order_search_btn{*/
+    /*width: 67px;*/
+    /*height: 24px;*/
+    /*background-color: #4696e4;*/
+    /*color: #ffffff;*/
+    /*line-height: 24px;*/
+    /*text-align: center;*/
+    /*padding-left: 0px;*/
+    /*margin-top: 7px;*/
+    /*margin-left: 27px;*/
+/*}*/
+/*.order_search_id{*/
+    /*float: left;*/
+/*}*/
+/*.order_search_id label{*/
+    /*color: #354285;*/
+    /*font-size: 14px;*/
+    /*line-height: 40px;*/
+/*}*/
+/*.order_search_id input{*/
+    /*width: 95px;*/
+    /*height: 40px;*/
+    /*outline: none;*/
+    /*border: 0;*/
+    /*border: 1px solid #eef1f9;*/
+    /*background-color: #fafbfe;*/
+    /*border-radius: 3px;*/
+/*}*/
+/*.drawback_order_table{*/
+    /*width: 95.55%;*/
+    /*margin-left: 25px;*/
+    /*margin-top: 20px;*/
+    /*border: 1px solid #eef1f9;*/
+    /*background-color: #fafbfe;*/
+/*}*/
+/*.drawback_order_table tr{*/
+    /*width: 100%;*/
+    /*font-size: 16px;*/
+    /*color: #354285;*/
+    /*text-align: center;*/
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+/*}*/
+/*.drawback_order_table tr:nth-child(2n){*/
+    /*background-color: #f6f8fd;*/
+/*}*/
+/*tr.table_title{*/
+    /*color: #4696e4;*/
+/*}*/
+
+/*!*收入总计*!*/
+/*.income_total{*/
+    /*width: 100%;*/
+    /*padding-bottom: 30px;*/
+    /*display: none;*/
+/*}*/
+/*.income_total_date{*/
+    /*border: 1px solid #eef1f9;*/
+    /*background-color: #fafbfe;*/
+    /*line-height: 38px;*/
+    /*font-size: 14px;*/
+    /*color: #354285;*/
+    /*height: 38px;*/
+    /*padding-left: 10px;*/
+    /*margin-right: 17px;*/
+    /*border-radius: 3px;*/
+    /*width: 206px;*/
+    /*position: relative;*/
+    /*margin-top: 30px;*/
+    /*margin-left: 25px;*/
+/*}*/
+/*.income_total_date span{*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+    /*top: 10px;*/
+    /*background: url("/public/images/sprite.png") no-repeat;*/
+    /*width: 20px;*/
+    /*height: 15px;*/
+    /*background-position: -53px -214px;*/
+/*}*/
+/*.income_data{*/
+    /*padding-top: 20px;*/
+    /*border-top: 1px solid #eef1f9;*/
+    /*margin-top: 20px;*/
+    /*padding-bottom: 20px;*/
+/*}*/
+
+/*!*渠道总计*!*/
+/*.channel_total{*/
+    /*width: 100%;*/
+    /*padding-bottom: 20px;*/
+    /*display: none;*/
+/*}*/
+
+/*!*渠道选择*!*/
+/*.channel_choice{*/
+    /*width: 100%;*/
+    /*padding-bottom: 20px;*/
+    /*display: none;*/
+/*}*/
+/*.epay_type{*/
+    /*margin-top: 45px;*/
+    /*margin-left: 25px;*/
+/*}*/
+/*.epay_type li{*/
+    /*float: left;*/
+    /*width: 238px;*/
+    /*height: 143px;*/
+    /*border: 1px solid #eef1f9;*/
+    /*border-radius: 3px;*/
+    /*margin-left: 30px;*/
+/*}*/
+/*.epay_type li:hover{*/
+    /*border: 1px solid #4696e4;*/
+/*}*/
+/*.epay_type_logo{*/
+    /*background: url("/public/images/sprite.png") no-repeat;*/
+    /*width: 130px;*/
+    /*height: 40px;*/
+    /*background-position: 0 -78px;*/
+    /*margin-top: 23px;*/
+    /*margin-left: 53px;*/
+/*}*/
+/*.epay_type_app{*/
+    /*width: 60px;*/
+    /*margin: 0 auto;*/
+    /*height: 20px;*/
+    /*margin-top: 15px;*/
+/*}*/
+/*.epay_type_app label{*/
+    /*font-size: 14px;*/
+    /*color: #354285;*/
+/*}*/
+/*.epay_type_account{*/
+    /*width: 200px;*/
+    /*margin: 0 auto;*/
+    /*height: 33px;*/
+    /*line-height: 33px;*/
+    /*margin-top: 5px;*/
+    /*border-top: 1px solid #eef1f9;*/
+    /*position: relative;*/
+    /*font-size: 14px;*/
+    /*color: #354285;*/
+/*}*/
+/*.epay_type_account span{*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*right: 0px;*/
+    /*top: 10px;*/
+    /*background: url("/public/images/sprite.png") no-repeat;*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+    /*background-position: -83px -195px;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.wechat_logo{*/
+    /*background-position: 0 -116px;*/
+/*}*/
+/*.zhifubao_logo{*/
+    /*background-position: 0 -154px;*/
+/*}*/
+
+/*!*常用设置*!*/
+/*.usual_setting{*/
+    /*width: 100%;*/
+    /*padding-bottom: 20px;*/
+/*}*/
+/*.usual_setting_list{*/
+    /*margin-left: 25px;*/
+    /*margin-top: 20px;*/
+/*}*/
+/*.usual_setting_list li{*/
+    /*margin-bottom: 20px;*/
+/*}*/
+/*.list_name{*/
+    /*display: inline-block;*/
+    /*width: 110px;*/
+    /*text-align: right;*/
+    /*height: 40px;*/
+    /*line-height: 40px;*/
+    /*font-size: 16px;*/
+    /*color: #354285;*/
+    /*margin-right: 20px;*/
+/*}*/
+/*.usual_setting_list input{*/
+    /*width: 430px;*/
+    /*height: 40px;*/
+    /*padding-left: 10px;*/
+    /*outline: none;*/
+    /*border: 0;*/
+    /*border: 1px solid #eef1f9;*/
+    /*background-color: #fafbfe;*/
+    /*border-radius: 3px;*/
+/*}*/
+/*.list_sure_btn{*/
+    /*font-size: 16px;*/
+    /*color: #ffffff;*/
+    /*width: 150px;*/
+    /*height: 30px;*/
+    /*margin: 0 auto;*/
+    /*margin-top: 40px;*/
+    /*line-height: 30px;*/
+    /*text-align: center;*/
+    /*background-color: #4696e4;*/
+    /*border-radius: 3px;*/
+/*}*/
+/*.file_up{*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+/*}*/
+/*.file_up_img{*/
+    /*display: block;*/
+    /*float: left;*/
+    /*width: 170px;*/
+    /*height: 65px;*/
+    /*border-radius: 3px;*/
+/*}*/
+/*.file_up input{*/
+    /*position: absolute;*/
+    /*left: 0px;*/
+    /*top: 0px;*/
+    /*width: 170px;*/
+    /*height: 65px;*/
+    /*opacity: 0;*/
+    /*z-index: 10;*/
+/*}*/
+/*.file_up_btn{*/
+    /*float: left;*/
+    /*font-size: 16px;*/
+    /*color: #ffffff;*/
+    /*width: 70px;*/
+    /*height: 23px;*/
+    /*margin: 0 auto;*/
+    /*margin-top: 20px;*/
+    /*line-height: 23px;*/
+    /*text-align: center;*/
+    /*background-color: #4696e4;*/
+    /*border-radius: 3px;*/
+    /*margin-left: 22px;*/
+/*}*/
+/*.logo_name{*/
+    /*position: relative;*/
+    /*top: -25px;*/
+/*}*/
+/*.channel_choice_mask{*/
+    /*position: absolute;*/
+    /*left: 0px;*/
+    /*top: 0px;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background-color: rgba(178,178,178,.7);*/
+/*}*/
+
+/*!*渠道选择中的弹出层*!*/
+/*.channel_choice_mask{*/
+    /*display: none;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+/*}*/
+/*.has_account{*/
+    /*width: 440px;*/
+    /*height: 280px;*/
+    /*margin: 0 auto;*/
+    /*background-color: #ffffff;*/
+    /*margin-top: 100px;*/
+    /*display: none;*/
+/*}*/
+/*.has_account_title{*/
+    /*font-size: 20px;*/
+    /*color: #354285;*/
+    /*font-weight: bold;*/
+    /*width: 395px;*/
+    /*margin: 0 auto;*/
+    /*height: 60px;*/
+    /*line-height: 60px;*/
+    /*border-bottom: 1px solid #eef1f9;*/
+/*}*/
+/*.account_list{*/
+    /*margin-left: 20px;*/
+    /*margin-top: 23px;*/
+/*}*/
+/*.account_list li{*/
+    /*margin-bottom: 10px;*/
+/*}*/
+/*.account_list label{*/
+    /*font-size: 16px;*/
+    /*color: #354285;*/
+/*}*/
+/*.add_btn{*/
+    /*margin-top: 40px;*/
+/*}*/
+/*.add_account_btn{*/
+    /*float: left;*/
+    /*width: 148px;*/
+    /*height: 28px;*/
+    /*line-height: 28px;*/
+    /*text-align: center;*/
+    /*font-size: 16px;*/
+    /*color: #4696e4;*/
+    /*border: 1px solid #4696e4;*/
+    /*margin-left: 70px;*/
+/*}*/
+/*.add_sure_btn{*/
+    /*float: left;*/
+    /*width: 95px;*/
+    /*height: 30px;*/
+    /*line-height: 30px;*/
+    /*text-align: center;*/
+    /*font-size: 16px;*/
+    /*color: #ffffff;*/
+    /*background-color: #4696e4;*/
+    /*margin-left: 50px;*/
+/*}*/
+/*.none_account{*/
+    /*width: 440px;*/
+    /*height: 280px;*/
+    /*margin: 0 auto;*/
+    /*background-color: #ffffff;*/
+    /*margin-top: 100px;*/
+    /*display: none;*/
+/*}*/
+/*.has_none_account{*/
+    /*font-size: 16px;*/
+    /*color: #354285;*/
+    /*text-align: center;*/
+    /*margin-top: 60px;*/
+/*}*/
+/*.add_account{*/
+    /*width: 150px;*/
+    /*height: 30px;*/
+    /*line-height: 30px;*/
+    /*text-align: center;*/
+    /*font-size: 16px;*/
+    /*color: #ffffff;*/
+    /*background-color: #4696e4;*/
+    /*margin: 0 auto;*/
+    /*margin-top: 50px;*/
+/*}*/
+/*.add_account a{*/
+    /*color: #ffffff;*/
+/*}*/
+/*.add_account_btn a{*/
+    /*color: #4696e4;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*display: block;*/
+/*}*/
+
+/*.block_show{*/
+    /*display: block;*/
+/*}*/
+/*.nav_show{*/
+    /*background-color: #fafbfe;*/
+    /*color: #4596e4;*/
+/*}*/
+/*.page_wrap {*/
+    /*text-align: right;*/
+    /*margin-top: 20px;*/
+    /*margin-right: 60px;*/
+/*}*/

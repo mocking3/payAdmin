@@ -24,8 +24,9 @@ var OrderService = (function (_super) {
         this.http = http;
         this.url = app_constants_1.SERVER_URL + '/apps/${appId}/orders';
     }
-    OrderService.prototype.getOrders = function (appId, pageNum, pageSize) {
-        var url = this.url.replace(new RegExp('\\$\\{appId\\}', 'g'), appId + '') + ("?pageNum=" + pageNum + "&pageSize=" + pageSize);
+    OrderService.prototype.getOrders = function (appId, orderTimeBegin, orderTimeEnd, channel, outTradeNo, pageNum, pageSize) {
+        var url = this.url.replace(new RegExp('\\$\\{appId\\}', 'g'), appId + '') +
+            ("?orderTimeBegin=" + orderTimeBegin + "&orderTimeEnd=" + orderTimeEnd + "&channel=" + channel + "&outTradeNo=" + outTradeNo + "&pageNum=" + pageNum + "&pageSize=" + pageSize);
         // this.url = '/api/webhook-setting-get.json';
         var headers = this.getAuthHeaders();
         var options = new http_1.RequestOptions({ headers: headers });
