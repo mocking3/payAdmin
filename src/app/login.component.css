@@ -58,6 +58,7 @@ a:hover{
     background-position: -35px -282px;
 }
 .login_name input{
+    background-color: #ffffff;
     width: 165px;
     height: 100%;
     border: 0;
@@ -83,6 +84,7 @@ a:hover{
     background-position: -35px -260px;
 }
 .login_password input{
+    background-color: #ffffff;
     width: 165px;
     height: 100%;
     border: 0;
