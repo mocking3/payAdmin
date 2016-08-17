@@ -16,5 +16,4 @@ require('moment');
 require('echarts');
 require('daterangepicker/daterangepicker-bs3.min.css');
 require('daterangepicker/daterangepicker.min.js');
-require('../public/css/styles.css');
 //# sourceMappingURL=vendor.js.map

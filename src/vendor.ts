@@ -15,4 +15,3 @@ import 'moment';
 import 'echarts';
 import 'daterangepicker/daterangepicker-bs3.min.css';
 import 'daterangepicker/daterangepicker.min.js';
-import '../public/css/styles.css';
