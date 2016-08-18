@@ -1,15 +1,14 @@
 import {provideRouter, RouterConfig} from '@angular/router';
 
-import {LoginComponent}  from './login.component.ts';
-import {ApplicationComponent} from "./application/application.component";
-import {AuthGuard} from "./auth.guard.service";
-import {ApplicationListComponent} from "./application/application-list.component";
-import {ApplicationDetailComponent} from "./application/application-detail.component";
-import {ChannelSettingComponent} from "./application/setting/channel-setting.component";
-import {WebhookSettingComponent} from "./application/setting/webhook-setting.component";
-import {TodayAnalysisComponent} from "./application/analysis/today-analysis.component";
-import {PageNotFoundComponent} from "./page-not-found.component";
-import {OrderComponent} from "./application/order/order.component";
+import {LoginComponent}  from './+login';
+import {ApplicationListComponent} from './+applications';
+import {ApplicationComponent, ApplicationDetailComponent} from './+applications/application';
+import {ChannelSettingComponent} from './+applications/application/settings/channel-setting';
+import {WebhookSettingComponent} from './+applications/application/settings/webhook-setting';
+import {TodayAnalysisComponent} from './+applications/application/analysis';
+import {OrderComponent} from './+applications/application/orders';
+import {PageNotFoundComponent} from './shared';
+import {AuthGuard} from './shared/auth';
 
 export const routes:RouterConfig = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},

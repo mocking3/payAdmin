@@ -1,26 +1,25 @@
 "use strict";
-var login_component_ts_1 = require('./login.component.ts');
-var application_component_1 = require("./application/application.component");
-var auth_guard_service_1 = require("./auth.guard.service");
-var application_list_component_1 = require("./application/application-list.component");
-var application_detail_component_1 = require("./application/application-detail.component");
-var channel_setting_component_1 = require("./application/setting/channel-setting.component");
-var webhook_setting_component_1 = require("./application/setting/webhook-setting.component");
-var today_analysis_component_1 = require("./application/analysis/today-analysis.component");
-var page_not_found_component_1 = require("./page-not-found.component");
-var order_component_1 = require("./application/order/order.component");
+var _login_1 = require('./+login');
+var _applications_1 = require('./+applications');
+var application_1 = require('./+applications/application');
+var channel_setting_1 = require('./+applications/application/settings/channel-setting');
+var webhook_setting_1 = require('./+applications/application/settings/webhook-setting');
+var analysis_1 = require('./+applications/application/analysis');
+var orders_1 = require('./+applications/application/orders');
+var shared_1 = require('./shared');
+var auth_1 = require('./shared/auth');
 exports.routes = [
     { path: '', redirectTo: 'apps', pathMatch: 'full' },
-    { path: 'login', component: login_component_ts_1.LoginComponent },
-    { path: 'apps', component: application_list_component_1.ApplicationListComponent, canActivate: [auth_guard_service_1.AuthGuard] },
-    { path: 'apps/:id', component: application_component_1.ApplicationComponent, canActivate: [auth_guard_service_1.AuthGuard], children: [
-            { path: '', component: today_analysis_component_1.TodayAnalysisComponent },
-            { path: 'today-analysis', component: today_analysis_component_1.TodayAnalysisComponent },
-            { path: 'detail', component: application_detail_component_1.ApplicationDetailComponent },
-            { path: 'orders', component: order_component_1.OrderComponent },
-            { path: 'channel-setting', component: channel_setting_component_1.ChannelSettingComponent },
-            { path: 'webhook-setting', component: webhook_setting_component_1.WebhookSettingComponent },
+    { path: 'login', component: _login_1.LoginComponent },
+    { path: 'apps', component: _applications_1.ApplicationListComponent, canActivate: [auth_1.AuthGuard] },
+    { path: 'apps/:id', component: application_1.ApplicationComponent, canActivate: [auth_1.AuthGuard], children: [
+            { path: '', component: analysis_1.TodayAnalysisComponent },
+            { path: 'today-analysis', component: analysis_1.TodayAnalysisComponent },
+            { path: 'detail', component: application_1.ApplicationDetailComponent },
+            { path: 'orders', component: orders_1.OrderComponent },
+            { path: 'channel-setting', component: channel_setting_1.ChannelSettingComponent },
+            { path: 'webhook-setting', component: webhook_setting_1.WebhookSettingComponent },
         ] },
-    { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
+    { path: '**', component: shared_1.PageNotFoundComponent }
 ];
 //# sourceMappingURL=app.routes.js.map

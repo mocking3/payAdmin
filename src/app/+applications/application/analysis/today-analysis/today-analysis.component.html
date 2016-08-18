@@ -1,0 +1,32 @@
+<!--主页内容-->
+<div class="pannel">
+    <p class="common_title">当天交易数据</p>
+    <ul class="trade_data clearfix">
+        <li>
+            <p class="data_name">发起订单（笔）</p>
+            <p class="data_figure">{{dataSummary.preOrderCount}}</p>
+        </li>
+        <li>
+            <p class="data_name">成功订单（笔）</p>
+            <p class="data_figure">{{dataSummary.orderCount}}</p>
+        </li>
+        <li>
+            <p class="data_name">成交金额（元）</p>
+            <p class="data_figure">{{dataSummary.orderTotalFee}}</p>
+        </li>
+        <li>
+            <p class="data_name">订单转化率</p>
+            <p class="data_figure">{{dataSummary.conversion*100}}%</p>
+        </li>
+    </ul>
+    <div class="homepage_title chart_back">
+        <p class="homepage_title_infor">交易量变化(笔)</p>
+        <p class="homepage_title_time">{{currentDate.toDate() | date:'yyyy 年 MM 月 dd 日'}} 0 点至 24 点</p>
+        <div id="chargeCount" style="width: 90%;height:400px;"></div>
+    </div>
+    <div class="homepage_title chart_back">
+        <p class="homepage_title_infor">交易金额变化(元)</p>
+        <p class="homepage_title_time">{{currentDate.toDate() | date:'yyyy 年 MM 月 dd 日'}} 0 点至 24 点</p>
+        <div id="chargeFee" style="width: 90%;height:400px;"></div>
+    </div>
+</div>

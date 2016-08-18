@@ -1,0 +1,50 @@
+.home_page{
+    width: 100%;
+}
+.homepage_title{
+    width: 100%;
+    background-color: #fafbfe;
+}
+.homepage_title_infor{
+    font-size: 20px;
+    line-height: 25px;
+    color: #354285;
+    padding-top: 28px;
+    margin-left: 25px;
+    font-weight: bold;
+}
+.homepage_title_time{
+    font-size: 14px;
+    line-height: 15px;
+    color: #354285;
+    margin-top: 6px;
+    margin-left: 25px;
+}
+.trade_data{
+    width: 97%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #eef1f9;
+}
+.trade_data li{
+    float: left;
+    width: 100px;
+    margin-right: 60px;
+}
+.data_name{
+    font-size: 14px;
+    line-height: 15px;
+    color: #4696e4;
+}
+.data_figure{
+    width: 80px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #354285;
+    margin-top: 15px;
+    text-align: center;
+}
+.chart_back{
+    background-color: #ffffff;
+}

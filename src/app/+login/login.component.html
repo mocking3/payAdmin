@@ -1,0 +1,19 @@
+<h1>{{message}}</h1>
+<div class="login">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="login_con">
+            <p class="login_title">登录</p>
+            <div class="login_name">
+                <span></span>
+                <input type="text" required [(ngModel)]="model.username" name="username" #username="ngModel" />
+                <div [hidden]="username.valid || username.pristine">用户名必填</div>
+            </div>
+            <div class="login_password">
+                <span></span>
+                <input type="password" required [(ngModel)]="model.password" name="password" #password="ngModel"/>
+                <div [hidden]="password.valid || password.pristine">密码必填</div>
+            </div>
+            <button type="submit" class="login_btn" [disabled]="!loginForm.form.valid">登录</button>
+        </div>
+    </form>
+</div>
