@@ -3,5 +3,5 @@
 /npm-debug.log
 /typings/
 .idea
-src/**/.js
-src/**/.js.map
+/src/**/*.js
+/src/**/*.js.map

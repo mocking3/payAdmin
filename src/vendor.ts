@@ -13,5 +13,5 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery';
 import 'moment';
 import 'echarts';
-import 'daterangepicker/daterangepicker-bs3.min.css';
-import 'daterangepicker/daterangepicker.min.js';
+import 'bootstrap-daterangepicker/daterangepicker.css';
+import 'bootstrap-daterangepicker/daterangepicker.js';
