@@ -19,20 +19,20 @@ import {OrderService, OrderInfoModel} from './shared';
 export class OrderComponent implements OnInit, OnDestroy {
     appId: number;
     message: string;
-    sub: any;
-
     pageNum: number = 1;
+
     pageSize: number = 10;
     total: number;
     orderInfos: OrderInfoModel[];
     loading: boolean;
-
     searchParams: any = {
         orderTimeBegin: '',
         orderTimeEnd: '',
         channel: '',
         outTradeNo: ''
     };
+
+    private sub: any;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,

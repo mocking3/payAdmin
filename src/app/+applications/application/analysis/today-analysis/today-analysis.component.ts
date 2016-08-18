@@ -40,12 +40,12 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
             this.appId = +params['id'];
 
             this.analysisService.getDataSummary(this.appId, this.currentDate.format('YYYY/MM/DD'),
-                                        this.currentDate.clone().add(1, 'days').format('YYYY/MM/DD')).subscribe(
+                                        this.currentDate.format('YYYY/MM/DD')).subscribe(
                 data => this.dataSummary = data,
                 error => this.message = <any>error
             );
-            this.analysisService.getChargeChangeWithCount(this.appId, this.currentDate.format('YYYY/MM/DD'),
-                                        this.currentDate.clone().add(1, 'days').format('YYYY/MM/DD')).subscribe(
+            this.analysisService.getChargeChangeWithOrderCount(this.appId, this.currentDate.format('YYYY/MM/DD'),
+                                        this.currentDate.format('YYYY/MM/DD')).subscribe(
                 data => {
                     let date: string[] = [],
                         preOrderData: number[] = [],
@@ -59,8 +59,8 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                 },
                 error => this.message = <any>error
             );
-            this.analysisService.getChargeChangeWithFee(this.appId, this.currentDate.format('YYYY/MM/DD'),
-                                        this.currentDate.clone().add(1, 'days').format('YYYY/MM/DD')).subscribe(
+            this.analysisService.getChargeChangeWithOrderFee(this.appId, this.currentDate.format('YYYY/MM/DD'),
+                                        this.currentDate.format('YYYY/MM/DD')).subscribe(
                 data => {
                     let date: string[] = [],
                         orderData: number[] = [],

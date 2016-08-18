@@ -1,0 +1,23 @@
+<div class="pannel">
+    <p class="common_title">收入总计</p>
+    <p class="income_total_date">
+        <input type="text" class="daterange" placeholder="创建日期"
+               value="{{searchParams.orderTimeBegin.toDate() | date:'yyyy/MM/dd'}} - {{searchParams.orderTimeEnd.toDate() | date:'yyyy/MM/dd'}}" />
+        <span></span>
+    </p>
+    <div class="clearfix"></div>
+    <ul class="trade_data clearfix">
+        <li>
+            <p class="data_name">成功订单（笔）</p>
+            <p class="data_figure">{{dataSummary.orderCount}}</p>
+        </li>
+    </ul>
+    <div class="homepage_title chart_back">
+        <p class="homepage_title_infor">订单金额/退款单交易金额变化(元)</p>
+        <div id="orderChargeFee" style="width: 90%;height:500px;"></div>
+    </div>
+    <div class="homepage_title chart_back">
+        <p class="homepage_title_infor">渠道交易金额变化(元)</p>
+        <div id="channelChargeFee" style="width: 90%;height:500px;"></div>
+    </div>
+</div>

@@ -19,15 +19,29 @@ export class AnalysisService extends BaseService {
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
     }
 
-    getChargeChangeWithCount(appId: number, timeBegin: string, timeEnd: string):Observable<any> {
+    getChargeChangeWithOrderCount(appId: number, timeBegin: string, timeEnd: string):Observable<any> {
         let url = SERVER_URL + `/statistics/${appId}/order/count?timeBegin=${timeBegin}&timeEnd=${timeEnd}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
     }
 
-    getChargeChangeWithFee(appId: number, timeBegin: string, timeEnd: string):Observable<any> {
+    getChargeChangeWithOrderFee(appId: number, timeBegin: string, timeEnd: string):Observable<any> {
         let url = SERVER_URL + `/statistics/${appId}/order/fee?timeBegin=${timeBegin}&timeEnd=${timeEnd}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(url, options).map(this.extractData).catch(this.handleError);
+    }
+
+    getChargeChangeWithChannelCount(appId: number, timeBegin: string, timeEnd: string):Observable<any> {
+        let url = SERVER_URL + `/statistics/${appId}/count/channels?timeBegin=${timeBegin}&timeEnd=${timeEnd}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(url, options).map(this.extractData).catch(this.handleError);
+    }
+
+    getChargeChangeWithChannelFee(appId: number, timeBegin: string, timeEnd: string):Observable<any> {
+        let url = SERVER_URL + `/statistics/${appId}/fee/channels?timeBegin=${timeBegin}&timeEnd=${timeEnd}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
