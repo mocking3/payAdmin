@@ -1,5 +1,5 @@
 <div class="pannel">
-    <p class="common_title">收入总计</p>
+    <p class="common_title">订单分析</p>
     <p class="income_total_date">
         <input type="text" class="daterange" placeholder="创建日期"
                value="{{searchParams.orderTimeBegin.toDate() | date:'yyyy/MM/dd'}} - {{searchParams.orderTimeEnd.toDate() | date:'yyyy/MM/dd'}}" />
@@ -21,11 +21,11 @@
         </li>
     </ul>
     <div class="homepage_title chart_back">
-        <p class="homepage_title_infor">订单金额/退款单交易数变化(笔)</p>
+        <p class="homepage_title_infor">订单/退款单交易量变化(笔)</p>
         <div id="orderChargeCount" class="echar_div"></div>
     </div>
     <div class="homepage_title chart_back">
-        <p class="homepage_title_infor">渠道交易数变化(笔)</p>
+        <p class="homepage_title_infor">渠道交易量变化(笔)</p>
         <div id="channelChargeCount" class="echar_div"></div>
     </div>
 </div>

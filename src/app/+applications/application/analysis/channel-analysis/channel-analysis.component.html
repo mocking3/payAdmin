@@ -1,5 +1,5 @@
 <div class="pannel">
-    <p class="common_title">收入总计</p>
+    <p class="common_title">渠道分析</p>
     <p class="income_total_date">
         <input type="text" class="daterange" placeholder="创建日期"
                value="{{searchParams.orderTimeBegin.toDate() | date:'yyyy/MM/dd'}} - {{searchParams.orderTimeEnd.toDate() | date:'yyyy/MM/dd'}}" />
@@ -13,7 +13,7 @@
         </li>
         <li>
             <p class="data_name">成交金额（元）</p>
-            <p class="data_figure">{{dataSummary.orderTotalFee}}</p>
+            <p class="data_figure">{{dataSummary.orderTotalFee/100}}</p>
         </li>
     </ul>
     <div class="wrap">

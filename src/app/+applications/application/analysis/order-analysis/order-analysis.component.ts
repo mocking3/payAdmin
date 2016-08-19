@@ -71,11 +71,11 @@ export class OrderAnalysisComponent implements OnInit, OnDestroy {
                     preOrderData: number[] = [];
                 for(let i=0; i<data.length; i++) {
                     date.push(data[i].date);
-                    orderData.push(data[i].order/100);
-                    preOrderData.push(data[i].preOrder/100);
+                    orderData.push(data[i].order);
+                    preOrderData.push(data[i].preOrder);
                 }
                 // 设置图表
-                this.orderCountChart.setOption(Constants.getLineEchartOption(date, [orderData, preOrderData], ['订单金额', '退款单金额']));
+                this.orderCountChart.setOption(Constants.getLineEchartOption(date, [orderData, preOrderData], ['订单数', '退款单数']));
             },
             error => this.message = <any>error
         );

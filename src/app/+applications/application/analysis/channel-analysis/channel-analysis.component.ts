@@ -110,14 +110,14 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
                 for(let i=0; i<data.length; i++) {
                     let pChannelKey = Constants.getPChannel(data[i].channel);
                     if (map.has(pChannelKey)) {
-                        map.set(pChannelKey, map.get(pChannelKey) + data[i].total);
+                        map.set(pChannelKey, map.get(pChannelKey) + data[i].total/100);
                     } else {
-                        map.set(pChannelKey, data[i].total);
+                        map.set(pChannelKey, data[i].total/100);
                     }
 
                     let channel: NameValue = new NameValue();
                     channel.name = Constants.CHANNEL[data[i].channel];
-                    channel.value = data[i].total;
+                    channel.value = data[i].total/100;
                     channelData.push(channel);
                     channellegendData.push(channel.name);
                 }

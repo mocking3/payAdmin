@@ -98,7 +98,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
                 for(let i=0; i<cdata.length; i++) {
                     date.push(cdata[i].date);
                     map.forEach((value: number[], index: string) => {
-                        value.push(cdata[i][index]);
+                        value.push(cdata[i][index] / 100);
                     });
                 }
                 map.forEach((value: number[]) => {
