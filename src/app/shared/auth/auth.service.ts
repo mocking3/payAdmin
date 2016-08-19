@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
 import {BaseService} from '../base.service.ts';
-import {SERVER_URL} from '../constants.ts';
+import {Constants} from '../constants.ts';
 
 @Injectable()
 export class AuthService extends BaseService {
     // 登录后重定向的页面
     redirectUrl: string;
 
-    private url = SERVER_URL + '/session';
+    private url = Constants.SERVER_URL + '/session';
 
     constructor(private http:Http) {
         super();

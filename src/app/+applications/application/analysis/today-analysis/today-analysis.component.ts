@@ -5,6 +5,7 @@ import * as echarts from 'echarts';
 import * as moment from 'moment';
 import Moment = moment.Moment;
 
+import {Constants} from '../../../../shared/constants';
 import {AnalysisService} from '../shared';
 
 
@@ -36,6 +37,10 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        // 初始化图表
+        this.initCountChart();
+        this.initFeeChart();
+
         this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
             this.appId = +params['id'];
 
@@ -55,7 +60,8 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                         preOrderData.push(data[i].preOrder);
                         orderData.push(data[i].order);
                     }
-                    this.initCountChart(date, preOrderData, orderData);
+                    //  设置图表
+                    this.countChart.setOption(Constants.getLineEchartOption(date, [preOrderData, orderData], ['发起订单数', '成功订单数']));
                 },
                 error => this.message = <any>error
             );
@@ -70,7 +76,8 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                         orderData.push(data[i].order/100);
                         refundOrderData.push(data[i].refundOrder/100);
                     }
-                    this.initFeeChart(date, orderData, refundOrderData);
+                    // 设置图表
+                    this.feeChart.setOption(Constants.getLineEchartOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
                 },
                 error => this.message = <any>error
             );
@@ -81,62 +88,13 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-    initCountChart(date: string[], preOrderData: number[], orderData: number[]) {
+    initCountChart() {
         this.countChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeCount'));
-        this.countChart.setOption(this.getOption(date, [preOrderData, orderData], ['发起订单数', '成功订单数']));
+        this.countChart.setOption(Constants.getLineEchartOption([], [], []));
     }
 
-    initFeeChart(date: string[], orderData: number[], refundOrderData: number[]) {
+    initFeeChart() {
         this.feeChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeFee'));
-        this.feeChart.setOption(this.getOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
-    }
-
-    getOption(xAxisData: string[], seriesData: number[][], legendData: string[]) {
-        let series: any = [];
-        for (let i=0; i<legendData.length; i++) {
-            let obj = {
-                name: legendData[i],
-                type:'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data:seriesData[i]
-            };
-            series.push(obj);
-        }
-        return {
-            // title: {
-            //     text: '交易量变化(笔)'
-            // },
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                data: legendData
-            },
-            toolbox: {
-                // feature: {
-                //     saveAsImage: {}
-                // }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : xAxisData
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : series
-        };
+        this.feeChart.setOption(Constants.getLineEchartOption([], [], []));
     }
 }

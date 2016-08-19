@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
-import {SERVER_URL, BaseService} from '../../shared';
+import {Constants, BaseService} from '../../shared';
 import {ApplicationModel} from './';
 
 @Injectable()
 export class ApplicationService extends BaseService {
 
-    private url = SERVER_URL + '/apps';
+    private url = Constants.SERVER_URL + '/apps';
 
     constructor(private http:Http) {
         super();

@@ -2,11 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
-import {SERVER_URL} from '../constants';
+import {Constants} from '../constants';
 
 @Injectable()
 export class UploadService {
-    private url: string = SERVER_URL + '/fileUpload';
+    private url: string = Constants.SERVER_URL + '/fileUpload';
     private progress$:Observable<number>;
     private progress:number = 0;
     private progressObserver:Observer<number>;
@@ -28,7 +28,7 @@ export class UploadService {
                 xhr:XMLHttpRequest = new XMLHttpRequest();
 
             // xhr.setRequestHeader('authorization', '');
-            formData.append("file", file, file.name);
+            formData.append('file', file, file.name);
 
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {

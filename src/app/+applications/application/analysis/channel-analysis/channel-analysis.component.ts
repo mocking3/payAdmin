@@ -5,7 +5,10 @@ import * as echarts from 'echarts';
 import * as moment from 'moment';
 import Moment = moment.Moment;
 
-import {AnalysisService} from "../shared/analysis.service";
+import {NameValue} from '../../../../shared/model';
+import {Constants} from '../../../../shared/constants';
+import {AnalysisService} from '../shared/analysis.service';
+
 
 @Component({
     templateUrl: './channel-analysis.component.html',
@@ -42,11 +45,15 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // 初始化日历控件
         this.initDatePicker();
+        // 初始化图表
+        this.countChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeCount'));
+        this.countChart.setOption(Constants.getPieEchartOption([], [], []));
+        this.feeChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeFee'));
+        this.feeChart.setOption(Constants.getPieEchartOption([], [], []));
 
         this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
             this.appId = +params['id'];
             this.cb(moment().subtract(6, 'days'), moment());
-
         });
     }
 
@@ -56,33 +63,75 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
             data => this.dataSummary = data,
             error => this.message = <any>error
         );
-        this.analysisService.getChargeChangeWithOrderCount(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
+        this.analysisService.getChargeTotalWithChannelCount(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
             data => {
-                let date: string[] = [],
-                    preOrderData: number[] = [],
-                    orderData: number[] = [];
+                let pChannelData: NameValue[] = [],
+                    channelData: NameValue[] = [],
+                    channellegendData: string[] = [],
+                    legendData: string[] = [];
+                let map = new Map<string, number>();
                 for(let i=0; i<data.length; i++) {
-                    date.push(data[i].date);
-                    preOrderData.push(data[i].preOrder);
-                    orderData.push(data[i].order);
+                    let pChannelKey = Constants.getPChannel(data[i].channel);
+                    if (map.has(pChannelKey)) {
+                        map.set(pChannelKey, map.get(pChannelKey) + data[i].total);
+                    } else {
+                        map.set(pChannelKey, data[i].total);
+                    }
+
+                    let channel: NameValue = new NameValue();
+                    channel.name = Constants.CHANNEL[data[i].channel];
+                    channel.value = data[i].total;
+                    channelData.push(channel);
+                    channellegendData.push(channel.name);
                 }
-                this.initCountChart(date, preOrderData, orderData);
+
+                map.forEach((value, index) => {
+                    let pChannel: NameValue = new NameValue();
+                    pChannel.name = Constants.CHANNEL[index];
+                    pChannel.value = value;
+                    pChannelData.push(pChannel);
+                    legendData.push(pChannel.name);
+                });
+                legendData = legendData.concat(channellegendData);
+                // 设置图表
+                this.countChart.setOption(Constants.getPieEchartOption(pChannelData, channelData, legendData));
             },
             error => this.message = <any>error
         );
-        this.analysisService.getChargeChangeWithOrderFee(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
+        this.analysisService.getChargeTotalWithChannelFee(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
             data => {
-                let date: string[] = [],
-                    orderData: number[] = [],
-                    refundOrderData: number[] = [];
+                let pChannelData: NameValue[] = [],
+                    channelData: NameValue[] = [],
+                    channellegendData: string[] = [],
+                    legendData: string[] = [];
+                let map = new Map<string, number>();
                 for(let i=0; i<data.length; i++) {
-                    date.push(data[i].date);
-                    orderData.push(data[i].order/100);
-                    refundOrderData.push(data[i].refundOrder/100);
+                    let pChannelKey = Constants.getPChannel(data[i].channel);
+                    if (map.has(pChannelKey)) {
+                        map.set(pChannelKey, map.get(pChannelKey) + data[i].total);
+                    } else {
+                        map.set(pChannelKey, data[i].total);
+                    }
+
+                    let channel: NameValue = new NameValue();
+                    channel.name = Constants.CHANNEL[data[i].channel];
+                    channel.value = data[i].total;
+                    channelData.push(channel);
+                    channellegendData.push(channel.name);
                 }
-                this.initFeeChart(date, orderData, refundOrderData);
+
+                map.forEach((value, index) => {
+                    let pChannel: NameValue = new NameValue();
+                    pChannel.name = Constants.CHANNEL[index];
+                    pChannel.value = value;
+                    pChannelData.push(pChannel);
+                    legendData.push(pChannel.name);
+                });
+                legendData = legendData.concat(channellegendData);
+                // 设置图表
+                this.feeChart.setOption(Constants.getPieEchartOption(pChannelData, channelData, legendData));
             },
             error => this.message = <any>error
         );
@@ -90,75 +139,6 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
-    }
-
-    initCountChart(date: string[], preOrderData: number[], orderData: number[]) {
-        this.countChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeCount'));
-        this.countChart.setOption(this.getOption(date, [preOrderData, orderData], ['发起订单数', '成功订单数']));
-    }
-
-    initFeeChart(date: string[], orderData: number[], refundOrderData: number[]) {
-        this.feeChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeFee'));
-        this.feeChart.setOption(this.getOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
-    }
-
-    getOption(xAxisData: string[], seriesData: number[][], legendData: string[]) {
-        let series: any = [];
-        for (let i=0; i<legendData.length; i++) {
-            let obj = {
-                name: legendData[i],
-                type:'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data:seriesData[i]
-            };
-            series.push(obj);
-        }
-        return {
-            // title: {
-            //     text: '交易量变化(笔)'
-            // },
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                data: legendData
-            },
-            toolbox: {
-                // feature: {
-                //     saveAsImage: {}
-                // }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis : [
-                {
-                    axisLabel: {
-                        interval: 0, //横轴信息全部显示
-                        rotate: xAxisData.length > 24 ? 40 : 0, //60度角倾斜显示
-                        formatter:function(val: string){
-                            if (xAxisData.length > 15 && val.length > 5)
-                                return val.substring(val.length-5, val.length);
-                            else
-                                return val;
-                        }
-                    },
-                    type : 'category',
-                    boundaryGap : false,
-                    data : xAxisData
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : series
-        };
     }
 
     initDatePicker() {

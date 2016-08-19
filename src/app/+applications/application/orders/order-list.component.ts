@@ -6,14 +6,14 @@ import * as moment from 'moment';
 import Moment = moment.Moment;
 
 import {OrderService, OrderInfoModel} from './shared';
-
+import {ChannelPipe} from '../../../shared/pipe'
 
 @Component({
     templateUrl: './order-list.component.html',
     styleUrls: ['./order-list.component.css'],
     providers: [OrderService, PaginationService],
     directives: [PaginationControlsCmp],
-    pipes: [PaginatePipe]
+    pipes: [PaginatePipe, ChannelPipe]
     // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderComponent implements OnInit, OnDestroy {

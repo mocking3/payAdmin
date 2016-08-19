@@ -67,3 +67,7 @@ p.income_total_date span{
 .chart_back{
     background-color: #ffffff;
 }
+.echar_div {
+    width: 90%;
+    height:500px;
+}

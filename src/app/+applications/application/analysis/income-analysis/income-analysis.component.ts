@@ -5,7 +5,9 @@ import * as echarts from 'echarts';
 import * as moment from 'moment';
 import Moment = moment.Moment;
 
-import {AnalysisService} from "../shared/analysis.service";
+import {AnalysisService} from '../shared/analysis.service';
+import {Constants} from '../../../../shared/constants';
+import values = require('core-js/fn/array/values');
 
 @Component({
     templateUrl: './income-analysis.component.html',
@@ -42,6 +44,11 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // 初始化日历控件
         this.initDatePicker();
+        // 初始化表格
+        this.orderFeeChart = echarts.init(this.elementRef.nativeElement.querySelector('#orderChargeFee'));
+        this.orderFeeChart.setOption(Constants.getLineEchartOption([], [], []));
+        this.channelFeeChart = echarts.init(this.elementRef.nativeElement.querySelector('#channelChargeFee'));
+        this.channelFeeChart.setOption(Constants.getLineEchartOption([], [], []));
 
         this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
             this.appId = +params['id'];
@@ -68,7 +75,8 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
                     orderData.push(data[i].order/100);
                     refundOrderData.push(data[i].refundOrder/100);
                 }
-                this.initOrderFeeChart(date, orderData, refundOrderData);
+                // 设置表格
+                this.orderFeeChart.setOption(Constants.getLineEchartOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
             },
             error => this.message = <any>error
         );
@@ -77,16 +85,27 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
             data => {
                 let date: string[] = [],
-                    wxAppData: number[] = [],
-                    wxNativeData: number[] = [];
-                for(let i=0; i<data.length; i++) {
-                    date.push(data[i].date);
-                    if (data[i].WX_APP != undefined)
-                        wxAppData.push(data[i].WX_APP);
-                    if (data[i].WX_NATIVE != undefined)
-                        wxNativeData.push(data[i].WX_NATIVE);
+                    channelData: number[][] = [],
+                    legendData: string[] = [];
+                let channels: string[] = data.channels;
+                let map = new Map<string, number[]>();
+                channels.forEach((value: string) => {
+                    legendData.push(Constants.CHANNEL[value]);
+                    map.set(value, []);
+                });
+
+                let cdata: any[] = data.data;
+                for(let i=0; i<cdata.length; i++) {
+                    date.push(cdata[i].date);
+                    map.forEach((value: number[], index: string) => {
+                        value.push(cdata[i][index]);
+                    });
                 }
-                this.initChannelFeeChart(date, wxAppData, wxNativeData);
+                map.forEach((value: number[]) => {
+                    channelData.push(value);
+                });
+                // 设置表格
+                this.channelFeeChart.setOption(Constants.getLineEchartOption(date, channelData, legendData));
             },
             error => this.message = <any>error
         );
@@ -94,85 +113,6 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
-    }
-
-    initOrderFeeChart(date: string[], orderData: number[], refundOrderData: number[]) {
-        this.orderFeeChart = echarts.init(this.elementRef.nativeElement.querySelector('#orderChargeFee'));
-        this.orderFeeChart.setOption(this.getOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
-    }
-
-    initChannelFeeChart(date: string[], wxAppData: number[], wxNativeData: number[]) {
-        this.channelFeeChart = echarts.init(this.elementRef.nativeElement.querySelector('#channelChargeFee'));
-
-        let channelData: number[][]  = [], legendData: string[] = [];
-        if (wxAppData && wxAppData.length > 0) {
-            channelData.push(wxAppData);
-            legendData.push('WX_APP');
-        }
-        if (wxNativeData && wxNativeData.length > 0) {
-            channelData.push(wxNativeData);
-            legendData.push('WX_NATIVE');
-        }
-        this.channelFeeChart.setOption(this.getOption(date, channelData, legendData));
-    }
-
-    getOption(xAxisData: string[], seriesData: number[][], legendData: string[]) {
-        let series: any = [];
-        for (let i=0; i<legendData.length; i++) {
-            let obj = {
-                name: legendData[i],
-                type:'line',
-                stack: '总量',
-                areaStyle: {normal: {}},
-                data:seriesData[i]
-            };
-            series.push(obj);
-        }
-        return {
-            // title: {
-            //     text: '交易量变化(笔)'
-            // },
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                data: legendData
-            },
-            toolbox: {
-                // feature: {
-                //     saveAsImage: {}
-                // }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis : [
-                {
-                    axisLabel: {
-                        interval: 0, //横轴信息全部显示
-                        rotate: xAxisData.length > 24 ? 40 : 0, //60度角倾斜显示
-                        formatter:function(val: string){
-                            if (xAxisData.length > 15 && val.length > 5)
-                                return val.substring(val.length-5, val.length);
-                            else
-                                return val;
-                        }
-                    },
-                    type : 'category',
-                    boundaryGap : false,
-                    data : xAxisData
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : series
-        };
     }
 
     initDatePicker() {
