@@ -1,6 +1,7 @@
 export * from './auth';
 export * from './base.service';
 export * from './constants';
+export * from './exception';
 export * from './header';
 export * from './model';
 export * from './menus';

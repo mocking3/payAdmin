@@ -80,7 +80,7 @@ export class Constants {
             ],
             series : series
         };
-    }
+    };
 
     static getPieEchartOption = function (serie1: NameValue[], serie2: NameValue[], legendData: string[]) {
         return {
@@ -121,5 +121,6 @@ export class Constants {
                 }
             ]
         };
-    }
+    };
+    
 }

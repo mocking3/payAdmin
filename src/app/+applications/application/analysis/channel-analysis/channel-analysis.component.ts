@@ -61,7 +61,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
         this.analysisService.getDataSummary(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
             data => this.dataSummary = data,
-            error => this.message = <any>error
+            error => {throw error}
         );
         this.analysisService.getChargeTotalWithChannelCount(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
@@ -97,7 +97,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
                 // 设置图表
                 this.countChart.setOption(Constants.getPieEchartOption(pChannelData, channelData, legendData));
             },
-            error => this.message = <any>error
+            error => {throw error}
         );
         this.analysisService.getChargeTotalWithChannelFee(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
@@ -133,7 +133,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
                 // 设置图表
                 this.feeChart.setOption(Constants.getPieEchartOption(pChannelData, channelData, legendData));
             },
-            error => this.message = <any>error
+            error => {throw error}
         );
     }
 

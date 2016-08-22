@@ -47,7 +47,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
             this.analysisService.getDataSummary(this.appId, this.currentDate.format('YYYY/MM/DD'),
                                         this.currentDate.format('YYYY/MM/DD')).subscribe(
                 data => this.dataSummary = data,
-                error => this.message = <any>error
+                error => {throw error}
             );
             this.analysisService.getChargeChangeWithOrderCount(this.appId, this.currentDate.format('YYYY/MM/DD'),
                                         this.currentDate.format('YYYY/MM/DD')).subscribe(
@@ -63,7 +63,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                     //  设置图表
                     this.countChart.setOption(Constants.getLineEchartOption(date, [preOrderData, orderData], ['发起订单数', '成功订单数']));
                 },
-                error => this.message = <any>error
+                error => {throw error}
             );
             this.analysisService.getChargeChangeWithOrderFee(this.appId, this.currentDate.format('YYYY/MM/DD'),
                                         this.currentDate.format('YYYY/MM/DD')).subscribe(
@@ -79,7 +79,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
                     // 设置图表
                     this.feeChart.setOption(Constants.getLineEchartOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
                 },
-                error => this.message = <any>error
+                error => {throw error}
             );
         });
     }

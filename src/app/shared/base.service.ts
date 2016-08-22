@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Headers, Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
+import {ApiException} from './exception/api.exception';
 
 @Injectable()
 export class BaseService {
@@ -11,17 +12,17 @@ export class BaseService {
         let body = res.json() || {};
         // 如果返回错误
         if (body && body.code) {
-            let errMsg = body.msg ? `${body.msg}[${body.code}]` : '系统异常';
-            throw new Error(errMsg);
+            // let errMsg = body.msg ? `${body.msg}[${body.code}]` : '系统异常';
+            throw new ApiException(body.code, body.msg);
         }
         return body;
     }
 
     protected handleError(error:any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : '系统异常';
-        console.error(errMsg); // log to console instead
-        return Observable.throw(errMsg);
+        // let errMsg = (error.message) ? error.message :
+        //     error.status ? `${error.status} - ${error.statusText}` : '系统异常';
+        // console.error(errMsg); // log to console instead
+        return Observable.throw(error);
     }
 
     getHeaders():Headers {

@@ -19,7 +19,7 @@ export class HeaderComponent {
     logout() {
         this.authService.logout().subscribe(() => {
             this.router.navigate(['/login']);
-        }, error => this.message = <any>error);
+        }, error => {throw error});
     }
 
     goAppList() {

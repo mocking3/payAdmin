@@ -66,7 +66,7 @@ export class OrderComponent implements OnInit, OnDestroy {
                 this.orderInfos = data.data;
                 this.loading = false;
             },
-            error => this.message = <any>error);
+            error => {throw error});
     }
 
     search(currentPage: number) {

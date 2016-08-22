@@ -60,7 +60,7 @@ export class OrderAnalysisComponent implements OnInit, OnDestroy {
         this.analysisService.getDataSummary(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
             data => this.dataSummary = data,
-            error => this.message = <any>error
+            error => {throw error}
         );
         // 订单/退款单 数量变化
         this.analysisService.getChargeChangeWithOrderCount(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
@@ -77,7 +77,7 @@ export class OrderAnalysisComponent implements OnInit, OnDestroy {
                 // 设置图表
                 this.orderCountChart.setOption(Constants.getLineEchartOption(date, [orderData, preOrderData], ['订单数', '退款单数']));
             },
-            error => this.message = <any>error
+            error => {throw error}
         );
         // 渠道金额数量
         this.analysisService.getChargeChangeWithChannelCount(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
@@ -106,7 +106,7 @@ export class OrderAnalysisComponent implements OnInit, OnDestroy {
                 // 设置图表
                 this.channelCountChart.setOption(Constants.getLineEchartOption(date, channelData, legendData));
             },
-            error => this.message = <any>error
+            error => {throw error}
         );
     }
 

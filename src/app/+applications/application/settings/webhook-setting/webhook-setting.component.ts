@@ -33,13 +33,13 @@ export class WebhookSettingComponent implements OnInit, OnDestroy {
     getAddress() {
         this.webhookSettingService.getAddress(this.appId).subscribe(
             address => this.address = address,
-            error => this.message = <any>error);
+            error => {throw error});
 
     }
 
     saveAddress() {
         this.webhookSettingService.saveAddress(this.appId, this.address).subscribe(
             () => this.message = '保存成功',
-            error =>  this.message = <any>error);
+            error => {throw error});
     }
 }

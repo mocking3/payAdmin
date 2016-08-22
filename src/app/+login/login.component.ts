@@ -22,6 +22,6 @@ export class LoginComponent {
                 let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/apps';
                 this.router.navigate([redirect]);
             }
-        }, error => this.message = <any>error);
+        }, error =>  {throw error});
     }
 }

@@ -39,14 +39,14 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
     getApplication() {
         this.applicationService.getApplication(this.appId).subscribe(
             data => this.application = data,
-            error => this.message = <any>error);
+            error => {throw error});
     }
 
 
     updateApp() {
         this.applicationService.updateApplication(this.application.id, this.application.name, this.application.logo).subscribe(
             data => {},
-            error => this.message = <any>error);
+            error => {throw error});
     }
 
     upload($event: any) {
@@ -56,7 +56,7 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
         });
         this.uploadService.upload($event.target.files[0]).subscribe(
             url => this.application.logo = url,
-            error => this.message = <any>error
+            error => {throw error}
         );
     }
 }

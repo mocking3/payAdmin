@@ -61,7 +61,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
         this.analysisService.getDataSummary(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
             this.searchParams.orderTimeEnd.format('YYYY/MM/DD')).subscribe(
             data => this.dataSummary = data,
-            error => this.message = <any>error
+            error => {throw error}
         );
         // 订单/退款单 金额变化
         this.analysisService.getChargeChangeWithOrderFee(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
@@ -78,7 +78,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
                 // 设置表格
                 this.orderFeeChart.setOption(Constants.getLineEchartOption(date, [orderData, refundOrderData], ['订单金额', '退款单金额']));
             },
-            error => this.message = <any>error
+            error => {throw error}
         );
         // 渠道金额变化
         this.analysisService.getChargeChangeWithChannelFee(this.appId, this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
@@ -107,7 +107,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
                 // 设置表格
                 this.channelFeeChart.setOption(Constants.getLineEchartOption(date, channelData, legendData));
             },
-            error => this.message = <any>error
+            error => {throw error}
         );
     }
 

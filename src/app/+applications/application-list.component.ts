@@ -26,7 +26,7 @@ export class ApplicationListComponent implements OnInit {
     ngOnInit() {
         this.applicationService.getApplications().subscribe(
             data => this.applications = data.data,
-            error => this.message = <any>error);
+            error => {throw error});
     }
     
     createApp() {
@@ -36,7 +36,7 @@ export class ApplicationListComponent implements OnInit {
                 this.showAdd = false;
                 this.applications.push(data);
             },
-            error => this.message = <any>error);
+            error => {throw error});
     }
 
     cancal() {
@@ -52,7 +52,7 @@ export class ApplicationListComponent implements OnInit {
         });
         this.uploadService.upload($event.target.files[0]).subscribe(
             url => this.application.logo = url,
-            error => this.message = <any>error
+            error => {throw error}
         );
     }
 }
