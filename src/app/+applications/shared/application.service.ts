@@ -21,6 +21,13 @@ export class ApplicationService extends BaseService {
         return this.http.get(this.url, options).map(this.extractData).catch(this.handleError);
     }
 
+    getApplication(appId: number): Observable<ApplicationModel> {
+        let url = `${this.url}/${appId}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({headers: headers});
+        return this.http.get(url, options).map(this.extractData).catch(this.handleError);
+    }
+
 
     createApplication(appName: string, appLogo: string):Observable<ApplicationModel> {
         // this.url = '/api/webhook-setting-put.json';
@@ -40,5 +47,15 @@ export class ApplicationService extends BaseService {
             })
             .catch(this.handleError);
     }
-    
+
+    updateApplication(appId: number, appName: string, appLogo: string):Observable<any> {
+        let url = `${this.url}/${appId}`;
+        let body = `appName=${appName}&appLogo=${appLogo}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(url, body, options)
+            .map(this.extractData).catch(this.handleError);
+    }
+
 }

@@ -28,18 +28,7 @@ export class ApplicationListComponent implements OnInit {
             data => this.applications = data.data,
             error => this.message = <any>error);
     }
-
-    upload($event: any) {
-        this.uploadService.getObserver().subscribe(progress =>  {
-            this.uploadProgress = progress;
-            console.log(progress);
-        });
-        this.uploadService.upload($event.target.files[0]).subscribe(
-            url => this.application.logo = url,
-            error => this.message = <any>error
-        );
-    }
-
+    
     createApp() {
         this.applicationService.createApplication(this.application.name, this.application.logo).subscribe(
             data => {
@@ -53,5 +42,17 @@ export class ApplicationListComponent implements OnInit {
     cancal() {
         this.application = new ApplicationModel();
         this.showAdd = false;
+    }
+
+
+    upload($event: any) {
+        this.uploadService.getObserver().subscribe(progress =>  {
+            this.uploadProgress = progress;
+            console.log(progress);
+        });
+        this.uploadService.upload($event.target.files[0]).subscribe(
+            url => this.application.logo = url,
+            error => this.message = <any>error
+        );
     }
 }

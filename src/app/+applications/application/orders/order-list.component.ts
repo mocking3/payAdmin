@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import Moment = moment.Moment;
 
 import {OrderService, OrderInfoModel} from './shared';
-import {ChannelPipe} from '../../../shared/pipe'
+import {ChannelPipe} from '../../../shared/pipes'
 
 @Component({
     templateUrl: './order-list.component.html',

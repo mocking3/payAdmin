@@ -1,0 +1,40 @@
+<form (ngSubmit)="updateApp()" #appUpdateForm="ngForm">
+<div class="usual_setting block_show">
+    <p class="common_title">基础信息</p>
+    <ul class="usual_setting_list">
+        <li>
+            <p class="list_name">应用名称</p>
+            <input type="text" name="appName" required [(ngModel)]="application.name" #appName="ngModel"
+                   placeholder="输入你的应用名称" />
+            <div [hidden]="appName.valid || appName.pristine">应用名称必填</div>
+        </li>
+        <li>
+            <p class="list_name logo_name">网站LOGO</p>
+            <div class="file_up app_logo_img clearfix">
+                <img *ngIf="application.logo" src="{{application.logo}}" alt=""/>
+                <input type="file" class="file" accept="image/*"  (change)="upload($event)" />
+            </div>
+            <!-- 隐藏logo url -->
+            <input type="hidden" name="appLogo" required [(ngModel)]="application.logo"/>
+        </li>
+        <li>
+            <p class="list_name">创建时间</p>
+            <input type="text" value="{{application.createTime | date:'yyyy年MM月dd日'}}" readonly>
+        </li>
+        <li>
+            <p class="list_name">App Key</p>
+            <input type="text" value="{{application.appKey}}" readonly #appKey>
+            <a href="javascript:void(0);" [clipboard]="appKey"  >复制</a>
+        </li>
+        <li>
+            <p class="list_name">Master Secret</p>
+            <input type="text" value="{{application.masterSecret}}" readonly #masterSecret>
+            <a href="javascript:void(0);" class="" [clipboard]="masterSecret" >复制</a>
+            <a>重置</a>
+        </li>
+    </ul>
+    <p style="text-align: center">
+        <button type="submit" class="list_sure_btn" [disabled]="!appUpdateForm.form.valid">保存</button>
+    </p>
+</div>
+</form>

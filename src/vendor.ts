@@ -15,3 +15,4 @@ import 'moment';
 import 'echarts';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap-daterangepicker/daterangepicker.js';
+import 'clipboard';

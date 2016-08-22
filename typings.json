@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "clipboard": "registry:dt/clipboard#1.5.9+20160316155526",
     "core-js": "registry:dt/core-js#0.0.0+20160602141332",
     "daterangepicker": "registry:dt/daterangepicker#2.1.19+20160608082020",
     "echarts": "registry:dt/echarts#0.0.0+20160409144419",
