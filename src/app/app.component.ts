@@ -37,16 +37,14 @@ export class AppComponent implements OnInit {
                 theme: 'default'
             };
 
-            if (toast.type == 'default') {
-                this.toastyService.default(toastOptions);
-            } else if (toast.type == 'info') {
-                this.toastyService.info(toastOptions);
-            } else if (toast.type == 'success') {
-                this.toastyService.success(toastOptions);
-            } else if (toast.type == 'error') {
-                this.toastyService.error(toastOptions);
-            } else if (toast.type == 'warning') {
-                this.toastyService.warning(toastOptions);
+            switch (toast.type) {
+                case 'default': this.toastyService.default(toastOptions); break;
+                case 'info': this.toastyService.info(toastOptions); break;
+                case 'success': this.toastyService.success(toastOptions); break;
+                case 'wait': this.toastyService.wait(toastOptions); break;
+                case 'error': this.toastyService.error(toastOptions); break;
+                case 'warning': this.toastyService.warning(toastOptions); break;
+                default: this.toastyService.default(toastOptions);
             }
         });
     }
