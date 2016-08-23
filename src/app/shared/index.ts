@@ -7,4 +7,5 @@ export * from './model';
 export * from './menus';
 export * from './page-not-found.component';
 export * from './pipes';
+export * from './toast'
 export * from './upload';
