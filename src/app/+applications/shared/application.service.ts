@@ -58,4 +58,11 @@ export class ApplicationService extends BaseService {
             .map(this.extractData).catch(this.handleError);
     }
 
+    deleteApplication(appId: number): Observable<any> {
+        let url = `${this.url}/${appId}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({headers: headers});
+        return this.http.delete(url, options).map(this.extractData).catch(this.handleError);
+    }
+
 }

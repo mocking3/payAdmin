@@ -65,6 +65,7 @@ p.order_search_btn{
     padding-left: 0px;
     margin-top: 7px;
     margin-left: 27px;
+    cursor: pointer;
 }
 .order_search_id{
     float: left;

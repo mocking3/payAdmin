@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import {ToastyService} from 'ng2-toasty/ng2-toasty';
+
 import {ClipboardDirective} from '../../../shared/directives';
 import {UploadService} from '../../../shared/upload';
 import {ApplicationService, ApplicationModel} from '../../shared';
@@ -21,7 +23,8 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private applicationService: ApplicationService,
-                private uploadService: UploadService) {
+                private uploadService: UploadService,
+                private toastyService:ToastyService) {
     }
 
     ngOnInit() {
@@ -45,7 +48,10 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
 
     updateApp() {
         this.applicationService.updateApplication(this.application.id, this.application.name, this.application.logo).subscribe(
-            data => {},
+            () => {
+                    this.message = '保存成功';
+                    this.toastyService.success(this.message);
+            },
             error => {throw error});
     }
 

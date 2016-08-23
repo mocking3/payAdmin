@@ -1,5 +1,8 @@
 import {Component,OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
+
+import {ToastyService} from 'ng2-toasty/ng2-toasty';
+
 import {HeaderComponent} from '../shared/header';
 import {UploadService} from '../shared/upload';
 import {ApplicationService, ApplicationModel} from './shared';
@@ -12,15 +15,19 @@ import {ApplicationService, ApplicationModel} from './shared';
 })
 export class ApplicationListComponent implements OnInit {
     message: string;
+    password: string;
     applications: ApplicationModel[];
     // 是否显示新建弹出框
     showAdd: boolean = false;
+    showDelete: boolean = false;
 
     application: ApplicationModel = new ApplicationModel();
 
     uploadProgress: number;
 
-    constructor(private applicationService: ApplicationService, private uploadService: UploadService) {
+    constructor(private applicationService: ApplicationService,
+                private uploadService: UploadService,
+                private toastyService: ToastyService) {
     }
 
     ngOnInit() {
@@ -28,20 +35,51 @@ export class ApplicationListComponent implements OnInit {
             data => this.applications = data.data,
             error => {throw error});
     }
+
+    openCreateDialog() {
+        this.showAdd = true;
+    }
+
+    openDeleteDialog(application: ApplicationModel) {
+        this.application = application;
+        this.showDelete = true;
+    }
     
     createApp() {
         this.applicationService.createApplication(this.application.name, this.application.logo).subscribe(
             data => {
+                this.applications.push(data);
+                this.message = '创建成功';
+                this.toastyService.success(this.message);
                 this.application = new ApplicationModel();
                 this.showAdd = false;
-                this.applications.push(data);
             },
             error => {throw error});
     }
 
-    cancal() {
+    deleteApp() {
+        this.applicationService.deleteApplication(this.application.id).subscribe(
+            data => {
+                // this.applications.find(application => application.id === appId);
+                this.applications = this.applications.filter(application => application.id !== this.application.id);
+                this.message = '删除成功';
+                this.toastyService.success(this.message);
+                this.application = new ApplicationModel();
+                this.password = '';
+                this.showDelete = false;
+            },
+            error => {throw error});
+    }
+
+    cancalCreate() {
         this.application = new ApplicationModel();
         this.showAdd = false;
+    }
+
+    cancalDelete() {
+        this.application = new ApplicationModel();
+        this.password = '';
+        this.showDelete = false;
     }
 
 
