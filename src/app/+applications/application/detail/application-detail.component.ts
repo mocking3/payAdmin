@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {ToastyService} from 'ng2-toasty/ng2-toasty';
+import {ToastService} from '../../../shared/toast';
 
 import {ClipboardDirective} from '../../../shared/directives';
 import {UploadService} from '../../../shared/upload';
@@ -24,7 +24,7 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
                 private route: ActivatedRoute,
                 private applicationService: ApplicationService,
                 private uploadService: UploadService,
-                private toastyService:ToastyService) {
+                private toastService: ToastService) {
     }
 
     ngOnInit() {
@@ -50,7 +50,7 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
         this.applicationService.updateApplication(this.application.id, this.application.name, this.application.logo).subscribe(
             () => {
                     this.message = '保存成功';
-                    this.toastyService.success(this.message);
+                    this.toastService.triggerToast('提示', this.message, 'success');
             },
             error => {throw error});
     }

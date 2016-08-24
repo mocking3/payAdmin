@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+
 @Component({
-    template: `
-    <h2>Channel setting</h2>
-    <p>Please show weixin alipay and so on</p>`
+    templateUrl: './channel-setting.component.html',
+    styleUrls: ['./channel-setting.component.css']
 })
 export class ChannelSettingComponent { }

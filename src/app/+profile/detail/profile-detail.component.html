@@ -1,0 +1,43 @@
+<form (ngSubmit)="updateProfile()" #profileUpdateForm="ngForm">
+<div class="usual_setting block_show">
+    <p class="common_title">个人信息</p>
+    <ul class="usual_setting_list">
+        <li>
+            <p class="list_name">用户名</p>
+            <input type="text" value="{{profile.username}}" readonly>
+        </li>
+        <li>
+            <p class="list_name">真实姓名</p>
+            <input type="text" name="nickname" required [(ngModel)]="profile.nickname" #nickname="ngModel"
+                   placeholder="输入你的真实姓名" />
+            <div [hidden]="nickname.valid || nickname.pristine">真实姓名必填</div>
+        </li>
+        <li>
+            <p class="list_name logo_name">头像</p>
+            <div class="file_up app_logo_img clearfix">
+                <img *ngIf="profile.headIcoUrl" src="{{profile.headIcoUrl}}" alt=""/>
+                <input type="file" class="file" accept="image/*"  (change)="upload($event)" />
+            </div>
+            <!-- 隐藏headIcoUrl url -->
+            <input type="hidden" name="headIcoUrl" [(ngModel)]="profile.headIcoUrl"/>
+        </li>
+        <li>
+            <p class="list_name">手机号</p>
+            <input type="text" value="{{profile.mobile}}" readonly>
+            <a>更换手机号</a>
+        </li>
+        <li>
+            <p class="list_name">邮箱</p>
+            <input type="text" value="{{profile.email}}" readonly>
+            <a>更换邮箱</a>
+        </li>
+        <li>
+            <p class="list_name">创建时间</p>
+            <input type="text" value="{{profile.createTime | date:'yyyy年MM月dd日'}}" readonly>
+        </li>
+    </ul>
+    <p style="text-align: center">
+        <button type="submit" class="list_sure_btn" [disabled]="!profileUpdateForm.form.valid">保存</button>
+    </p>
+</div>
+</form>

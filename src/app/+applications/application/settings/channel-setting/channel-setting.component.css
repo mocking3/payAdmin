@@ -1,0 +1,65 @@
+.channel_choice{
+    width: 100%;
+    padding-bottom: 20px;
+}
+.epay_type{
+    margin-top: 45px;
+    margin-left: 25px;
+}
+.epay_type li{
+    float: left;
+    width: 238px;
+    height: 143px;
+    border: 1px solid #eef1f9;
+    border-radius: 3px;
+    margin-left: 30px;
+}
+.epay_type li:hover{
+    border: 1px solid #4696e4;
+}
+.epay_type_logo{
+    background: url("/public/images/sprite.png") no-repeat;
+    width: 130px;
+    height: 40px;
+    background-position: 0 -78px;
+    margin-top: 23px;
+    margin-left: 53px;
+}
+.epay_type_app{
+    width: 60px;
+    margin: 0 auto;
+    height: 20px;
+    margin-top: 15px;
+}
+.epay_type_app label{
+    font-size: 14px;
+    color: #354285;
+}
+.epay_type_account{
+    width: 200px;
+    margin: 0 auto;
+    height: 33px;
+    line-height: 33px;
+    margin-top: 5px;
+    border-top: 1px solid #eef1f9;
+    position: relative;
+    font-size: 14px;
+    color: #354285;
+}
+.epay_type_account span{
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    background: url("/public/images/sprite.png") no-repeat;
+    width: 15px;
+    height: 15px;
+    background-position: -83px -195px;
+    cursor: pointer;
+}
+.wechat_logo{
+    background-position: 0 -116px;
+}
+.zhifubao_logo{
+    background-position: 0 -154px;
+}

@@ -1,7 +1,7 @@
 import {Component,OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
-import {ToastyService} from 'ng2-toasty/ng2-toasty';
+import {ToastService} from '../shared/toast';
 
 import {HeaderComponent} from '../shared/header';
 import {UploadService} from '../shared/upload';
@@ -27,7 +27,7 @@ export class ApplicationListComponent implements OnInit {
 
     constructor(private applicationService: ApplicationService,
                 private uploadService: UploadService,
-                private toastyService: ToastyService) {
+                private toastService: ToastService) {
     }
 
     ngOnInit() {
@@ -50,7 +50,7 @@ export class ApplicationListComponent implements OnInit {
             data => {
                 this.applications.push(data);
                 this.message = '创建成功';
-                this.toastyService.success(this.message);
+                this.toastService.triggerToast('提示', this.message, 'success');
                 this.application = new ApplicationModel();
                 this.showAdd = false;
             },
@@ -63,7 +63,7 @@ export class ApplicationListComponent implements OnInit {
                 // this.applications.find(application => application.id === appId);
                 this.applications = this.applications.filter(application => application.id !== this.application.id);
                 this.message = '删除成功';
-                this.toastyService.success(this.message);
+                this.toastService.triggerToast('提示', this.message, 'success');
                 this.application = new ApplicationModel();
                 this.password = '';
                 this.showDelete = false;

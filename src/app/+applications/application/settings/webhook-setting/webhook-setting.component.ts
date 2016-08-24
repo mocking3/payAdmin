@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {ToastyService} from 'ng2-toasty/ng2-toasty';
+import {ToastService} from '../../../../shared/toast';
 
 import {WebhookSettingService} from './shared';
 @Component({
@@ -18,7 +18,7 @@ export class WebhookSettingComponent implements OnInit, OnDestroy {
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private webhookSettingService: WebhookSettingService,
-                private toastyService:ToastyService) {
+                private toastService:ToastService) {
     }
 
     ngOnInit() {
@@ -44,7 +44,7 @@ export class WebhookSettingComponent implements OnInit, OnDestroy {
         this.webhookSettingService.saveAddress(this.appId, this.address).subscribe(
             () => {
                 this.message = '保存成功';
-                this.toastyService.success(this.message);
+                this.toastService.triggerToast('提示', this.message, 'success');
             },
             error => {throw error});
     }

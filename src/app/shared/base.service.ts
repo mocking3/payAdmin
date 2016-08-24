@@ -3,10 +3,12 @@ import {Headers, Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 import {ApiException} from './exception/api.exception';
+import {UserModel} from './auth/user.model';
 
 @Injectable()
 export class BaseService {
     token:string;
+    currentUser:UserModel;
 
     protected extractData(res:Response) {
         let body = res.json() || {};
@@ -37,15 +39,30 @@ export class BaseService {
 
     setToken(token:string): void {
         this.token = token;
-        localStorage.setItem('token', this.token);
+        localStorage.setItem('payAdmin-token', this.token);
     }
 
     removeToken(): void {
         this.token = null;
-        localStorage.removeItem('token');
+        localStorage.removeItem('payAdmin-token');
     }
 
     getToken():string {
-        return localStorage.getItem('token');
+        return localStorage.getItem('payAdmin-token');
+    }
+
+    setCurrentUser(currentUser:UserModel): void {
+        this.currentUser = currentUser;
+        localStorage.setItem('payAdmin-currentUser', JSON.stringify(this.currentUser));
+    }
+
+    removeCurrentUser(): void {
+        this.currentUser = null;
+        localStorage.removeItem('payAdmin-currentUser');
+    }
+
+    getCurrentUser():UserModel {
+        let tmp = localStorage.getItem('payAdmin-currentUser');
+        return JSON.parse(tmp);
     }
 }

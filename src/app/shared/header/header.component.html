@@ -1,10 +1,12 @@
 <div class="epay_head clearfix">
-    <p class="epay_logo"><span></span>网易支付中心</p>
+    <a href="javascript:void(0);" routerLink="/apps" >
+        <p class="epay_logo"><span></span>网易支付中心</p>
+    </a>
     <div class="epay_head_list clearfix">
         <a href="javascript:void(0);" (click)="logout()" >
             <p class="go_back">退出登录</p>
         </a>
-        <a href="javascript:void(0);">
+        <a href="javascript:void(0);" routerLink="/profile" >
             <p class="account_center"><span></span>账户中心</p>
         </a>
         <a href="javascript:void(0);" *ngIf="showAppBack" (click)="goAppList()">
@@ -13,7 +15,7 @@
         <p *ngIf="showSearch" class="epay_search_btn">查询</p>
         <div *ngIf="showSearch" class="epay_search clearfix">
             <span></span>
-            <input type="text">
+            <input type="text" placeholder="请输入商户订单号">
         </div>
     </div>
 </div>

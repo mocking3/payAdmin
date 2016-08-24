@@ -1,5 +1,8 @@
 import {RouterConfig} from '@angular/router';
 
+import {PageNotFoundComponent} from './shared';
+import {AuthGuard} from './shared/auth';
+
 import {LoginComponent}  from './+login';
 import {ApplicationListComponent} from './+applications';
 import {ApplicationComponent, ApplicationDetailComponent} from './+applications/application';
@@ -7,8 +10,8 @@ import {ChannelSettingComponent} from './+applications/application/settings/chan
 import {WebhookSettingComponent} from './+applications/application/settings/webhook-setting';
 import {TodayAnalysisComponent, IncomAnalysisComponent, OrderAnalysisComponent, ChannelAnalysisComponent} from './+applications/application/analysis';
 import {OrderComponent} from './+applications/application/orders';
-import {PageNotFoundComponent} from './shared';
-import {AuthGuard} from './shared/auth';
+import {ProfileComponent} from './+profile/profile.component';
+import {ProfileDetailComponent} from './+profile/detail/profile-detail.component';
 
 export const routes:RouterConfig = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
@@ -25,6 +28,10 @@ export const routes:RouterConfig = [
         {path: 'channel-setting', component: ChannelSettingComponent},
         {path: 'webhook-setting', component: WebhookSettingComponent},
 
+    ]},
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
+        {path: '', component: ProfileDetailComponent},
+        {path: 'detail', component: ProfileDetailComponent}
     ]},
     {path: '**', component: PageNotFoundComponent}
 ];
