@@ -26,8 +26,8 @@
             </li>
         </ul>
     </div>
-    <!--创建应用的弹出层-->
-    <div class="dialog_mask" [hidden]="!showAdd" >
+    <!--创建应用的弹出层， 不能用[hidden]="!showAdd"-->
+    <div *ngIf="showAdd" class="dialog_mask">
         <form (ngSubmit)="createApp()" #appCreateForm="ngForm">
             <div class="create_app">
                 <p class="dialog_title">创建应用</p>
@@ -54,8 +54,8 @@
             </div>
         </form>
     </div>
-    <!--删除应用的弹出层-->
-    <div class="dialog_mask" [hidden]="!showDelete" >
+    <!--删除应用的弹出层， 不能用[hidden]="!showDelete"-->
+    <div *ngIf="showDelete" class="dialog_mask">
         <form (ngSubmit)="deleteApp()" #appDeleteForm="ngForm">
             <div class="delete_app">
                 <p class="dialog_title">删除应用</p>
