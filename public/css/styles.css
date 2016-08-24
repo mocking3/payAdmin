@@ -23,6 +23,10 @@ input,select {
     background-color: #fafbfe;
     border-radius: 3px;
 }
+input:read-only {
+    cursor: no-drop;
+}
+
 /*清除浮动*/
 .clearfix{
     *zoom: 1;
