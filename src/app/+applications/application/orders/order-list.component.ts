@@ -23,6 +23,7 @@ export class OrderComponent implements OnInit, OnDestroy {
 
     pageSize: number = 10;
     total: number;
+    orderInfo: OrderInfoModel = new OrderInfoModel();
     orderInfos: OrderInfoModel[];
     loading: boolean;
     searchParams: any = {
@@ -31,6 +32,8 @@ export class OrderComponent implements OnInit, OnDestroy {
         channel: '',
         outTradeNo: ''
     };
+
+    showDetail: boolean = false;
 
     private sub: any;
 
@@ -72,6 +75,16 @@ export class OrderComponent implements OnInit, OnDestroy {
     search(currentPage: number) {
         this.pageNum = currentPage;
         this.getOrders();
+    }
+
+    openDetail(orderInfo: OrderInfoModel) {
+        this.orderInfo = orderInfo;
+        this.showDetail = true;
+    }
+
+    closeDetail() {
+        this.orderInfo = new OrderInfoModel();
+        this.showDetail = false;
     }
 
     initDatePicker() {

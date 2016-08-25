@@ -105,3 +105,30 @@ p.order_search_btn{
 tr.table_title{
     color: #4696e4;
 }
+.usual_setting_list{
+    margin-left: 25px;
+    margin-top: 20px;
+}
+.usual_setting_list li{
+    margin-bottom: 20px;
+}
+.list_name{
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #354285;
+    margin-right: 20px;
+}
+.list_value {
+    display: inline-block;
+    width: 500px;
+    text-align: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #797b84;
+    margin-left: 50px;
+}

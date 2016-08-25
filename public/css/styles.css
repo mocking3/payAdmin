@@ -67,3 +67,42 @@ input:read-only {
     width: 85.9%;
     float: left;
 }
+.full-dialog {
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    transition: 0.3s;
+    overflow-y: scroll;
+}
+.fd-header {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #E7E7E7;
+}
+.close {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    vertical-align: middle;
+    position: absolute;
+    right: 30px;
+    top: 17px;
+    background-image: url('/public/images/icon-close16x16@2x.png');
+    cursor: pointer;
+}
+.fd-body {
+    width: 68%;
+    margin: 0 auto;
+    max-width: 768px;
+    min-width: 768px;
+    padding: 65px 0;
+}

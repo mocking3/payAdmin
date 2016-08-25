@@ -9,9 +9,9 @@
         <p>
             <select [(ngModel)]="searchParams.channel">
                 <option value="">渠道类型</option>
-                <option>WX_NATIVE</option>
-                <option>WX_APP</option>
-                <option>WX_JSAPI</option>
+                <option value="WX_NATIVE">微信扫码</option>
+                <option value="WX_APP">微信APP</option>
+                <option value="WX_JSAPI">微信公众号</option>
             </select>
         </p>
         <p>
@@ -30,7 +30,7 @@
             <td>操作</td>
         </tr>
         <tr *ngFor="let orderInfo of orderInfos | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNum, totalItems: total }">
-            <td>{{orderInfo.outTradeNo}}</td>
+            <td><a href="javascript:void(0);" (click)="openDetail(orderInfo)">{{orderInfo.outTradeNo}}</a></td>
             <td>{{orderInfo.subject}}</td>
             <td>{{orderInfo.totalFee / 100}}</td>
             <td>{{orderInfo.orderTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
@@ -42,5 +42,80 @@
     </table>
     <div class="page_wrap">
         <pagination-controls id="pagination" (pageChange)="search($event)"></pagination-controls>
+    </div>
+</div>
+<!-- 订单详情 -->
+<div class="full-dialog" [hidden]="!showDetail">
+    <div class="fd-header">
+        <span>订单详情</span>
+        <span class="close" (click)="closeDetail()"></span>
+    </div>
+    <div class="fd-body">
+        <ul class="usual_setting_list">
+            <li>
+                <p class="list_name">商户订单号</p>
+                <p class="list_value">{{orderInfo.outTradeNo}}</p>
+            </li>
+            <li>
+                <p class="list_name">订单主题</p>
+                <p class="list_value">{{orderInfo.subject}}</p>
+            </li>
+            <li>
+                <p class="list_name">订单详情</p>
+                <p class="list_value">{{orderInfo.body}}</p>
+            </li>
+            <li>
+                <p class="list_name">订单金额</p>
+                <p class="list_value">{{orderInfo.totalFee / 100}}</p>
+            </li>
+            <li>
+                <p class="list_name">支付渠道</p>
+                <p class="list_value">{{orderInfo.channel | channel}}</p>
+            </li>
+            <li>
+                <p class="list_name">渠道订单号</p>
+                <p class="list_value">{{orderInfo.channelTradeNo}}</p>
+            </li>
+            <li>
+                <p class="list_name">渠道用户</p>
+                <p class="list_value">{{orderInfo.channelUser}}</p>
+            </li>
+            <li>
+                <p class="list_name">服务器请求IP</p>
+                <p class="list_value">{{orderInfo.serverIp}}</p>
+            </li>
+            <li>
+                <p class="list_name">客户端请求IP</p>
+                <p class="list_value">{{orderInfo.clientIp}}</p>
+            </li>
+            <li>
+                <p class="list_name">回调地址</p>
+                <p class="list_value">{{orderInfo.returnUrl}}</p>
+            </li>
+            <li>
+                <p class="list_name">分析数据</p>
+                <p class="list_value">{{orderInfo.analysis}}</p>
+            </li>
+            <li>
+                <p class="list_name">附加数据</p>
+                <p class="list_value">{{orderInfo.attach}}</p>
+            </li>
+            <li>
+                <p class="list_name">备注</p>
+                <p class="list_value">{{orderInfo.description}}</p>
+            </li>
+            <li>
+                <p class="list_name">是否有退款</p>
+                <p class="list_value">{{orderInfo.refund ? '是' : '否'}}</p>
+            </li>
+            <li>
+                <p class="list_name">创建时间</p>
+                <p class="list_value">{{orderInfo.orderTime | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+            </li>
+            <li>
+                <p class="list_name">支付时间</p>
+                <p class="list_value">{{orderInfo.payTime | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+            </li>
+        </ul>
     </div>
 </div>
