@@ -5,7 +5,7 @@ import * as echarts from 'echarts';
 import * as moment from 'moment';
 import Moment = moment.Moment;
 
-import {NameValue} from '../../../../shared/model';
+import {NameValue} from '../../../../shared/models';
 import {Constants} from '../../../../shared/constants';
 import {AnalysisService} from '../shared/analysis.service';
 

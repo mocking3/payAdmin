@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
 import {BaseService} from '../base.service.ts';
-import {Constants} from '../constants.ts';
+import {Constants} from '../../constants.ts';
 import {Observable}     from 'rxjs/Observable';
-import {UserModel} from './user.model';
+import {UserModel} from './user.model.ts';
 
 @Injectable()
 export class AuthService extends BaseService {
@@ -18,7 +18,7 @@ export class AuthService extends BaseService {
 
     login(username: string, password: string): Observable<UserModel> {
         // let body = { username: username, password: password};
-        let body = 'username=' + username + '&password=' + password;
+        let body = `username=${username}&password=${password}`;
         let options = new RequestOptions({ headers: this.getHeaders() });
 
         return this.http.post(this.url, body, options)

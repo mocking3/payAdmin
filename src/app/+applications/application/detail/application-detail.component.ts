@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {ToastService} from '../../../shared/toast';
-
+import {UploadService, ToastService} from '../../../shared/services';
 import {ClipboardDirective} from '../../../shared/directives';
-import {UploadService} from '../../../shared/upload';
 import {ApplicationService, ApplicationModel} from '../../shared';
 
 @Component({

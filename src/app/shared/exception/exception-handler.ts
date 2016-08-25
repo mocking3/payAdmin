@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import {ApiException} from './api.exception';
 import {ErrorCode} from './error-code';
-import {ToastService} from '../toast/toast.service';
+import {ToastService} from '../services/toast.service.ts';
 
 @Injectable()
 export class MyExceptionHandler {

@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Headers, Response} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
-import {ApiException} from './exception/api.exception';
-import {UserModel} from './auth/user.model';
+import {ApiException} from '../exception/api.exception.ts';
+import {UserModel} from './auth/user.model.ts';
 
 @Injectable()
 export class BaseService {

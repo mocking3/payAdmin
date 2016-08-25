@@ -106,3 +106,37 @@ input:read-only {
     min-width: 768px;
     padding: 65px 0;
 }
+.usual_setting_list{
+    margin-left: 25px;
+    margin-top: 20px;
+}
+.usual_setting_list li{
+    margin-bottom: 20px;
+}
+.list_name{
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #354285;
+    margin-right: 20px;
+}
+.list_value {
+    display: inline-block;
+    width: 500px;
+    text-align: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #797b84;
+    margin-left: 50px;
+}
+.line {
+    border-bottom: 1px solid #eef1f9;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 21px;
+    margin-right: 21px;
+}

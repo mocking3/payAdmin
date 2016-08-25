@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {ToastService} from '../../shared/toast';
-
-import {ProfileService} from './shared';
-import {UserModel} from '../../shared/auth/user.model';
-import {UploadService} from '../../shared/upload';
+import {ToastService, UploadService, UserModel} from '../../shared/services';
+import {ProfileService} from '../shared';
 
 @Component({
-    templateUrl: './profile-detail.component.html',
-    styleUrls: ['./profile-detail.component.css'],
+    templateUrl: './profile-base.component.html',
+    styleUrls: ['./profile-base.component.css'],
     providers: [ProfileService]
 })
-export class ProfileDetailComponent implements OnInit {
-    appId: number;
+export class ProfileBaseComponent implements OnInit {
     message: string;
     profile: UserModel = new UserModel();
     uploadProgress: number;
@@ -26,14 +22,10 @@ export class ProfileDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getProfile();
+        this.profileService.getProfile().subscribe(
+            data => this.profile = data,
+            error => {throw error});
     }
-
-    getProfile() {
-        // 直接从本地取
-        this.profile = this.profileService.getCurrentUser();
-    }
-
 
     updateProfile() {
         this.profileService.updateProfile(this.profile.nickname, this.profile.headIcoUrl).subscribe(

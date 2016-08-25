@@ -1,4 +1,4 @@
-import {NameValue} from './model';
+import {NameValue} from './models';
 export class Constants {
     static SERVER_URL:string = 'http://localhost:7082';
     static CHANNEL:any = {

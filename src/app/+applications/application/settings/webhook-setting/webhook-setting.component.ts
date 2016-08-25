@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {ToastService} from '../../../../shared/toast';
+import {ToastService} from '../../../../shared/services';
 
 import {WebhookSettingService} from './shared';
 @Component({

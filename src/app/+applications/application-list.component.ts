@@ -1,10 +1,8 @@
 import {Component,OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
-import {ToastService} from '../shared/toast';
-
+import {ToastService, UploadService} from '../shared/services';
 import {HeaderComponent} from '../shared/header';
-import {UploadService} from '../shared/upload';
 import {ApplicationService, ApplicationModel} from './shared';
 
 @Component({

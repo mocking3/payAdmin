@@ -1,7 +1,7 @@
 import {RouterConfig} from '@angular/router';
 
 import {PageNotFoundComponent} from './shared';
-import {AuthGuard} from './shared/auth';
+import {AuthGuard} from './shared/services/auth';
 
 import {LoginComponent}  from './+login';
 import {ApplicationListComponent} from './+applications';
@@ -11,7 +11,9 @@ import {WebhookSettingComponent} from './+applications/application/settings/webh
 import {TodayAnalysisComponent, IncomAnalysisComponent, OrderAnalysisComponent, ChannelAnalysisComponent} from './+applications/application/analysis';
 import {OrderComponent} from './+applications/application/orders';
 import {ProfileComponent} from './+profile/profile.component';
-import {ProfileDetailComponent} from './+profile/detail/profile-detail.component';
+import {ProfileBaseComponent} from './+profile/base';
+import {ProfileBindComponent} from './+profile/bind';
+import {PwdResetComponent} from './+profile/pwd-reset';
 
 export const routes:RouterConfig = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
@@ -30,8 +32,10 @@ export const routes:RouterConfig = [
 
     ]},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
-        {path: '', component: ProfileDetailComponent},
-        {path: 'detail', component: ProfileDetailComponent}
+        {path: '', component: ProfileBaseComponent},
+        {path: 'base', component: ProfileBaseComponent},
+        {path: 'bind', component: ProfileBindComponent},
+        {path: 'pwd-reset', component: PwdResetComponent},
     ]},
     {path: '**', component: PageNotFoundComponent}
 ];

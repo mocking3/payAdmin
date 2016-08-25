@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router }      from '@angular/router';
 
-import { ToastService } from '../shared/toast';
-import { AuthService } from '../shared/auth';
+import { ToastService, AuthService } from '../shared/services';
 import {LoginModel} from './shared';
 
 @Component({

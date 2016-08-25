@@ -3,7 +3,7 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 import {ToastyService, ToastOptions, Toasty} from 'ng2-toasty/ng2-toasty';
 import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-bar';
-import {ToastService} from './shared/toast/toast.service';
+import {ToastService} from './shared/services/toast.service.ts';
 
 import '../../public/css/styles.css';
 
