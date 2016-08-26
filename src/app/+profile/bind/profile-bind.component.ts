@@ -48,7 +48,7 @@ export class ProfileBindComponent implements OnInit {
     }
     
     sendMobileCode() {
-        this.messageService.sendCode('mobile', 'bind').subscribe(
+        this.messageService.sendCode('mobileBind').subscribe(
             () => {
                 this.message = '发送成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
@@ -57,7 +57,7 @@ export class ProfileBindComponent implements OnInit {
     }
 
     sendEmailCode() {
-        this.messageService.sendCode('email', 'bind').subscribe(
+        this.messageService.sendCode('emailBind').subscribe(
             () => {
                 this.message = '发送成功';
                 this.toastService.triggerToast('提示', this.message, 'success');

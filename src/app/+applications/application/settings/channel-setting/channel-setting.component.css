@@ -17,12 +17,101 @@
 .epay_type li:hover{
     border: 1px solid #4696e4;
 }
+/* switch */
+.channel-switch {
+    float: right;
+    width: 55px;
+    margin: 5px;
+}
+.channel-switch.switch-light span span {
+    color: #888b92;
+}
+.channel-switch.switch-light a {
+    left: 0;
+    top: 0;
+    width: 2em;
+    height: 2em;
+    background-color: #fff;
+    border-radius: 100%;
+    /*border: 0.25em solid #D8D9DB;*/
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+.channel-switch.switch-light > span {
+    display: block;
+    width: 100%;
+    height: 2em;
+    background-color: #D8D9DB;
+    border-radius: 1.75em;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    transition: all .4s ease-out; }
+.channel-switch.switch-light > span span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    line-height: 1.875em;
+    vertical-align: middle;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+.channel-switch.switch-light > span span:first-of-type {
+    opacity: 1;
+    padding-left: 1.875em;
+}
+.channel-switch.switch-light > span span:last-of-type {
+    padding-right: 1.875em;
+}
+.channel-switch.switch-light input:checked ~ span a {
+    left: 100%;
+    /*border-color: #1996e9;*/
+    margin-left: -2em;
+}
+.channel-switch.switch-light input:checked ~ span {
+    border-color: #1996e9;
+    box-shadow: inset 0 0 0 30px #1996e9;
+}
+.channel-switch.switch-light input:checked ~ span span:first-of-type {
+    opacity: 0;
+}
+.channel-switch.switch-light input:checked ~ span span:last-of-type {
+    opacity: 1;
+    color: #fff;
+}
+.channel-switch.switch-toggle {
+    background-color: #D8D9DB;
+    border-radius: 30px;
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 1px 0; }
+.channel-switch.switch-toggle a {
+    background-color: #1996e9;
+    border: 0.125em solid #D8D9DB;
+    border-radius: 1.75em;
+    -webkit-transition: all 0.12s ease-out;
+    -moz-transition: all 0.12s ease-out;
+    transition: all 0.12s ease-out;
+}
+.channel-switch.switch-toggle label {
+    height: 2.4em;
+    color: #888b92;
+    line-height: 2.4em;
+    vertical-align: middle;
+}
+.channel-switch input:checked + label {
+    color: #3e4043;
+}
+/* switch end */
+
 .epay_type_logo{
     background: url("/public/images/sprite.png") no-repeat;
     width: 130px;
     height: 40px;
     background-position: 0 -78px;
-    margin-top: 23px;
+    margin-top: 10px;
+    margin-bottom: 18px;
     margin-left: 53px;
 }
 .epay_type_app{
@@ -62,4 +151,33 @@
 }
 .zhifubao_logo{
     background-position: 0 -154px;
+}
+.choose-channel {
+    margin-left: 21px;
+    margin-right: 21px;
+    margin-top: 20px;
+    border-bottom: 1px solid #eef1f9;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.choose-channel a {
+    float: left;
+    display: block;
+    width: 80px;
+    line-height: 25px;
+    height: 25px;
+    border-radius: 3px;
+    font-size: 15px;
+    text-align: center;
+    margin-right: 14px;
+}
+.active {
+    background-color: #1996e9;
+    color: #ffffff;
+}
+.channel-disable {
+    background-color: #e4e4e6;
+    opacity: 0.7;
 }

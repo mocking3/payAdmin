@@ -14,8 +14,8 @@ export class MessageService extends BaseService {
         super();
     }
 
-    sendCode(type: string, scene: string):Observable<any>{
-        let body = `type=${type}&scene=${scene}`;
+    sendCode(scene: string):Observable<any>{
+        let body = `scene=${scene}`;
         let options = new RequestOptions({ headers: this.getAuthHeaders() });
         return this.http.post(this.url, body, options).map(this.extractData).catch(this.handleError);
     }

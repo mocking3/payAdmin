@@ -1,29 +1,30 @@
 <div class="channel_choice block_show">
     <p class="common_title">渠道选择</p>
-    <ul class="epay_type clearfix">
-        <li>
-            <div class="epay_type_logo"></div>
-            <div class="epay_type_app" data-appid="0">
-                <input type="checkbox" id="app_1">
-                <label for="app_1">应用</label>
-            </div>
-            <p class="epay_type_account">账号：公司账户231<span></span></p>
-        </li>
-        <li>
-            <div class="epay_type_logo wechat_logo"></div>
-            <div class="epay_type_app" data-appid="1">
-                <input type="checkbox" id="app_2">
-                <label for="app_2">应用</label>
-            </div>
-            <!--<p class="epay_type_account">账号：公司账户231<span></span></p>-->
-        </li>
-        <li>
-            <div class="epay_type_logo zhifubao_logo"></div>
-            <div class="epay_type_app" data-appid="2">
-                <input type="checkbox" id="app_3">
-                <label for="app_3">应用</label>
-            </div>
-            <p class="epay_type_account">账号：公司账户231<span></span></p>
-        </li>
-    </ul>
+    <div>
+        <div class="choose-channel clearfix">
+            <a href="javascript:void(0);" [ngClass]="{active: showNum==0}" (click)="showNum = 0" >移动端</a>
+            <a href="javascript:void(0);" [ngClass]="{active: showNum==1}" (click)="showNum = 1">PC端</a>
+            <a href="javascript:void(0);" [ngClass]="{active: showNum==2}" (click)="showNum = 2">WAP端</a>
+        </div>
+        <div *ngFor="let cs of channels;let i = index">
+            <ul [hidden]="!(showNum == i)" class="epay_type clearfix">
+                <li *ngFor="let c of cs">
+                    <div [ngClass]="{channel-disable: c.status==0}">
+                        <div class="clearfix">
+                            <label class="channel-switch switch-light" (click)="setChannelStatus(c)">
+                                <input type="checkbox" [checked]="c.status==1">
+                                <span>
+                                    <span>Off</span>
+                                    <span>On</span>
+                                    <a></a>
+                                </span>
+                            </label>
+                        </div>
+                        <div [ngClass]="{'epay_type_logo': true, 'wechat_logo': c.type == 'WX', 'zhifubao_logo': c.type == 'ALI'}" ></div>
+                        <p *ngIf="c.choiceName" class="epay_type_account">账号：{{c.choiceName}}<span></span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
