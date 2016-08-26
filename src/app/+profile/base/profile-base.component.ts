@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 
 import {ToastService, UploadService, UserModel} from '../../shared/services';
 import {ProfileService} from '../shared';
@@ -7,7 +7,8 @@ import {ProfileService} from '../shared';
 @Component({
     templateUrl: './profile-base.component.html',
     styleUrls: ['./profile-base.component.css'],
-    providers: [ProfileService]
+    providers: [ProfileService],
+    directives: [ROUTER_DIRECTIVES]
 })
 export class ProfileBaseComponent implements OnInit {
     message: string;

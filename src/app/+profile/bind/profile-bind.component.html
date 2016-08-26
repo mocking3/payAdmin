@@ -10,7 +10,7 @@
                 <p class="list_name">验证码</p>
                 <input type="text" name="mcode" required [(ngModel)]="mcode" #_mcode="ngModel" style="width: 100px"
                        placeholder="输入验证码" />
-                <a (click)="sendMobileCode()" >获取验证码</a>
+                <a href="javascript:void(0);" (click)="sendMobileCode()" >获取验证码</a>
                 <div [hidden]="_mcode.valid || _mcode.pristine">验证码必填</div>
             </li>
             <li>
@@ -35,7 +35,7 @@
                 <p class="list_name">验证码</p>
                 <input type="text" name="ecode" required [(ngModel)]="ecode" #_ecode="ngModel" style="width: 100px"
                        placeholder="输入验证码" />
-                <a (click)="sendEmailCode()" >获取验证码</a>
+                <a href="javascript:void(0);" (click)="sendEmailCode()" >获取验证码</a>
                 <div [hidden]="_ecode.valid || _ecode.pristine">验证码必填</div>
             </li>
             <li>
