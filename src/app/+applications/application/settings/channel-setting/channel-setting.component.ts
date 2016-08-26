@@ -52,6 +52,7 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
             // 如果有帐号，直接启用，如果没有，弹出帐号选择
             // if (channel.choiceId != null)
             //     this.channelSettingService.updateChannel();
+            channel.status = 1;
         }
 
     }

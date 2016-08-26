@@ -2,14 +2,14 @@
     <p class="common_title">渠道选择</p>
     <div>
         <div class="choose-channel clearfix">
-            <a href="javascript:void(0);" [ngClass]="{active: showNum==0}" (click)="showNum = 0" >移动端</a>
-            <a href="javascript:void(0);" [ngClass]="{active: showNum==1}" (click)="showNum = 1">PC端</a>
-            <a href="javascript:void(0);" [ngClass]="{active: showNum==2}" (click)="showNum = 2">WAP端</a>
+            <a href="javascript:void(0);" [ngClass]="{'active': showNum==0}" (click)="showNum = 0" >移动端</a>
+            <a href="javascript:void(0);" [ngClass]="{'active': showNum==1}" (click)="showNum = 1">PC端</a>
+            <a href="javascript:void(0);" [ngClass]="{'active': showNum==2}" (click)="showNum = 2">WAP端</a>
         </div>
         <div *ngFor="let cs of channels;let i = index">
             <ul [hidden]="!(showNum == i)" class="epay_type clearfix">
                 <li *ngFor="let c of cs">
-                    <div [ngClass]="{channel-disable: c.status==0}">
+                    <div [ngClass]="{'channel-disable': c.status==0}" >
                         <div class="clearfix">
                             <label class="channel-switch switch-light" (click)="setChannelStatus(c)">
                                 <input type="checkbox" [checked]="c.status==1">
