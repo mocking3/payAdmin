@@ -17,7 +17,10 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
     message: string;
     sub: any;
 
+    currentChannel: ChannelModel;
+
     showNum: number = 0;
+    channelChoose: number = -1;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -37,6 +40,15 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
         this.sub.unsubscribe();
     }
 
+    // ngAfterViewChecked() {
+        // $('.toggle-switch').bootstrapSwitch({
+        //     size: 'mini',
+        //     onSwitchChange: function (event: any, state: boolean) {
+        //         console.log(event);
+        //     }
+        // });
+    // }
+
     getChannels() {
         this.channelSettingService.getChannels(this.appId).subscribe(
             data => {
@@ -46,14 +58,40 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
     }
 
     setChannelStatus(channel: ChannelModel) {
-        if (channel.status == 1) {
-            channel.status = 0;
+        this.currentChannel = channel;
+        if (this.currentChannel.status == 1) {
+            this.currentChannel.status = 0;
+            this.channelSettingService.updateChannel(this.appId, this.currentChannel).subscribe(
+                () => {
+                    this.message = '禁用成功';
+                    this.toastService.triggerToast('提示', this.message, 'success');
+                },
+                error => {throw error});
         } else {
             // 如果有帐号，直接启用，如果没有，弹出帐号选择
-            // if (channel.choiceId != null)
-            //     this.channelSettingService.updateChannel();
-            channel.status = 1;
-        }
+            if (this.currentChannel.choiceId != null) {
+                this.currentChannel.status = 1;
+                this.channelSettingService.updateChannel(this.appId, this.currentChannel).subscribe(
+                    () => {
+                        this.message = '启用成功';
+                        this.toastService.triggerToast('提示', this.message, 'success');
+                    },
+                    error => {throw error});
+            } else {
+                // 获取帐号
+                // 有支付账号
+                this.channelChoose = 1;
 
+                // 无支付账号
+                this.channelChoose = 2;
+            }
+        }
+    }
+
+    cancel() {
+        if (this.currentChannel.choiceId == null) {
+            this.currentChannel.status = 0;
+        }
+        this.channelChoose = -1;
     }
 }

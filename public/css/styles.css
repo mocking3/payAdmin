@@ -23,7 +23,7 @@ input,select {
     background-color: #fafbfe;
     border-radius: 3px;
 }
-input:read-only {
+input:read-only, input:disabled {
     cursor: no-drop;
 }
 
@@ -39,10 +39,12 @@ input:read-only {
 .clearfix:after{
     clear: both;
 }
+/* 面板 */
 .pannel {
     width: 100%;
     padding-bottom: 20px;
 }
+/* 面板标题 */
 .common_title {
     padding-left: 25px;
     text-align: left;
@@ -67,6 +69,8 @@ input:read-only {
     width: 85.9%;
     float: left;
 }
+
+/* 完全弹出框 */
 .full-dialog {
     opacity: 1 !important;
     visibility: visible !important;
@@ -87,7 +91,7 @@ input:read-only {
     font-size: 16px;
     border-bottom: 1px solid #E7E7E7;
 }
-.close {
+.fd-close {
     height: 16px;
     width: 16px;
     background-repeat: no-repeat;
@@ -106,11 +110,90 @@ input:read-only {
     min-width: 768px;
     padding: 65px 0;
 }
-.usual_setting_list{
+
+/* 遮罩层 */
+.dialog_mask {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(178,178,178,.7);
+}
+
+/* 弹出框 */
+.notfull_dialog {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 440px;
+    margin-top: 30px;
+    margin-left: -220px;
+    background-color: #ffffff;
+    z-index: 99;
+}
+.nfd_title {
+    font-size: 20px;
+    color: #354285;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #eef1f9;
+}
+.nfd_body {
+
+}
+.nfd_footer {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.nfd_large {
+    width: 600px;
+    margin-left: -285px;
+}
+.nfd_tip {
+    font-size: 14px;
+    color: #4696e4;
+    line-height: 35px;
+    height: 35px;
+    text-align: center;
+}
+.nfd_list {
+    margin-left: 25px;
+}
+.nfd_list li {
+    margin-bottom: 10px;
+}
+.nfd_list_name {
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #354285;
+    margin-right: 10px;
+}
+
+.nfd_list input,select {
+    width: 390px;
+    height: 28px;
+    padding-left: 10px;
+    outline: none;
+    border: 0;
+    border: 1px solid #eef1f9;
+    background-color: #fafbfe;
+    border-radius: 3px;
+}
+
+.common_list{
     margin-left: 25px;
     margin-top: 20px;
 }
-.usual_setting_list li{
+.common_list li{
     margin-bottom: 20px;
 }
 .list_name{
@@ -139,4 +222,30 @@ input:read-only {
     margin-bottom: 30px;
     margin-left: 21px;
     margin-right: 21px;
+}
+.help_info {
+    font-size: 16px;
+    color: #d9deeb;
+    width: 245px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 20px;
+}
+
+.fill_btn{
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    color: #ffffff;
+    background-color: #4696e4;
+    margin-left: 50px;
+    border: 0px;
+}
+.empty_btn{
+    color: #ffffff;
+    background-color: #4696e4;
+    margin-left: 50px;
+    border: 0px;
 }

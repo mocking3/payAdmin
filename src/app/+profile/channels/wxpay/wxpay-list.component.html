@@ -1,0 +1,221 @@
+<div class="pannel">
+    <p class="common_title">微信配置</p>
+    <div class="wechat_pay clearfix">
+        <span class="wechat_icon"></span>
+        <p class="add_account" (click)="openCreateDialog()" ><span></span>添加账户</p>
+    </div>
+    <table class="wechat_pay_table">
+        <tbody>
+            <tr class="first_line">
+                <td>账户名称</td>
+                <td>APP ID</td>
+                <td>支付商户号</td>
+                <td>创建时间</td>
+                <td>操作</td>
+            </tr>
+            <tr *ngFor="let wc of wxconfigs">
+                <td><a href="javascript:void(0);" (click)="openDetailDialog(wc)">{{wc.wxAppName}}</a></td>
+                <td>{{wc.wxAppId}}</td>
+                <td>{{wc.mchId}}</td>
+                <td>{{wc.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>
+                    <div class="operate clearfix">
+                        <p class="operate_edit" (click)="openUpdateDialog(wc)"><span></span>编辑</p>
+                        <p class="operate_delete" (click)="changeStatus(wc)" ><span></span>{{wc.status ? '禁用' : '启用' }}</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div [hidden]="!(showAdd || showUpdate)" class="dialog_mask" (click)="cancel()"></div>
+<!--- 新增配置 -->
+<div *ngIf="showAdd" class="notfull_dialog nfd_large">
+    <form (ngSubmit)="createWxconfig()" #wxconfigCreateForm="ngForm">
+    <p class="nfd_title">微信线上支付</p>
+    <div class="nfd_body">
+        <p class="nfd_tip">基本信息</p>
+        <ul class="nfd_list">
+            <li>
+                <p class="nfd_list_name">账户名称</p>
+                <input type="text" name="wxAppName" required [(ngModel)]="wxconfig.wxAppName" #wxAppName="ngModel"
+                       placeholder="输入你的账户名称">
+                <div [hidden]="wxAppName.valid || wxAppName.pristine">账户名称必填</div>
+            </li>
+            <li>
+                <p class="nfd_list_name">应用类型</p>
+                <select name="channelType" required [(ngModel)]="wxconfig.channelType" #channelType="ngModel">
+                    <option value="">请选择</option>
+                    <option value="NATIVE">公众号支付（支持PC扫码、微信H5支付）</option>
+                    <option value="APP">app支付</option>
+                </select>
+                <div [hidden]="channelType.valid || channelType.pristine">应用类型必填</div>
+            </li>
+        </ul>
+        <p class="nfd_tip">微信支付3.0参数</p>
+        <ul class="nfd_list">
+            <li>
+                <p class="nfd_list_name">应用APP ID</p>
+                <input type="text" name="wxAppId" required [(ngModel)]="wxconfig.wxAppId" #wxAppId="ngModel"
+                        placeholder="登录微信开放平台，在APP详情中获取">
+                <div [hidden]="wxAppId.valid || wxAppId.pristine">APP ID必填</div>
+            </li>
+            <li>
+                <p class="nfd_list_name">支付商户号</p>
+                <input type="text" name="mchId" required [(ngModel)]="wxconfig.mchId" #mchId="ngModel"
+                       placeholder="微信支付开户邮件中获取">
+                <div [hidden]="mchId.valid || mchId.pristine">支付商户号必填</div>
+            </li>
+            <li>
+                <p class="nfd_list_name">支付API密钥</p>
+                <input type="text" name="wxKey" required [(ngModel)]="wxconfig.wxKey" #wxKey="ngModel"
+                       placeholder="登录微信支付商户平台，在【账户设置-->API安全】中设置">
+                <div [hidden]="wxKey.valid || wxKey.pristine">支付API密钥必填</div>
+            </li>
+        </ul>
+        <p class="nfd_tip">退款和对账参数</p>
+        <ul class="nfd_list">
+            <li>
+                <p class="nfd_list_name logo_name">支付API证书</p>
+                <div class="file_up clearfix">
+                    <img src="/public/images/logo_up.png" class="file_up_img">
+                    <input type="file" class="file" accept="text/p12" (change)="upload($event)" >
+                </div>
+                <!-- 隐藏certLocalPath -->
+                <input type="hidden" name="certLocalPath" [(ngModel)]="wxconfig.certLocalPath"/>
+                <p class="help_info">登录微信支付商户平台</p>
+                <p class="help_info">在【账户设置--&gt;API安全】中下载</p>
+                <p class="help_info">并上传.p12格式的证书</p>
+            </li>
+            <li>
+                <p class="nfd_list_name">证书密码</p>
+                <input type="password" name="certPwd" [(ngModel)]="wxconfig.certPwd" #certPwd="ngModel"
+                       placeholder="默认是微信支付商户号">
+            </li>
+        </ul>
+    </div>
+    <div class="nfd_footer">
+        <button type="submit" class="fill_btn" [disabled]="!wxconfigCreateForm.form.valid">保存</button>
+    </div>
+    </form>
+</div>
+<!--- 修改配置 -->
+<div *ngIf="showUpdate" class="notfull_dialog nfd_large">
+    <form (ngSubmit)="updateWxconfig()" #wxconfigUpdateForm="ngForm">
+        <p class="nfd_title">微信线上支付</p>
+        <div class="nfd_body">
+            <p class="nfd_tip">基本信息</p>
+            <ul class="nfd_list">
+                <li>
+                    <p class="nfd_list_name">账户名称</p>
+                    <input type="text" name="wxAppName" required [(ngModel)]="wxconfig.wxAppName" #wxAppName="ngModel"
+                           placeholder="输入你的账户名称">
+                    <div [hidden]="wxAppName.valid || wxAppName.pristine">账户名称必填</div>
+                </li>
+                <li>
+                    <p class="nfd_list_name">应用类型</p>
+                    <select name="channelType" disabled>
+                        <option [selected]="wxconfig.channelType == ''" value="">请选择</option>
+                        <option [selected]="wxconfig.channelType == 'NATIVE'" value="NATIVE,WAP">公众号支付（支持PC扫码、微信H5支付）</option>
+                        <option [selected]="wxconfig.channelType == 'APP'" value="APP">app支付</option>
+                    </select>
+                </li>
+            </ul>
+            <p class="nfd_tip">微信支付3.0参数</p>
+            <ul class="nfd_list">
+                <li>
+                    <p class="nfd_list_name">应用APP ID</p>
+                    <input type="text" name="wxAppId" readonly value="{{wxconfig.wxAppId}}"
+                           placeholder="登录微信开放平台，在APP详情中获取">
+                </li>
+                <li>
+                    <p class="nfd_list_name">支付商户号</p>
+                    <input type="text" name="mchId" required [(ngModel)]="wxconfig.mchId" #mchId="ngModel"
+                           placeholder="微信支付开户邮件中获取">
+                    <div [hidden]="mchId.valid || mchId.pristine">支付商户号必填</div>
+                </li>
+                <li>
+                    <p class="nfd_list_name">支付API密钥</p>
+                    <input type="text" name="wxKey" required [(ngModel)]="wxconfig.wxKey" #wxKey="ngModel"
+                           placeholder="登录微信支付商户平台，在【账户设置-->API安全】中设置">
+                    <div [hidden]="wxKey.valid || wxKey.pristine">支付API密钥必填</div>
+                </li>
+            </ul>
+            <p class="nfd_tip">退款和对账参数</p>
+            <ul class="nfd_list">
+                <li>
+                    <p class="nfd_list_name logo_name">支付API证书</p>
+                    <div class="file_up clearfix">
+                        <img *ngIf="!wxconfig.certLocalPath" src="/public/images/logo_up.png" class="file_up_img">
+                        <img *ngIf="wxconfig.certLocalPath" src="/public/images/logo_uploaded.png" class="file_up_img">
+                        <input type="file" class="file" accept="text/p12" (change)="upload($event)" >
+                    </div>
+                    <!-- 隐藏certLocalPath -->
+                    <input type="hidden" name="certLocalPath" [(ngModel)]="wxconfig.certLocalPath"/>
+                    <p class="help_info">登录微信支付商户平台</p>
+                    <p class="help_info">在【账户设置--&gt;API安全】中下载</p>
+                    <p class="help_info">并上传.p12格式的证书</p>
+                </li>
+                <li>
+                    <p class="nfd_list_name">证书密码</p>
+                    <input type="password" name="certPwd" [(ngModel)]="wxconfig.certPwd" #certPwd="ngModel"
+                           placeholder="默认是微信支付商户号">
+                </li>
+            </ul>
+        </div>
+        <div class="nfd_footer">
+            <button type="submit" class="fill_btn" [disabled]="!wxconfigUpdateForm.form.valid">保存</button>
+        </div>
+    </form>
+</div>
+<!-- 配置详情 -->
+<div class="full-dialog" [hidden]="!showDetail">
+    <div class="fd-header">
+        <span>配置详情</span>
+        <span class="fd-close" (click)="closeDetailDialog()"></span>
+    </div>
+    <div class="fd-body">
+        <ul class="common_list">
+            <li>
+                <p class="list_name">账户名称</p>
+                <p class="list_value">{{wxconfig.wxAppName}}</p>
+            </li>
+            <li>
+                <p class="list_name">应用类型</p>
+                <p class="list_value">{{wxconfig.channelType}}</p>
+            </li>
+            <li>
+                <p class="list_name">APP ID</p>
+                <p class="list_value">{{wxconfig.wxAppId}}</p>
+            </li>
+            <li>
+                <p class="list_name">支付商户号</p>
+                <p class="list_value">{{wxconfig.mchId}}</p>
+            </li>
+            <li>
+                <p class="list_name">支付API密钥</p>
+                <p class="list_value">{{wxconfig.wxKey}}</p>
+            </li>
+            <li>
+                <p class="list_name">支付API证书</p>
+                <p class="list_value"><a href="{{wxconfig.certLocalPath}}">[点击下载]</a></p>
+            </li>
+            <li>
+                <p class="list_name">证书密码</p>
+                <p class="list_value">{{wxconfig.certPwd}}</p>
+            </li>
+            <li>
+                <p class="list_name">创建日期</p>
+                <p class="list_value">{{wxconfig.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+            </li>
+            <li>
+                <p class="list_name">最后修改日期</p>
+                <p class="list_value">{{wxconfig.lastModifyTime | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+            </li>
+            <li>
+                <p class="list_name">状态</p>
+                <p class="list_value">{{wxconfig.status ? '启用' : '禁用'}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

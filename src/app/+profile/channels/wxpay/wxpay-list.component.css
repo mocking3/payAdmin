@@ -1,0 +1,122 @@
+.wechat_pay{
+    width: 95.55%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.wechat_icon{
+    display: block;
+    float: left;
+    width: 130px;
+    height: 40px;
+    background: url("/public/images/sprite.png") no-repeat;
+    background-position: 0 -116px;
+}
+.add_account{
+    float: right;
+    position: relative;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 30px;
+    font-size: 14px;
+    color: #4696e4;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.add_account span{
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: url("/public/images/sprite.png") no-repeat;
+    background-position: -63px -194px;
+    position: absolute;
+    left: 5px;
+    top: 2px;
+}
+.wechat_pay_table{
+    width: 95.55%;
+    margin-left: 25px;
+    margin-top: 20px;
+    border: 1px solid #eef1f9;
+    background-color: #fafbfe;
+    margin-top: 10px;
+}
+.wechat_pay_table tr{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    color: #354285;
+    text-align: center;
+}
+.wechat_pay_table tr:nth-child(2n){
+    background-color: #f6f8fd;
+}
+td{
+    width: 20%;
+    height: 100%;
+}
+tr.first_line{
+    color: #4696e4;
+}
+.operate{
+    width: 210px;
+    margin: 0 auto;
+}
+.operate p{
+    float: left;
+    width: 70px;
+    text-align: right;
+    position: relative;
+    cursor: pointer;
+}
+.operate p span{
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    background: url("/public/images/sprite.png") no-repeat;
+}
+p.operate_look span{
+    width: 22px;
+    height: 15px;
+    background-position: 0px -326px;
+}
+p.operate_edit span{
+    width: 15px;
+    height: 15px;
+    background-position: -83px -193px;
+    left: 19px;
+}
+p.operate_delete span{
+    width: 15px;
+    height: 15px;
+    background-position: -40px -215px;
+    left: 19px;
+}
+
+.logo_name {
+    position: relative;
+    top: -25px;
+    font-size: 16px;
+}
+.file_up {
+    display: inline-block;
+    position: relative;
+}
+.file_up input {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 170px;
+    height: 65px;
+    opacity: 0;
+    z-index: 10;
+}
+.file_up_img {
+    display: block;
+    float: left;
+    width: 170px;
+    height: 65px;
+    border-radius: 3px;
+}

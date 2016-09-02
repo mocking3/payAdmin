@@ -7,7 +7,6 @@ import Moment = moment.Moment;
 
 import {AnalysisService} from '../shared/analysis.service';
 import {Constants} from '../../../../shared/constants';
-import values = require('core-js/fn/array/values');
 
 @Component({
     templateUrl: './income-analysis.component.html',

@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "bootstrap-switch": "registry:dt/bootstrap-switch#0.0.0+20160317120654",
     "clipboard": "registry:dt/clipboard#1.5.9+20160316155526",
     "core-js": "registry:dt/core-js#0.0.0+20160602141332",
     "daterangepicker": "registry:dt/daterangepicker#2.1.19+20160608082020",

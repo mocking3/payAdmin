@@ -77,12 +77,12 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.getOrders();
     }
 
-    openDetail(orderInfo: OrderInfoModel) {
+    openDetailDialog(orderInfo: OrderInfoModel) {
         this.orderInfo = orderInfo;
         this.showDetail = true;
     }
 
-    closeDetail() {
+    closeDetailDialog() {
         this.orderInfo = new OrderInfoModel();
         this.showDetail = false;
     }

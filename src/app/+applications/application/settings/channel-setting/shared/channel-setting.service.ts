@@ -4,6 +4,7 @@ import {Http, RequestOptions} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 
 import {BaseService, Constants} from '../../../../../shared';
+import {ChannelModel} from "./channel.model";
 
 @Injectable()
 export class ChannelSettingService extends BaseService {
@@ -19,16 +20,14 @@ export class ChannelSettingService extends BaseService {
         let options = new RequestOptions({ headers: headers });
         return this.http.get(url, options).map(this.extractData).catch(this.handleError);
     }
-    //
-    // saveAddress(appId: number, address: string):Observable<any> {
-    //     let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '');
-    //     // this.url = '/api/webhook-setting-put.json';
-    //     let body = 'callbackUrl=' + address;
-    //     let headers = this.getAuthHeaders();
-    //     let options = new RequestOptions({ headers: headers });
-    //
-    //     return this.http.put(url, body, options)
-    //         .map(this.extractData)
-    //         .catch(this.handleError);
-    // }
+
+    updateChannel(appId: number, channel: ChannelModel):Observable<any> {
+        let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') + '/' + channel.configName;
+        // this.url = '/api/webhook-setting-put.json';
+        let body = `channelId=${channel.choiceId}&status=${channel.status}&serialNo=${channel.serialNo}`;
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(url, body, options).map(this.extractData).catch(this.handleError);
+    }
 }

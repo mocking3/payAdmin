@@ -14,6 +14,7 @@ import {ProfileComponent} from './+profile/profile.component';
 import {ProfileBaseComponent} from './+profile/base';
 import {ProfileBindComponent} from './+profile/bind';
 import {PwdResetComponent} from './+profile/pwd-reset';
+import {WxpayListComponent} from './+profile/channels';
 
 export const routes:RouterConfig = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
@@ -36,6 +37,7 @@ export const routes:RouterConfig = [
         {path: 'base', component: ProfileBaseComponent},
         {path: 'bind', component: ProfileBindComponent},
         {path: 'pwd-reset', component: PwdResetComponent},
+        {path: 'channels/wxpay', component: WxpayListComponent}
     ]},
     {path: '**', component: PageNotFoundComponent}
 ];

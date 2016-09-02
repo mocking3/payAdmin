@@ -17,7 +17,7 @@ export class WebhookSettingService extends BaseService {
         // this.url = '/api/webhook-setting-get.json';
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-        return this.http.get(url, options).map(this.extractData).map(data => data.callback).catch(this.handleError);
+        return this.http.get(url, options).map(this.extractData).map(data => data.CALLBACK).catch(this.handleError);
     }
 
     saveAddress(appId: number, address: string):Observable<any> {

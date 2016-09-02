@@ -1,7 +1,7 @@
 <div class="usual_setting block_show">
     <p class="common_title">更换绑定</p>
     <form (ngSubmit)="changeMobile()" #mobileChangeForm="ngForm">
-        <ul class="usual_setting_list">
+        <ul class="common_list">
             <li>
                 <p class="list_name">手机号</p>
                 <input type="text" value="{{profile.mobile}}" readonly />
@@ -26,7 +26,7 @@
     </form>
     <div class="line"></div>
     <form (ngSubmit)="changeEmail()" #emailChangeForm="ngForm">
-        <ul class="usual_setting_list">
+        <ul class="common_list">
             <li>
                 <p class="list_name">邮箱</p>
                 <input type="text" value="{{profile.email}}" readonly />

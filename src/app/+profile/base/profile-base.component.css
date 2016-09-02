@@ -1,8 +1,8 @@
-.usual_setting_list{
+.common_list{
     margin-left: 25px;
     margin-top: 20px;
 }
-.usual_setting_list li{
+.common_list li{
     margin-bottom: 20px;
 }
 .list_name{
@@ -15,7 +15,7 @@
     color: #354285;
     margin-right: 20px;
 }
-.usual_setting_list input{
+.common_list input{
     width: 430px;
     height: 40px;
     padding-left: 10px;
