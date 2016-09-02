@@ -2,6 +2,7 @@ export class ChannelModel {
     public id: number;
     public name: string;
     public type: string;
+    public pcode: string;
     public icon1: string;
     public configId: number;
     public configName: string;

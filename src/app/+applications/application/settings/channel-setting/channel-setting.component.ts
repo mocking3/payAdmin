@@ -22,6 +22,8 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
     showNum: number = 0;
     channelChoose: number = -1;
 
+    chooseChannels: any[];
+
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private channelSettingService: ChannelSettingService,
@@ -79,11 +81,18 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
                     error => {throw error});
             } else {
                 // 获取帐号
-                // 有支付账号
-                this.channelChoose = 1;
-
-                // 无支付账号
-                this.channelChoose = 2;
+                this.channelSettingService.getChooseChannels(this.appId, channel.type, channel.pcode).subscribe(
+                    data => {
+                        this.chooseChannels = data;
+                        if (this.chooseChannels.length > 0) {
+                            // 有支付账号
+                            this.channelChoose = 1;
+                        } else {
+                            // 无支付账号
+                            this.channelChoose = 2;
+                        }
+                    },
+                    error => {throw error});
             }
         }
     }

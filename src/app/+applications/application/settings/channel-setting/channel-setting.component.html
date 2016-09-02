@@ -16,7 +16,7 @@
                                        [checked]="c.status==1" [(ngModel)]="c.status" (change)="setChannelStatus(c)" />
                             </div>
                         </div>
-                        <div [ngClass]="{'epay_type_logo': true, 'wechat_logo': c.type == 'WX', 'zhifubao_logo': c.type == 'ALI'}" ></div>
+                        <div [ngClass]="{'epay_type_logo': true, 'wechat_logo': c.pcode == 'WX', 'zhifubao_logo': c.pcode == 'ALI'}" ></div>
                         <p *ngIf="c.choiceName" class="epay_type_account">账号：{{c.choiceName}}<span></span></p>
                     </div>
                 </li>

@@ -30,4 +30,14 @@ export class ChannelSettingService extends BaseService {
 
         return this.http.put(url, body, options).map(this.extractData).catch(this.handleError);
     }
+
+    getChooseChannels(appId: number, type: string, pcode: string):Observable<any[]> {
+        let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') + '/' + type
+            + '?pCode=' + pcode;
+
+        let headers = this.getAuthHeaders();
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.get(url, options).map(this.extractData).catch(this.handleError);
+    }
 }
