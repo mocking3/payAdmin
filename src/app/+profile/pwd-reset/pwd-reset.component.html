@@ -4,19 +4,19 @@
         <ul class="common_list">
             <li>
                 <p class="list_name">旧密码</p>
-                <input type="text" name="oldPassword" required [(ngModel)]="oldPassword" #oldPwd="ngModel"
+                <input type="password" name="oldPassword" required [(ngModel)]="oldPassword" #oldPwd="ngModel"
                        placeholder="输入旧密码" />
                 <div [hidden]="oldPwd.valid || oldPwd.pristine">旧密码必填</div>
             </li>
             <li>
                 <p class="list_name">新密码</p>
-                <input type="text" name="newPassword" required [(ngModel)]="newPassword" #newPwd="ngModel"
+                <input type="password" name="newPassword" required [(ngModel)]="newPassword" #newPwd="ngModel"
                        placeholder="输入新密码" />
                 <div [hidden]="newPwd.valid || newPwd.pristine">新密码必填</div>
             </li>
             <li>
                 <p class="list_name">确认密码</p>
-                <input type="text" name="newPassword2" required [(ngModel)]="newPassword2" #newPwd2="ngModel" onpaste="return false;"
+                <input type="password" name="newPassword2" required [(ngModel)]="newPassword2" #newPwd2="ngModel" onpaste="return false;"
                        placeholder="输入确认密码" />
                 <div [hidden]="newPwd2.valid || newPwd2.pristine">确认密码必填</div>
                 <div [hidden]="!(newPassword && newPassword2 && newPassword != newPassword2)">两次输入的密码不一致</div>

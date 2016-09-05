@@ -49,7 +49,7 @@ export class ProfileService extends BaseService {
 
     changeMobile(mobile: string, mcode: string) {
         let url = `${this.url}/bind/mobile`;
-        let body = `mobile=${mobile}&code=${mcode}`;
+        let body = `mobile=${mobile}&mcode=${mcode}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
@@ -63,7 +63,7 @@ export class ProfileService extends BaseService {
 
     changeEmail(email: string, ecode: string) {
         let url = `${this.url}/bind/email`;
-        let body = `email=${email}&code=${ecode}`;
+        let body = `email=${email}&ecode=${ecode}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 

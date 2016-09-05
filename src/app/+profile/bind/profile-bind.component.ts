@@ -32,6 +32,7 @@ export class ProfileBindComponent implements OnInit {
     changeMobile() {
         this.profileService.changeMobile(this.mobile, this.mcode).subscribe(
             () => {
+                this.profile.mobile = this.mobile;
                 this.message = '更换成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
             },
@@ -41,6 +42,7 @@ export class ProfileBindComponent implements OnInit {
     changeEmail() {
         this.profileService.changeEmail(this.email, this.ecode).subscribe(
             () => {
+                this.profile.email = this.email;
                 this.message = '更换成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
             },
