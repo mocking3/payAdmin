@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {NgClass} from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import {ChannelSettingService, ChannelModel, ChannelConfigModel} from './shared'
     providers: [ChannelSettingService],
     directives: [ROUTER_DIRECTIVES, NgClass]
 })
-export class ChannelSettingComponent implements OnInit, OnDestroy  {
+export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChecked  {
     appId: number;
     channels: ChannelModel[][];
     message: string;
@@ -44,14 +44,14 @@ export class ChannelSettingComponent implements OnInit, OnDestroy  {
         this.sub.unsubscribe();
     }
 
-    // ngAfterViewChecked() {
-        // $('.toggle-switch').bootstrapSwitch({
+    ngAfterViewChecked() {
+        // $('.toggle_switch').bootstrapSwitch({
         //     size: 'mini',
         //     onSwitchChange: function (event: any, state: boolean) {
         //         console.log(event);
         //     }
         // });
-    // }
+    }
 
     getChannels() {
         this.channelSettingService.getChannels(this.appId).subscribe(
