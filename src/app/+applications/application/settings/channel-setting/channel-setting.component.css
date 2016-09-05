@@ -47,6 +47,7 @@
     position: relative;
     font-size: 14px;
     color: #354285;
+    cursor: pointer;
 }
 .epay_type_account span{
     display: block;
@@ -57,7 +58,6 @@
     width: 15px;
     height: 15px;
     background-position: -83px -195px;
-    cursor: pointer;
 }
 .wechat_logo{
     background-position: 0 -116px;
@@ -90,16 +90,19 @@
     background-color: #1996e9;
     color: #ffffff;
 }
-.channel-disable {
+.channel_disable {
     height: 100%;
     background-color: #e4e4e6;
     opacity: 0.7;
 }
-.toggle-switch-wrapper {
+.choose_disable {
+    cursor: context-menu;
+}
+.toggle_switch_wrapper {
     float: right;
     margin: 2px;
 }
-.toggle-switch {
+.toggle_switch {
     height: inherit;
 }
 /*渠道选择中的弹出层*/
@@ -113,11 +116,15 @@
     background-color: rgba(178,178,178,.7);
 }
 .has_account{
+    position: fixed;
+    top: 50%;
+    left: 50%;
     width: 440px;
     height: 280px;
-    margin: 0 auto;
+    margin-top: -220px;
+    margin-left: -220px;
     background-color: #ffffff;
-    margin-top: 100px;
+    z-index: 99;
 }
 .has_account_title{
     font-size: 20px;
@@ -181,6 +188,7 @@
     color: #354285;
     text-align: center;
     margin-top: 60px;
+    margin-bottom: 50px;
 }
 .add_account{
     width: 150px;

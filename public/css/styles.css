@@ -14,7 +14,7 @@ a:link{
     text-decoration: none;
     /*color: #ffffff;*/
 }
-input,select {
+input:not[type="radio"],select {
     /* width: 195px; */
     height: 40px;
     outline: none;
@@ -146,9 +146,9 @@ input:read-only, input:disabled {
 
 }
 .nfd_footer {
-    text-align: center;
     margin-top: 20px;
     margin-bottom: 25px;
+    text-align: center;
 }
 .nfd_large {
     width: 600px;
@@ -233,6 +233,9 @@ input:read-only, input:disabled {
 }
 
 .fill_btn{
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
     width: 120px;
     height: 30px;
     line-height: 30px;
@@ -240,12 +243,17 @@ input:read-only, input:disabled {
     border-radius: 3px;
     color: #ffffff;
     background-color: #4696e4;
-    margin-left: 50px;
     border: 0px;
 }
 .empty_btn{
-    color: #ffffff;
-    background-color: #4696e4;
-    margin-left: 50px;
-    border: 0px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 120px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 3px;
+    color: #4696e4;
+    border: 1px solid #4696e4;
 }

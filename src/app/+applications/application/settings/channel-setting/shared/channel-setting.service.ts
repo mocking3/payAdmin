@@ -33,7 +33,7 @@ export class ChannelSettingService extends BaseService {
 
     getChooseChannels(appId: number, type: string, pcode: string):Observable<any[]> {
         let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') + '/' + type
-            + '?pCode=' + pcode;
+            + '/channels?pCode=' + pcode;
 
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });

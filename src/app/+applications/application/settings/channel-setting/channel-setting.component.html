@@ -9,15 +9,15 @@
         <div *ngFor="let cs of channels;let i = index">
             <ul [hidden]="!(showNum == i)" class="epay_type clearfix">
                 <li *ngFor="let c of cs">
-                    <div [ngClass]="{'channel-disable': c.status==0}" >
+                    <div [ngClass]="{'channel_disable': c.status==0}" >
                         <div class="clearfix">
-                            <div class="toggle-switch-wrapper">
-                                <input type="checkbox" class="toggle-switch"
+                            <div class="toggle_switch_wrapper">
+                                <input type="checkbox" class="toggle_switch"
                                        [checked]="c.status==1" [(ngModel)]="c.status" (change)="setChannelStatus(c)" />
                             </div>
                         </div>
                         <div [ngClass]="{'epay_type_logo': true, 'wechat_logo': c.pcode == 'WX', 'zhifubao_logo': c.pcode == 'ALI'}" ></div>
-                        <p *ngIf="c.choiceName" class="epay_type_account">账号：{{c.choiceName}}<span></span></p>
+                        <p *ngIf="c.choiceName" [ngClass]="{'epay_type_account': true, 'choose_disable': c.status==0}" (click)="chooseChannel(c)" >账号：{{c.choiceName}}<span></span></p>
                     </div>
                 </li>
             </ul>
@@ -26,30 +26,30 @@
 </div>
 <div [hidden]="channelChoose == -1" class="dialog_mask" (click)="cancel()" ></div>
 <!--有账号-->
-<div [hidden]="channelChoose != 1" class="has_account">
-    <p class="has_account_title">请选择微信支付账号</p>
-    <ul class="account_list">
-        <li>
-            <input type="radio" id="add_1" name="account">
-            <label for="add_1">公司账号123</label>
-        </li>
-        <li>
-            <input type="radio" id="add_2" name="account">
-            <label for="add_2">公司账号123</label>
-        </li>
-        <li>
-            <input type="radio" id="add_3" name="account">
-            <label for="add_3">公司账号123</label>
-        </li>
-    </ul>
-    <div class="add_btn clearfix">
-        <p class="add_account_btn"><a href="javascript:void(0);">添加新账号</a></p>
-        <p class="add_sure_btn">确定</p>
+<div [hidden]="channelChoose != 1" class="notfull_dialog">
+    <p class="nfd_title">请选择微信支付账号</p>
+    <div class="nfd_body">
+        <ul class="account_list">
+            <li *ngFor="let cc of chooseChannels;let i = index" >
+                <label>
+                    <input name="account" type="radio" [checked]="cc.id == currentChannel.choiceId"
+                           (click)="choicedId = cc.id" value="{{cc.id}}"> {{cc.name}}
+                </label>
+            </li>
+        </ul>
+    </div>
+    <div class="nfd_footer clearfix">
+        <a routerLink="/profile/channels/wxpay"><p class="empty_btn">添加新账号</p></a>
+        <button type="button" class="fill_btn" [disabled]="!choicedId" (click)="saveChoosedChannel()" >保存</button>
     </div>
 </div>
 <!--无账号-->
-<div [hidden]="channelChoose != 2" class="none_account">
-    <p class="has_account_title">请选择微信支付账号</p>
-    <p class="has_none_account">暂无支付账号</p>
-    <p class="add_account"><a href="javascript:void(0);">添加新账号</a></p>
+<div [hidden]="channelChoose != 2" class="notfull_dialog">
+    <p class="nfd_title">请选择微信支付账号</p>
+    <div class="nfd_body">
+        <p class="has_none_account">暂无支付账号</p>
+    </div>
+    <div class="nfd_footer clearfix">
+        <a routerLink="/profile/channels/wxpay"><p class="fill_btn">添加新账号</p></a>
+    </div>
 </div>

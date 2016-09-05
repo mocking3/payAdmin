@@ -28,6 +28,7 @@ export class WxpayService extends BaseService {
             .map(this.extractData).map(data => {
                 wxconfig.id = data.id;
                 wxconfig.createTime = new Date().getMilliseconds();
+                wxconfig.status = true;
                 return wxconfig;
             })
             .catch(this.handleError);

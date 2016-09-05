@@ -78,7 +78,8 @@
             <li>
                 <p class="nfd_list_name logo_name">支付API证书</p>
                 <div class="file_up clearfix">
-                    <img src="/public/images/logo_up.png" class="file_up_img">
+                    <img src="{{wxconfig.certLocalPath ? '/public/images/logo_uploaded.png'
+                                        : '/public/images/logo_up.png'}}" class="file_up_img">
                     <input type="file" class="file" accept="text/p12" (change)="upload($event)" >
                 </div>
                 <!-- 隐藏certLocalPath -->
@@ -146,8 +147,8 @@
                 <li>
                     <p class="nfd_list_name logo_name">支付API证书</p>
                     <div class="file_up clearfix">
-                        <img *ngIf="!wxconfig.certLocalPath" src="/public/images/logo_up.png" class="file_up_img">
-                        <img *ngIf="wxconfig.certLocalPath" src="/public/images/logo_uploaded.png" class="file_up_img">
+                        <img src="{{wxconfig.certLocalPath ? '/public/images/logo_uploaded.png'
+                                        : '/public/images/logo_up.png'}}" class="file_up_img">
                         <input type="file" class="file" accept="text/p12" (change)="upload($event)" >
                     </div>
                     <!-- 隐藏certLocalPath -->
