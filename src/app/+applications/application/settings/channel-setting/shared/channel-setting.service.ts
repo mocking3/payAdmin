@@ -24,7 +24,7 @@ export class ChannelSettingService extends BaseService {
     updateChannel(appId: number, channel: ChannelModel):Observable<any> {
         let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') + '/' + channel.configName;
         // this.url = '/api/webhook-setting-put.json';
-        let body = `channelId=${channel.choiceId}&status=${channel.status}&serialNo=${channel.serialNo}`;
+        let body = `channelId=${channel.choiceId}&status=${channel.status ? 1 : 0}&serialNo=${channel.serialNo}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
