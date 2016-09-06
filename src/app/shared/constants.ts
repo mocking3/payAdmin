@@ -2,7 +2,7 @@ import {NameValue} from './models';
 export class Constants {
     static getServerUrl = function(): string {
         if (process.env.ENV === 'production') {
-            return 'https://localhost:7082';
+            return 'http://localhost:7082';
         } else {
             return 'http://localhost:7082';
         }
