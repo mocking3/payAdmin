@@ -14,7 +14,7 @@ a:link{
     text-decoration: none;
     /*color: #ffffff;*/
 }
-input:not[type="radio"],select {
+input, select {
     /* width: 195px; */
     height: 40px;
     outline: none;
@@ -23,6 +23,10 @@ input:not[type="radio"],select {
     background-color: #fafbfe;
     border-radius: 3px;
 }
+input[type="radio"] {
+    height: inherit;
+}
+
 input:read-only, input:disabled {
     cursor: no-drop;
 }
@@ -178,7 +182,7 @@ input:read-only, input:disabled {
     margin-right: 10px;
 }
 
-.nfd_list input,select {
+.nfd_list input, .nfd_list select {
     width: 390px;
     height: 28px;
     padding-left: 10px;

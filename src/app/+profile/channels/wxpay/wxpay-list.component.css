@@ -75,22 +75,24 @@ tr.first_line{
     position: absolute;
     left: 10px;
     top: 15px;
-    background: url("/public/images/sprite.png") no-repeat;
 }
 p.operate_look span{
     width: 22px;
     height: 15px;
+    background: url("/public/images/sprite.png") no-repeat;
     background-position: 0px -326px;
 }
 p.operate_edit span{
     width: 15px;
     height: 15px;
+    background: url("/public/images/sprite.png") no-repeat;
     background-position: -83px -193px;
     left: 19px;
 }
 p.operate_delete span{
     width: 15px;
     height: 15px;
+    background: url("/public/images/sprite.png") no-repeat;
     background-position: -40px -215px;
     left: 19px;
 }
