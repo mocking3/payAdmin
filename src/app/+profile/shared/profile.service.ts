@@ -8,7 +8,7 @@ import {Constants, BaseService, UserModel} from '../../shared';
 @Injectable()
 export class ProfileService extends BaseService {
 
-    private url = Constants.SERVER_URL + '/profile';
+    private url = Constants.getServerUrl() + '/profile';
 
     constructor(private http:Http) {
         super();

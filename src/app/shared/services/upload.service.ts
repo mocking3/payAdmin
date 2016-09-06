@@ -6,7 +6,7 @@ import {Constants} from '../constants';
 
 @Injectable()
 export class UploadService {
-    private url: string = Constants.SERVER_URL + '/fileUpload';
+    private url: string = Constants.getServerUrl() + '/fileUpload';
     private progress$:Observable<number>;
     private progress:number = 0;
     private progressObserver:Observer<number>;

@@ -8,7 +8,7 @@ import {ApplicationModel} from './';
 @Injectable()
 export class ApplicationService extends BaseService {
 
-    private url = Constants.SERVER_URL + '/apps';
+    private url = Constants.getServerUrl() + '/apps';
 
     constructor(private http:Http) {
         super();

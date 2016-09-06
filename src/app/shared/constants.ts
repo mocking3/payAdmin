@@ -1,6 +1,13 @@
 import {NameValue} from './models';
 export class Constants {
-    static SERVER_URL:string = 'http://localhost:7082';
+    static getServerUrl = function(): string {
+        if (process.env.ENV === 'production') {
+            return 'https://localhost:7082';
+        } else {
+            return 'http://localhost:7082';
+        }
+    };
+
     static CHANNEL:any = {
         WX: '微信',
         WX_APP: '微信APP', // 微信手机原生APP支付

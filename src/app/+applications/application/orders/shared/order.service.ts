@@ -7,7 +7,7 @@ import {BaseService, Constants} from '../../../../shared';
 
 @Injectable()
 export class OrderService extends BaseService {
-    private url = Constants.SERVER_URL + '/apps/${appId}/orders';
+    private url = Constants.getServerUrl() + '/apps/${appId}/orders';
     constructor(private http:Http) {
         super();
     }

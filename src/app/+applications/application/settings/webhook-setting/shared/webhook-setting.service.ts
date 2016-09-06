@@ -7,7 +7,7 @@ import {BaseService, Constants} from '../../../../../shared';
 
 @Injectable()
 export class WebhookSettingService extends BaseService {
-    private url = Constants.SERVER_URL + '/apps/${appId}/webhook-setting';
+    private url = Constants.getServerUrl() + '/apps/${appId}/webhook-setting';
     constructor(private http:Http) {
         super();
     }

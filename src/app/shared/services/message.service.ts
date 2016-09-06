@@ -8,7 +8,7 @@ import {BaseService} from './base.service';
 
 @Injectable()
 export class MessageService extends BaseService {
-    private url: string = Constants.SERVER_URL + '/message';
+    private url: string = Constants.getServerUrl() + '/message';
 
     constructor(private http:Http) {
         super();

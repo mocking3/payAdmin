@@ -8,7 +8,7 @@ import {WxconfigModel} from './wxconfig.model';
 
 @Injectable()
 export class WxpayService extends BaseService {
-    private url = Constants.SERVER_URL + '/channels/wxpay';
+    private url = Constants.getServerUrl() + '/channels/wxpay';
     constructor(private http:Http) {
         super();
     }

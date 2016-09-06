@@ -10,7 +10,7 @@ export class AuthService extends BaseService {
     // 登录后重定向的页面
     redirectUrl: string;
 
-    private url = Constants.SERVER_URL + '/session';
+    private url = Constants.getServerUrl() + '/session';
 
     constructor(private http:Http) {
         super();

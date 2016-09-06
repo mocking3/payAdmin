@@ -8,7 +8,7 @@ import {ChannelModel} from "./channel.model";
 
 @Injectable()
 export class ChannelSettingService extends BaseService {
-    private url = Constants.SERVER_URL + '/apps/${appId}/channel-setting';
+    private url = Constants.getServerUrl() + '/apps/${appId}/channel-setting';
     constructor(private http:Http) {
         super();
     }
