@@ -2,8 +2,7 @@ import {NameValue} from './models';
 export class Constants {
     static getServerUrl = function(): string {
         if (process.env.ENV === 'production') {
-            // return 'http://testpay.netease.com:7082';
-            return 'http://dashboard.pay.netease.com/dashboard';
+            return 'http://testpay.netease.com:7082';
         } else {
             return 'http://localhost:7082';
         }

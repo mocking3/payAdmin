@@ -28,7 +28,7 @@ export class ChannelSettingService extends BaseService {
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(url + '?' +body, options).map(this.extractData).catch(this.handleError);
+        return this.http.put(url, body, options).map(this.extractData).catch(this.handleError);
     }
 
     getChooseChannels(appId: number, type: string, pcode: string):Observable<any[]> {

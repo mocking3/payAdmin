@@ -54,7 +54,7 @@ export class ApplicationService extends BaseService {
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(url + '?' +body, options)
+        return this.http.put(url, body, options)
             .map(this.extractData).catch(this.handleError);
     }
 
