@@ -27,8 +27,8 @@ export class ChannelSettingService extends BaseService {
         let body = `channelId=${channel.choiceId}&status=${channel.status ? 1 : 0}&serialNo=${channel.serialNo}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-
-        return this.http.put(url, body, options).map(this.extractData).catch(this.handleError);
+        //TODO tomcat处理put有问题，改成post
+        return this.http.post(url, body, options).map(this.extractData).catch(this.handleError);
     }
 
     getChooseChannels(appId: number, type: string, pcode: string):Observable<any[]> {

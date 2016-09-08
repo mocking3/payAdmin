@@ -37,8 +37,8 @@ export class ProfileService extends BaseService {
         let body = `nickname=${nickname}&headIcoUrl=${headIcoUrl}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-
-        return this.http.put(this.url, body, options)
+        //TODO tomcat处理put有问题，改成post
+        return this.http.post(this.url, body, options)
             .map(this.extractData).map(() => {
                 let currentUser: UserModel = this.getCurrentUser();
                 currentUser.nickname = nickname;
@@ -52,8 +52,8 @@ export class ProfileService extends BaseService {
         let body = `mobile=${mobile}&verifyCode=${mcode}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-
-        return this.http.put(url, body, options)
+        //TODO tomcat处理put有问题，改成post
+        return this.http.post(url, body, options)
             .map(this.extractData).map(() => {
                 let currentUser: UserModel = this.getCurrentUser();
                 currentUser.mobile = mobile;
@@ -66,8 +66,8 @@ export class ProfileService extends BaseService {
         let body = `email=${email}&verifyCode=${ecode}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-
-        return this.http.put(url, body, options)
+        //TODO tomcat处理put有问题，改成post
+        return this.http.post(url, body, options)
             .map(this.extractData).map(() => {
                 let currentUser: UserModel = this.getCurrentUser();
                 currentUser.email = email;
@@ -80,8 +80,8 @@ export class ProfileService extends BaseService {
         let body = `oldPassword=${oldPassword}&newPassword=${newPassword}`;
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
-
-        return this.http.put(url, body, options)
+        //TODO tomcat处理put有问题，改成post
+        return this.http.post(url, body, options)
             .map(this.extractData).catch(this.handleError);
     }
 }
