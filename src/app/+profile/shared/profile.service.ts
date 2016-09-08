@@ -38,7 +38,7 @@ export class ProfileService extends BaseService {
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(this.url, body, options)
+        return this.http.put(this.url + '?' +body, options)
             .map(this.extractData).map(() => {
                 let currentUser: UserModel = this.getCurrentUser();
                 currentUser.nickname = nickname;
@@ -53,7 +53,7 @@ export class ProfileService extends BaseService {
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(url, body, options)
+        return this.http.put(url + '?' +body, options)
             .map(this.extractData).map(() => {
                 let currentUser: UserModel = this.getCurrentUser();
                 currentUser.mobile = mobile;
@@ -67,7 +67,7 @@ export class ProfileService extends BaseService {
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(url, body, options)
+        return this.http.put(url + '?' +body, options)
             .map(this.extractData).map(() => {
                 let currentUser: UserModel = this.getCurrentUser();
                 currentUser.email = email;
@@ -81,7 +81,7 @@ export class ProfileService extends BaseService {
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(url, body, options)
+        return this.http.put(url + '?' +body, options)
             .map(this.extractData).catch(this.handleError);
     }
 }
