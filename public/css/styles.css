@@ -154,6 +154,22 @@ input:read-only, input:disabled {
     margin-bottom: 25px;
     text-align: center;
 }
+.nfd_confirm {
+    width: 380px;
+    height: 200px;
+    margin-left: -190px;
+}
+.confirm_body {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 50px;
+}
+.confirm_body p {
+    font-size: 15px;
+    color: #354285;
+    line-height: 30px;
+}
 .nfd_large {
     width: 600px;
     margin-left: -285px;
@@ -251,6 +267,7 @@ input:read-only, input:disabled {
 }
 .empty_btn{
     display: inline-block;
+    background-color: #ffffff;
     margin-right: 10px;
     margin-left: 10px;
     width: 120px;

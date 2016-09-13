@@ -26,11 +26,13 @@
             </li>
         </ul>
     </div>
+    <div [hidden]="!(showAdd || showDelete)" class="dialog_mask" (click)="cancel()"></div>
+
     <!--创建应用的弹出层， 不能用[hidden]="!showAdd"-->
-    <div *ngIf="showAdd" class="dialog_mask">
+    <div *ngIf="showAdd" class="notfull_dialog">
         <form (ngSubmit)="createApp()" #appCreateForm="ngForm">
-            <div class="create_app">
-                <p class="dialog_title">创建应用</p>
+            <p class="nfd_title">创建应用</p>
+            <div class="nfd_body">
                 <div class="app_name clearfix">
                     <p>应用名称</p>
                     <input type="text" name="appName" required [(ngModel)]="application.name" #appName="ngModel"
@@ -47,29 +49,22 @@
                     <input type="hidden" name="appLogo" required [(ngModel)]="application.logo"/>
                     <!--<p class="app_logo_btn" (click)="upload($event)" >上传</p>-->
                 </div>
-                <div class="submit_btn clearfix">
-                    <button class="cancel_btn" (click)="cancalCreate()">取消</button>
-                    <button type="submit" class="sure_btn" [disabled]="!appCreateForm.form.valid">保存</button>
-                </div>
+            </div>
+            <div class="nfd_footer">
+                <button type="submit" class="fill_btn" [disabled]="!appCreateForm.form.valid">保存</button>
             </div>
         </form>
     </div>
+
     <!--删除应用的弹出层， 不能用[hidden]="!showDelete"-->
-    <div *ngIf="showDelete" class="dialog_mask">
-        <form (ngSubmit)="deleteApp()" #appDeleteForm="ngForm">
-            <div class="delete_app">
-                <p class="dialog_title">删除应用</p>
-                <div class="app_name clearfix">
-                    <p>登录密码</p>
-                    <input type="text" name="password" required [(ngModel)]="password" #pwd="ngModel"
-                           placeholder="输入登录密码" />
-                    <div [hidden]="pwd.valid || pwd.pristine">登录密码必填</div>
-                </div>
-                <div class="submit_btn clearfix">
-                    <button class="cancel_btn" (click)="cancalDelete()">取消</button>
-                    <button type="submit" class="sure_btn" [disabled]="!appDeleteForm.form.valid">保存</button>
-                </div>
-            </div>
-        </form>
+    <div *ngIf="showDelete" class="notfull_dialog nfd_confirm">
+        <p class="nfd_title">删除应用</p>
+        <div class="nfd_body confirm_body">
+            <p>删除应用不可恢复，确认删除？</p>
+        </div>
+        <div class="nfd_footer">
+            <button class="empty_btn" (click)="cancel()">取消</button>
+            <button type="button" class="fill_btn" (click)="deleteApp()" >确定</button>
+        </div>
     </div>
 </div>

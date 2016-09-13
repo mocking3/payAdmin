@@ -128,27 +128,6 @@
     height: 100%;
 }
 
-
-/*创建应用的弹出层*/
-.dialog_mask{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(178,178,178,.7);
-    z-index: 10;
-}
-.dialog_title{
-    font-size: 20px;
-    font-weight: bold;
-    color: #354285;
-    text-align: center;
-    height: 59px;
-    width: 335px;
-    margin: 0 auto;
-    border-bottom: 1px solid #eef1f9;
-}
 .create_app{
     width: 380px;
     margin: 0 auto;

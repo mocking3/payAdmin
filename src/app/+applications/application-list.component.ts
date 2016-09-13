@@ -69,17 +69,11 @@ export class ApplicationListComponent implements OnInit {
             error => {throw error});
     }
 
-    cancalCreate() {
+    cancel() {
         this.application = new ApplicationModel();
         this.showAdd = false;
-    }
-
-    cancalDelete() {
-        this.application = new ApplicationModel();
-        this.password = '';
         this.showDelete = false;
     }
-
 
     upload($event: any) {
         this.uploadService.getObserver().subscribe(progress =>  {
