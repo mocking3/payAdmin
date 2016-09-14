@@ -40,7 +40,7 @@ export class LoginComponent {
             let arg = this;
             let interval = setInterval(function () {
                 // 如果没过期
-                if (arg.showQrCode && new Date().getMilliseconds() - data.createTime < 5 * 60 * 1000) {
+                if (arg.showQrCode && new Date().getTime() - data.createTime < 5 * 60 * 1000) {
                     arg.authService.scanLogin(data.text).subscribe(data2 => {
                         if (data2 && arg.authService.isLoggedIn()) {
                             clearInterval(interval);
