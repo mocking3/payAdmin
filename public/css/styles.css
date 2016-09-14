@@ -73,6 +73,9 @@ input:read-only, input:disabled {
     width: 85.9%;
     float: left;
 }
+.pull_right{
+    float: right;
+}
 
 /* 完全弹出框 */
 .full-dialog {

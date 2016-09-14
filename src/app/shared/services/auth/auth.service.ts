@@ -29,6 +29,26 @@ export class AuthService extends BaseService {
             }).catch(this.handleError);
     }
 
+    scanLogin(text: string): Observable<UserModel> {
+        let url = this.url + '/scan';
+        let body = `text=${text}`;
+        let options = new RequestOptions({ headers: this.getHeaders() });
+
+        return this.http.post(url, body, options)
+            .map(this.extractData).map(data => {
+                this.setToken(data.authorization);
+                this.setCurrentUser(data.user);
+                return data.user;
+            }).catch(this.handleError);
+    }
+
+    getQrCode(): Observable<any>  {
+        let url = this.url + '/scan';
+        let options = new RequestOptions({ headers: this.getHeaders() });
+
+        return this.http.get(url, options).map(this.extractData).catch(this.handleError);
+    }
+
     isLoggedIn(): boolean {
         return !!this.getToken();
     }

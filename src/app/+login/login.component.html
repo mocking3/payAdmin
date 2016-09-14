@@ -11,8 +11,20 @@
                 <span></span>
                 <input type="password" required [(ngModel)]="model.password" name="password" #password="ngModel"/>
                 <div [hidden]="password.valid || password.pristine">密码必填</div>
+                <a class="foget_pwd">忘记密码</a>
             </div>
             <button type="submit" class="login_btn" [disabled]="!loginForm.form.valid">登录</button>
+            <div class="signup">
+                <a href="javascript:void(0);" (click)="getQrCode()" >扫码登录</a>
+                <a class="pull_right">注册</a>
+            </div>
         </div>
     </form>
+</div>
+<div [hidden]="!showQrCode" class="dialog_mask" (click)="cancel()"></div>
+<div [hidden]="!showQrCode" class="login_box">
+    <div class="qrcode">
+        <img class="img" src="{{qrCodeUrl}}" >
+        <p class="sub_title">重新获取二维码请点击 <a href="javascript:void(0);" (click)="getQrCode()" >刷新</a></p>
+    </div>
 </div>

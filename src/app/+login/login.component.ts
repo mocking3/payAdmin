@@ -12,6 +12,9 @@ export class LoginComponent {
     message: string;
     model: LoginModel = new LoginModel();
 
+    showQrCode: boolean = false;
+    qrCodeUrl: string;
+
     constructor(public authService: AuthService,
                 public router: Router,
                 public toastService: ToastService) {
@@ -28,5 +31,35 @@ export class LoginComponent {
                 this.router.navigate([redirect]);
             }
         }, error =>  {throw error});
+    }
+
+    getQrCode() {
+        this.authService.getQrCode().subscribe(data => {
+            this.qrCodeUrl = data.qrCodeUrl;
+            this.showQrCode = true;
+            let arg = this;
+            let interval = setInterval(function () {
+                // 如果没过期
+                if (arg.showQrCode && new Date().getMilliseconds() - data.createTime < 5 * 60 * 1000) {
+                    arg.authService.scanLogin(data.text).subscribe(data2 => {
+                        if (data2 && arg.authService.isLoggedIn()) {
+                            clearInterval(interval);
+                            arg.message = `登录成功，欢迎${data2.nickname}`;
+                            arg.toastService.triggerToast('提示', arg.message, 'success');
+                            let redirect = arg.authService.redirectUrl ? arg.authService.redirectUrl : '/apps';
+                            arg.router.navigate([redirect]);
+                        }
+                    }, error2 =>  {throw error2});
+                } else {
+                    clearInterval(interval);
+                }
+            }, 500);
+        }, error =>  {throw error});
+    }
+
+
+
+    cancel() {
+        this.showQrCode = false;
     }
 }
