@@ -43,7 +43,9 @@ export class LoginComponent {
                 if (arg.showQrCode && new Date().getTime() - data.createTime < 5 * 60 * 1000) {
                     arg.authService.scanLogin(data.text).subscribe(data2 => {
                         if (data2 && arg.authService.isLoggedIn()) {
+                            this.showQrCode = false;
                             clearInterval(interval);
+
                             arg.message = `登录成功，欢迎${data2.nickname}`;
                             arg.toastService.triggerToast('提示', arg.message, 'success');
                             let redirect = arg.authService.redirectUrl ? arg.authService.redirectUrl : '/apps';
