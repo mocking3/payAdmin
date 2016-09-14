@@ -53,7 +53,7 @@ export class LoginComponent {
                         }
                     }, error2 =>  {throw error2});
                 } else {
-                    console.log('二维码已过期');
+                    console.log('二维码已关闭或已过期');
                     clearInterval(interval);
                 }
             }, 800);
