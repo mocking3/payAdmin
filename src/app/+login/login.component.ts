@@ -54,7 +54,7 @@ export class LoginComponent {
                     console.log('二维码已过期');
                     clearInterval(interval);
                 }
-            }, 500);
+            }, 800);
         }, error =>  {throw error});
     }
 
