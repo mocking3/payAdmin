@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy, ElementRef}  from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import * as echarts from 'echarts';
 import * as moment from 'moment';
@@ -30,8 +30,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
     countChart: any;
     feeChart: any;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private elementRef:ElementRef,
                 private analysisService: AnalysisService) {
     }
@@ -41,7 +40,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
         this.initCountChart();
         this.initFeeChart();
 
-        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+        this.sub = this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
 
             this.analysisService.getDataSummary(this.appId, this.currentDate.format('YYYY/MM/DD'),

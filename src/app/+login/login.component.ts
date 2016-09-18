@@ -57,7 +57,9 @@ export class LoginComponent {
                     clearInterval(interval);
                 }
             }, 800);
-        }, error =>  {throw error});
+        }, error =>  {
+            throw error;
+        });
     }
 
 

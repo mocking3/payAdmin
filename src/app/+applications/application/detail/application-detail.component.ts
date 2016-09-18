@@ -1,15 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import {UploadService, ToastService} from '../../../shared/services';
-import {ClipboardDirective} from '../../../shared/directives';
 import {ApplicationService, ApplicationModel} from '../../shared';
 
 @Component({
     templateUrl: './application-detail.component.html',
     styleUrls: ['./application-detail.component.css'],
-    providers: [ApplicationService],
-    directives: [ClipboardDirective]
+    providers: [ApplicationService]
 })
 export class ApplicationDetailComponent implements OnInit, OnDestroy {
     appId: number;
@@ -18,8 +16,7 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
     uploadProgress: number;
     sub: any;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private applicationService: ApplicationService,
                 private uploadService: UploadService,
                 private toastService: ToastService) {
@@ -27,7 +24,7 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // 获取父路由变量
-        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+        this.sub = this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getApplication();
         });

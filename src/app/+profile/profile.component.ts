@@ -1,8 +1,7 @@
 import {Component, OnInit, ViewChild } from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
 
 import {HeaderComponent} from '../shared/header';
-import {ProfileLeftMenuComponent} from '../shared/menus';
+
 @Component({
     template: `
         <div class="epay">
@@ -14,8 +13,7 @@ import {ProfileLeftMenuComponent} from '../shared/menus';
                 </div>
             </div>
         </div>
-    `,
-    directives: [ROUTER_DIRECTIVES, HeaderComponent, ProfileLeftMenuComponent]
+    `
 })
 export class ProfileComponent implements OnInit {
     @ViewChild(HeaderComponent)

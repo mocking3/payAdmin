@@ -1,6 +1,6 @@
 export * from './constants';
 export * from './directives';
-export * from './exception';
+export * from './error';
 export * from './header';
 export * from './menus';
 export * from './models';

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import {ToastService} from '../../../../shared/services';
 
@@ -15,15 +15,14 @@ export class WebhookSettingComponent implements OnInit, OnDestroy {
     message: string;
     sub: any;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private webhookSettingService: WebhookSettingService,
                 private toastService:ToastService) {
     }
 
     ngOnInit() {
         // 获取父路由变量
-        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+        this.sub = this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getAddress();
         });

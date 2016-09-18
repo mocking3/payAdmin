@@ -1,5 +1,4 @@
 import {Component,OnInit} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
 
 import {ToastService, UploadService} from '../shared/services';
 import {HeaderComponent} from '../shared/header';
@@ -8,8 +7,7 @@ import {ApplicationService, ApplicationModel} from './shared';
 @Component({
     templateUrl: './application-list.component.html',
     styleUrls: ['./application-list.component.css'],
-    providers: [ApplicationService],
-    directives: [ROUTER_DIRECTIVES, HeaderComponent]
+    providers: [ApplicationService]
 })
 export class ApplicationListComponent implements OnInit {
     message: string;

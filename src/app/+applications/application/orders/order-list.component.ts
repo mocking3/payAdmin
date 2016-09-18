@@ -1,20 +1,15 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy  } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import {PaginatePipe, PaginationControlsCmp, PaginationService} from 'ng2-pagination';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import * as moment from 'moment';
 import Moment = moment.Moment;
 
 import {OrderService, OrderInfoModel} from './shared';
-import {ChannelPipe} from '../../../shared/pipes'
 
 @Component({
     templateUrl: './order-list.component.html',
     styleUrls: ['./order-list.component.css'],
-    providers: [OrderService, PaginationService],
-    directives: [PaginationControlsCmp],
-    pipes: [PaginatePipe, ChannelPipe]
-    // changeDetection: ChangeDetectionStrategy.OnPush
+    providers: [OrderService]
 })
 export class OrderComponent implements OnInit, OnDestroy {
     appId: number;
@@ -37,8 +32,7 @@ export class OrderComponent implements OnInit, OnDestroy {
 
     private sub: any;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private orderService: OrderService) {
     }
 
@@ -46,7 +40,7 @@ export class OrderComponent implements OnInit, OnDestroy {
         // 初始化日历控件
         this.initDatePicker();
         // 获取父路由变量
-        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+        this.sub = this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getOrders();
         });

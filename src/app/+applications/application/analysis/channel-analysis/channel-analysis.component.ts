@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy, ElementRef} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import * as echarts from 'echarts';
 import * as moment from 'moment';
@@ -36,8 +36,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
 
     private sub: any;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private elementRef:ElementRef,
                 private analysisService: AnalysisService) {
     }
@@ -51,7 +50,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
         this.feeChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeFee'));
         this.feeChart.setOption(Constants.getPieEchartOption([], [], []));
 
-        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+        this.sub = this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.cb(moment().subtract(6, 'days'), moment());
         });

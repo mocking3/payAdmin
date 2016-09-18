@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {WxpayService, WxconfigModel} from "./shared";
+import {WxpayService, WxconfigModel} from './shared';
 import {ToastService, UploadService} from '../../../shared/services';
 
 @Component({

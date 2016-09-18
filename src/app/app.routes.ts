@@ -1,4 +1,4 @@
-import {RouterConfig} from '@angular/router';
+import { Routes } from '@angular/router';
 
 import {PageNotFoundComponent} from './shared';
 import {AuthGuard} from './shared/services/auth';
@@ -16,12 +16,12 @@ import {ProfileBindComponent} from './+profile/bind';
 import {PwdResetComponent} from './+profile/pwd-reset';
 import {WxpayListComponent} from './+profile/channels';
 
-export const routes:RouterConfig = [
+export const routes:Routes = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'apps', component: ApplicationListComponent, canActivate: [AuthGuard]},
     {path: 'apps/:id', component: ApplicationComponent, canActivate: [AuthGuard], children: [
-        {path: '', component: TodayAnalysisComponent},
+        {path: '', component: TodayAnalysisComponent, canActivateChild: [AuthGuard]},
         {path: 'detail', component: ApplicationDetailComponent},
         {path: 'orders', component: OrderComponent},
         {path: 'today-analysis', component: TodayAnalysisComponent},
@@ -33,7 +33,7 @@ export const routes:RouterConfig = [
 
     ]},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
-        {path: '', component: ProfileBaseComponent},
+        {path: '', component: ProfileBaseComponent, canActivateChild: [AuthGuard]},
         {path: 'base', component: ProfileBaseComponent},
         {path: 'bind', component: ProfileBindComponent},
         {path: 'pwd-reset', component: PwdResetComponent},

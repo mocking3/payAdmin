@@ -4,7 +4,7 @@ import {Http, RequestOptions} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 
 import {BaseService, Constants} from '../../../../../shared';
-import {ChannelModel} from "./channel.model";
+import {ChannelModel} from './channel.model';
 
 @Injectable()
 export class ChannelSettingService extends BaseService {

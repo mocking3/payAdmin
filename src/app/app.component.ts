@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router} from '@angular/router';
 
-import {ToastyService, ToastyConfig, ToastyComponent, ToastOptions, ToastData} from 'ng2-toasty';
-import {SlimLoadingBarService, SlimLoadingBarComponent} from 'ng2-slim-loading-bar';
+import {ToastyService, ToastOptions} from 'ng2-toasty';
+import {SlimLoadingBarService} from 'ng2-slim-loading-bar';
 import {ToastService} from './shared/services/toast.service.ts';
 
 import '../../public/css/styles.css';
@@ -14,8 +14,6 @@ import '../../public/css/styles.css';
         <ng2-toasty></ng2-toasty>
         <ng2-slim-loading-bar></ng2-slim-loading-bar>
     `,
-    providers: [SlimLoadingBarService],
-    directives: [ROUTER_DIRECTIVES, ToastyComponent, SlimLoadingBarComponent]
 })
 export class AppComponent implements OnInit {
     

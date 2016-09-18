@@ -1,4 +1,4 @@
-import {Injectable, Injector} from '@angular/core';
+import {Injectable, Injector, ErrorHandler} from '@angular/core';
 import { Router } from '@angular/router';
 
 import {ApiException} from './api.exception';
@@ -6,11 +6,11 @@ import {ErrorCode} from './error-code';
 import {ToastService} from '../services/toast.service.ts';
 
 @Injectable()
-export class MyExceptionHandler {
+export class MyErrorHandler implements ErrorHandler{
     constructor(private injector: Injector) {
     }
 
-    call(error: any, stackTrace: any = null, reason: any = null) {
+    handleError(error: any) : void {
         console.error(error);
         let toastService:ToastService = this.injector.get(ToastService);
         if (error instanceof ApiException) {

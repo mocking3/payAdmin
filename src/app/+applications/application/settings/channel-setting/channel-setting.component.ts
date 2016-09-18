@@ -1,7 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import {NgClass} from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import {ToastService} from '../../../../shared/services';
 import {ChannelSettingService, ChannelModel, ChannelConfigModel} from './shared';
@@ -10,7 +8,6 @@ import {ChannelSettingService, ChannelModel, ChannelConfigModel} from './shared'
     templateUrl: './channel-setting.component.html',
     styleUrls: ['./channel-setting.component.css'],
     providers: [ChannelSettingService],
-    directives: [ROUTER_DIRECTIVES, NgClass]
 })
 export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChecked  {
     appId: number;
@@ -26,15 +23,14 @@ export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChec
 
     chooseChannels: ChannelConfigModel[];
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute,
                 private channelSettingService: ChannelSettingService,
                 private toastService:ToastService) {
     }
 
     ngOnInit() {
         // 获取父路由变量
-        this.sub = this.router.routerState.parent(this.route).params.subscribe(params => {
+        this.sub = this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getChannels();
         });
