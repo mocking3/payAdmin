@@ -11,7 +11,6 @@ import {ApplicationService, ApplicationModel} from './shared';
 })
 export class ApplicationListComponent implements OnInit {
     message: string;
-    password: string;
     applications: ApplicationModel[];
     // 是否显示新建弹出框
     showAdd: boolean = false;
@@ -61,10 +60,13 @@ export class ApplicationListComponent implements OnInit {
                 this.message = '删除成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
                 this.application = new ApplicationModel();
-                this.password = '';
                 this.showDelete = false;
             },
-            error => {throw error});
+            error => {
+                this.application = new ApplicationModel();
+                this.showDelete = false;
+                throw error;
+            });
     }
 
     cancel() {

@@ -1,4 +1,5 @@
 .homepage{
+    background-color: #fafbfe;
     width: 100%;
     height: 100%;
     position: relative;
@@ -60,9 +61,8 @@
 
 .account_name_con{
     width: 100%;
-    background-color: #fafbfe;
     margin-top: -95px;
-    height: 100%;
+    /*height: 100%;*/
 }
 .logo_list{
     width: 840px;

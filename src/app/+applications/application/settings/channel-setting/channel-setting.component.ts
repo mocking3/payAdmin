@@ -96,6 +96,8 @@ export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChec
     }
 
     saveChoosedChannel() {
+        if (this.choicedId == -1)
+            this.choicedId = this.currentChannel.choiceId;
         let data = this.chooseChannels.find(data => data.id == this.choicedId);
         this.currentChannel.choiceId = data.id;
         this.currentChannel.choiceName = data.name;
@@ -105,6 +107,7 @@ export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChec
             () => {
                 this.message = '设置成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
+                this.choicedId = -1;
                 this.channelChoose = -1;
             },
             error => {throw error});
