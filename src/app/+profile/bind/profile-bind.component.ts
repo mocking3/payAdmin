@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import {ToastService,MessageService, UserModel} from '../../shared/services';
 import {ProfileService} from '../shared';
@@ -8,7 +8,7 @@ import {ProfileService} from '../shared';
     styleUrls: ['./profile-bind.component.css'],
     providers: [ProfileService]
 })
-export class ProfileBindComponent implements OnInit {
+export class ProfileBindComponent implements OnInit, OnDestroy {
     message: string;
     profile: UserModel = new UserModel();
 
@@ -33,6 +33,11 @@ export class ProfileBindComponent implements OnInit {
             error => {throw error});
     }
 
+    ngOnDestroy() {
+        this.mwait = 0;
+        this.ewait = 0;
+    }
+
     changeMobile() {
         this.profileService.changeMobile(this.mobile, this.mcode).subscribe(
             () => {
@@ -42,6 +47,7 @@ export class ProfileBindComponent implements OnInit {
 
                 this.mobile = '';
                 this.mcode = '';
+                this.mwait = 0;
                 this.mactive = false;
                 setTimeout(() => this.mactive = true, 0);
             },
@@ -56,6 +62,7 @@ export class ProfileBindComponent implements OnInit {
                 this.toastService.triggerToast('提示', this.message, 'success');
                 this.email = '';
                 this.ecode = '';
+                this.ewait = 0;
                 this.eactive = false;
                 setTimeout(() => this.eactive = true, 0);
             },
