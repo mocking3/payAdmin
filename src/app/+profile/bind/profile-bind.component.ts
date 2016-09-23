@@ -15,10 +15,12 @@ export class ProfileBindComponent implements OnInit {
     mobile: string;
     mcode: string;
     mwait:number = 0;
+    mactive:boolean = true;
 
     email: string;
     ecode: string;
     ewait:number = 0;
+    eactive:boolean = true;
 
     constructor(private profileService: ProfileService,
                 private toastService: ToastService,
@@ -37,6 +39,11 @@ export class ProfileBindComponent implements OnInit {
                 this.profile.mobile = this.mobile;
                 this.message = '更换成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
+
+                this.mobile = '';
+                this.mcode = '';
+                this.mactive = false;
+                setTimeout(() => this.mactive = true, 0);
             },
             error => {throw error});
     }
@@ -47,6 +54,10 @@ export class ProfileBindComponent implements OnInit {
                 this.profile.email = this.email;
                 this.message = '更换成功';
                 this.toastService.triggerToast('提示', this.message, 'success');
+                this.email = '';
+                this.ecode = '';
+                this.eactive = false;
+                setTimeout(() => this.eactive = true, 0);
             },
             error => {throw error});
     }
@@ -58,7 +69,7 @@ export class ProfileBindComponent implements OnInit {
             this.toastService.triggerToast('提示', '无效的手机号', 'error');
             return;
         }
-        this.mwait = 60;
+        this.mwait = 120;
         let arg = this;
         var int = setInterval(function () {
             if (--arg.mwait == 0) {
@@ -81,7 +92,7 @@ export class ProfileBindComponent implements OnInit {
             this.toastService.triggerToast('提示', '无效的邮箱', 'error');
             return;
         }
-        this.ewait = 60;
+        this.ewait = 120;
         let arg = this;
         var int = setInterval(function () {
             if (--arg.ewait == 0) {

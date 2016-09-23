@@ -4,6 +4,7 @@ import {PageNotFoundComponent} from './shared';
 import {AuthGuard} from './shared/services/auth';
 
 import {LoginComponent}  from './+login';
+import {RegisterComponent} from './+register/register.component';
 import {ApplicationListComponent} from './+applications';
 import {ApplicationComponent, ApplicationDetailComponent} from './+applications/application';
 import {ChannelSettingComponent} from './+applications/application/settings/channel-setting';
@@ -19,6 +20,7 @@ import {WxpayListComponent} from './+profile/channels';
 export const routes:Routes = [
     {path: '', redirectTo: 'apps', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
     {path: 'apps', component: ApplicationListComponent, canActivate: [AuthGuard]},
     {path: 'apps/:id', component: ApplicationComponent, canActivate: [AuthGuard], children: [
         {path: '', component: TodayAnalysisComponent, canActivateChild: [AuthGuard]},

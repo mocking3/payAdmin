@@ -14,11 +14,12 @@ import {routes} from './app.routes';
 import {MyErrorHandler} from './shared/error';
 import {HeaderComponent} from './shared/header';
 import {AppLeftMenuComponent, ProfileLeftMenuComponent} from './shared/menus';
-import {ClipboardDirective} from './shared/directives';
+import {ClipboardDirective, EqualValidatorDirective} from './shared/directives';
 import {ChannelPipe} from './shared/pipes';
 import {AuthGuard, AuthService, UploadService, ToastService, MessageService} from './shared/services';
 
 import {LoginComponent}  from './+login';
+import {RegisterComponent} from './+register/register.component';
 import {ApplicationListComponent} from './+applications';
 import {ApplicationComponent, ApplicationDetailComponent} from './+applications/application';
 import {ChannelSettingComponent} from './+applications/application/settings/channel-setting';
@@ -33,7 +34,6 @@ import {WxpayListComponent} from './+profile/channels';
 
 import {PageNotFoundComponent} from './shared';
 
-
 @NgModule({
     declarations: [AppComponent,
         HeaderComponent,
@@ -41,6 +41,7 @@ import {PageNotFoundComponent} from './shared';
         ProfileLeftMenuComponent,
 
         LoginComponent,
+        RegisterComponent,
         ApplicationComponent,
         ApplicationDetailComponent,
         ApplicationListComponent,
@@ -59,6 +60,7 @@ import {PageNotFoundComponent} from './shared';
         PageNotFoundComponent,
 
         ClipboardDirective,
+        EqualValidatorDirective,
         ChannelPipe,
 
         PaginationControlsCmp,

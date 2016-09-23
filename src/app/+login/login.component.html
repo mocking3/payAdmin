@@ -4,19 +4,25 @@
             <p class="login_title">登录</p>
             <div class="login_name">
                 <span></span>
-                <input type="text" required [(ngModel)]="model.username" name="username" #username="ngModel" />
-                <div [hidden]="username.valid || username.pristine">用户名必填</div>
+                <input type="text" required [(ngModel)]="model.username" name="username" #username="ngModel"
+                    placeholder="用户名/手机号/邮箱"/>
+                <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div [hidden]="!username.errors.required">用户名必填</div>
+                </div>
             </div>
             <div class="login_password">
                 <span></span>
-                <input type="password" required [(ngModel)]="model.password" name="password" #password="ngModel"/>
-                <div [hidden]="password.valid || password.pristine">密码必填</div>
+                <input type="password" required [(ngModel)]="model.password" name="password" #password="ngModel"
+                       placeholder="密码"/>
                 <a class="foget_pwd">忘记密码</a>
+                <div *ngIf="password.errors && password.touched" class="alert alert-danger">
+                    <div [hidden]="!password.errors.required">密码必填</div>
+                </div>
             </div>
             <button type="submit" class="login_btn" [disabled]="!loginForm.form.valid">登录</button>
             <div class="signup">
                 <a href="javascript:void(0);" (click)="getQrCode()" >扫码登录</a>
-                <a class="pull_right">注册</a>
+                <a class="pull_right" routerLink="/register">注册</a>
             </div>
         </div>
     </form>

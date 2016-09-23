@@ -46,7 +46,7 @@ export class LoginComponent {
                             this.showQrCode = false;
                             clearInterval(interval);
 
-                            arg.message = `登录成功，欢迎${data2.nickname}`;
+                            arg.message = `登录成功，欢迎${data2.username}`;
                             arg.toastService.triggerToast('提示', arg.message, 'success');
                             let redirect = arg.authService.redirectUrl ? arg.authService.redirectUrl : '/apps';
                             arg.router.navigate([redirect]);

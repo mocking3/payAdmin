@@ -1,0 +1,64 @@
+<div class="register">
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <div class="register_con">
+            <p class="register_title">注册</p>
+            <div class="register_name">
+                <span></span>
+                <input type="text" [(ngModel)]="model.username" name="username" #username="ngModel"
+                       required minlength="3" maxlength="30" placeholder="用户名"/>
+                <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div [hidden]="!username.errors.required">用户名必填</div>
+                    <div [hidden]="!username.errors.minlength">用户名至少3位</div>
+                    <div [hidden]="!username.errors.maxlength">用户名不超过30位</div>
+                </div>
+            </div>
+            <div class="register_password">
+                <span></span>
+                <input type="password" [(ngModel)]="model.password" name="password" #password="ngModel" (keyup)="checkPwdStrong()"
+                       required minlength="6" maxlength="30" placeholder="密码"/>
+                <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div [hidden]="!password.errors.required">密码必填</div>
+                    <div [hidden]="!password.errors.minlength">密码至少6位</div>
+                    <div [hidden]="!password.errors.maxlength">密码不超过30位</div>
+                </div>
+                <div [ngSwitch]="pwdStrong">
+                    <div *ngSwitchCase="1" class="alert alert-danger">密码强度：<strong>弱</strong></div>
+                    <div *ngSwitchCase="2" class="alert alert-warning">密码强度：<strong>中</strong></div>
+                    <div *ngSwitchCase="3" class="alert alert-info">密码强度：<strong>强</strong></div>
+                    <div *ngSwitchCase="4" class="alert alert-success">密码强度：<strong>非常好</strong></div>
+                </div>
+            </div>
+            <div class="register_password">
+                <span></span>
+                <input type="password" [(ngModel)]="model.password2" name="password2" #password2="ngModel"
+                       required equal="{{model.password}}" placeholder="重复密码"/>
+                <div *ngIf="password2.errors && (password2.dirty || password2.touched)" class="alert alert-danger">
+                    <div [hidden]="!password2.errors.required">密码必填</div>
+                    <div [hidden]="!(!password2.errors.required && password2.errors.equal)">两次输入的密码不一致</div>
+                </div>
+            </div>
+            <div class="register_mobile">
+                <span></span>
+                <input type="text"  [(ngModel)]="model.mobile" name="mobile" #mobile="ngModel"
+                       required pattern="^((13[0-9])|(14[5,7])|(15[^4,\D])|(17[6-8])|(18[0-9]))\d{8}$" placeholder="手机号"/>
+                <div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+                    <div [hidden]="!mobile.errors.required">手机号必填</div>
+                    <div [hidden]="!mobile.errors.pattern">手机号格式错误</div>
+                </div>
+            </div>
+            <div class="register_code">
+                <span></span>
+                <input type="text" required [(ngModel)]="model.code" name="code" #code="ngModel"
+                       placeholder="验证码"/>
+                <a href="javascript:void(0);" class="code_get" (click)="sendCode()">{{ mwait > 0 ? '重新获取(' + mwait + 's)' : '获取验证码' }}</a>
+                <div *ngIf="code.errors && code.touched" class="alert alert-danger">
+                    <div [hidden]="!code.errors.required">验证码必填</div>
+                </div>
+            </div>
+            <button type="submit" class="register_btn" [disabled]="!registerForm.form.valid">注册</button>
+            <div class="signup">
+                <a class="pull_right" routerLink="/login">返回登录</a>
+            </div>
+        </div>
+    </form>
+</div>
