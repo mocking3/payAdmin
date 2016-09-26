@@ -15,15 +15,14 @@ export class MessageService extends BaseService {
     }
 
     sendCode(account: string, scene: string):Observable<any> {
-        let body = '';
-        if (scene == 'mobileBind') {
+        let body: string = '';
+        if (scene == 'mobileBind' || scene == 'mobileRegistion' || scene == 'passwordForget') {
             body = `mobile=${account}&scene=${scene}`;
         } else if (scene == 'emailBind') {
             body = `email=${account}&scene=${scene}`;
-        } else if (scene == 'mobileRegistion') {
-            body = `mobile=${account}&scene=${scene}`;
         }
-        let options = new RequestOptions({ headers: this.getAuthHeaders() });
+        
+        let options = new RequestOptions({ headers: this.getHeaders() });
         return this.http.post(this.url, body, options).map(this.extractData).catch(this.handleError);
     }
 }

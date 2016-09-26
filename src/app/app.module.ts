@@ -19,7 +19,8 @@ import {ChannelPipe} from './shared/pipes';
 import {AuthGuard, AuthService, UploadService, ToastService, MessageService} from './shared/services';
 
 import {LoginComponent}  from './+login';
-import {RegisterComponent} from './+register/register.component';
+import {RegisterComponent} from './+register';
+import {PwdForgetComponent} from './+pwd-forget';
 import {ApplicationListComponent} from './+applications';
 import {ApplicationComponent, ApplicationDetailComponent} from './+applications/application';
 import {ChannelSettingComponent} from './+applications/application/settings/channel-setting';
@@ -42,6 +43,7 @@ import {PageNotFoundComponent} from './shared';
 
         LoginComponent,
         RegisterComponent,
+        PwdForgetComponent,
         ApplicationComponent,
         ApplicationDetailComponent,
         ApplicationListComponent,
