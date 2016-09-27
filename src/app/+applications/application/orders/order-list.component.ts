@@ -30,8 +30,6 @@ export class OrderComponent implements OnInit, OnDestroy {
 
     showDetail: boolean = false;
 
-    private sub: any;
-
     constructor(private route: ActivatedRoute,
                 private orderService: OrderService) {
     }
@@ -43,7 +41,7 @@ export class OrderComponent implements OnInit, OnDestroy {
             if (params['keyword'])
                 this.searchParams.outTradeNo = params['keyword'];
             // 获取父路由变量
-            this.sub = this.route.parent.params.subscribe(params => {
+            this.route.parent.params.subscribe(params => {
                 this.appId = +params['id'];
                 this.getOrders();
             });
@@ -51,7 +49,7 @@ export class OrderComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        
     }
 
     getOrders() {

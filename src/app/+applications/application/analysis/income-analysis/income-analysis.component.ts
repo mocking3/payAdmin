@@ -32,7 +32,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
     orderFeeChart: any;
     channelFeeChart: any;
 
-    private sub: any;
+    
 
     constructor(private route: ActivatedRoute,
                 private elementRef:ElementRef,
@@ -48,7 +48,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
         this.channelFeeChart = echarts.init(this.elementRef.nativeElement.querySelector('#channelChargeFee'));
         this.channelFeeChart.setOption(Constants.getLineEchartOption([], [], []));
 
-        this.sub = this.route.parent.params.subscribe(params => {
+        this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.cb(moment().subtract(6, 'days'), moment());
 
@@ -110,7 +110,7 @@ export class IncomAnalysisComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        
     }
 
     initDatePicker() {

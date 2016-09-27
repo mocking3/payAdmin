@@ -13,7 +13,7 @@ export class WebhookSettingComponent implements OnInit, OnDestroy {
     appId: number;
     address: string;
     message: string;
-    sub: any;
+    
 
     constructor(private route: ActivatedRoute,
                 private webhookSettingService: WebhookSettingService,
@@ -22,14 +22,14 @@ export class WebhookSettingComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // 获取父路由变量
-        this.sub = this.route.parent.params.subscribe(params => {
+        this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getAddress();
         });
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        
     }
     
     getAddress() {

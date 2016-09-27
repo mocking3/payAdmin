@@ -18,7 +18,7 @@ import {AnalysisService} from '../shared';
 export class TodayAnalysisComponent implements OnInit, OnDestroy {
     message: string;
     currentDate: Moment = moment();
-    sub: any;
+    
     appId: number;
     dataSummary: any = {
         preOrderCount: 0,
@@ -40,7 +40,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
         this.initCountChart();
         this.initFeeChart();
 
-        this.sub = this.route.parent.params.subscribe(params => {
+        this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
 
             this.analysisService.getDataSummary(this.appId, this.currentDate.format('YYYY/MM/DD'),
@@ -84,7 +84,7 @@ export class TodayAnalysisComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        
     }
 
     initCountChart() {

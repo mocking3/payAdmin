@@ -14,7 +14,7 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
     message: string;
     application: ApplicationModel = new ApplicationModel();
     uploadProgress: number;
-    sub: any;
+    
 
     constructor(private route: ActivatedRoute,
                 private applicationService: ApplicationService,
@@ -24,14 +24,14 @@ export class ApplicationDetailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // 获取父路由变量
-        this.sub = this.route.parent.params.subscribe(params => {
+        this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getApplication();
         });
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        
     }
 
     getApplication() {

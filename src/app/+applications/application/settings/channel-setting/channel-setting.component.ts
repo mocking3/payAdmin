@@ -13,7 +13,7 @@ export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChec
     appId: number;
     channels: ChannelModel[][];
     message: string;
-    sub: any;
+    
 
     currentChannel: ChannelModel = new ChannelModel();
 
@@ -30,14 +30,14 @@ export class ChannelSettingComponent implements OnInit, OnDestroy, AfterViewChec
 
     ngOnInit() {
         // 获取父路由变量
-        this.sub = this.route.parent.params.subscribe(params => {
+        this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.getChannels();
         });
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        
     }
 
     ngAfterViewChecked() {

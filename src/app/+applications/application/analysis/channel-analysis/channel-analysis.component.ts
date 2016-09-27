@@ -34,7 +34,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
     countChart: any;
     feeChart: any;
 
-    private sub: any;
+
 
     constructor(private route: ActivatedRoute,
                 private elementRef:ElementRef,
@@ -50,7 +50,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
         this.feeChart = echarts.init(this.elementRef.nativeElement.querySelector('#chargeFee'));
         this.feeChart.setOption(Constants.getPieEchartOption([], [], []));
 
-        this.sub = this.route.parent.params.subscribe(params => {
+        this.route.parent.params.subscribe(params => {
             this.appId = +params['id'];
             this.cb(moment().subtract(6, 'days'), moment());
         });
@@ -137,7 +137,7 @@ export class ChannelAnalysisComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+
     }
 
     initDatePicker() {
