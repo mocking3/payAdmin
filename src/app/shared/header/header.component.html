@@ -15,10 +15,10 @@
         <a href="javascript:void(0);" *ngIf="showAppBack" (click)="goAppList()">
             <p class="go_back_list"><span></span>返回列表</p>
         </a>
-        <p *ngIf="showSearch" class="epay_search_btn">查询</p>
+        <p *ngIf="showSearch" class="epay_search_btn" (click)="goOrderList()">查询</p>
         <div *ngIf="showSearch" class="epay_search clearfix">
             <span></span>
-            <input type="text" placeholder="请输入商户订单号">
+            <input type="text" placeholder="请输入商户订单号" [(ngModel)]="keyword" >
         </div>
     </div>
 </div>

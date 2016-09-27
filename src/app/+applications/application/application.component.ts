@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import {HeaderComponent} from '../../shared/header';
 
@@ -19,9 +20,15 @@ export class ApplicationComponent implements OnInit {
     @ViewChild(HeaderComponent)
     private headerComponent: HeaderComponent;
 
+    constructor(private route: ActivatedRoute) {
+    }
+
     ngOnInit() {
-        this.headerComponent.showAppBack = true;
-        this.headerComponent.showSearch = true;
+        this.route.params.subscribe(params => {
+            this.headerComponent.showAppBack = true;
+            this.headerComponent.showSearch = true;
+            this.headerComponent.appId = +params['id'];
+        });
     }
 
 }

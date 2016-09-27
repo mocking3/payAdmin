@@ -12,6 +12,8 @@ export class HeaderComponent {
     message: string;
     showAppBack: boolean = false;
     showSearch: boolean = false;
+    appId: number;
+    keyword: string;
     constructor(public authService: AuthService, public router: Router) {
     }
 
@@ -24,5 +26,9 @@ export class HeaderComponent {
 
     goAppList() {
         this.router.navigate(['/apps']);
+    }
+
+    goOrderList() {
+        this.router.navigate([`/apps/${this.appId}/orders`], { queryParams: { keyword: this.keyword } });
     }
 }

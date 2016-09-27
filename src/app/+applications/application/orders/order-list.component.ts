@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import * as moment from 'moment';
@@ -39,10 +39,14 @@ export class OrderComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // 初始化日历控件
         this.initDatePicker();
-        // 获取父路由变量
-        this.sub = this.route.parent.params.subscribe(params => {
-            this.appId = +params['id'];
-            this.getOrders();
+        this.route.queryParams.subscribe(params => {
+            if (params['keyword'])
+                this.searchParams.outTradeNo = params['keyword'];
+            // 获取父路由变量
+            this.sub = this.route.parent.params.subscribe(params => {
+                this.appId = +params['id'];
+                this.getOrders();
+            });
         });
     }
 
