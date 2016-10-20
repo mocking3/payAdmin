@@ -12,6 +12,7 @@ import {ChannelSettingComponent} from './+applications/application/settings/chan
 import {WebhookSettingComponent} from './+applications/application/settings/webhook-setting';
 import {TodayAnalysisComponent, IncomAnalysisComponent, OrderAnalysisComponent, ChannelAnalysisComponent} from './+applications/application/analysis';
 import {OrderComponent} from './+applications/application/orders';
+import {RefundOrderComponent} from './+applications/application/refund-orders';
 import {ProfileComponent} from './+profile/profile.component';
 import {ProfileBaseComponent} from './+profile/base';
 import {ProfileBindComponent} from './+profile/bind';
@@ -28,6 +29,7 @@ export const routes:Routes = [
         {path: '', component: TodayAnalysisComponent, canActivateChild: [AuthGuard]},
         {path: 'detail', component: ApplicationDetailComponent},
         {path: 'orders', component: OrderComponent},
+        {path: 'refund-orders', component: RefundOrderComponent},
         {path: 'today-analysis', component: TodayAnalysisComponent},
         {path: 'income-analysis', component: IncomAnalysisComponent},
         {path: 'order-analysis', component: OrderAnalysisComponent},

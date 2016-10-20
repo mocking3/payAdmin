@@ -5,8 +5,8 @@ export class Constants {
             // return 'http://testpay.netease.com:7082';
             return 'http://dashboard.pay.netease.com/dashboard';
         } else {
-            // return 'http://localhost:7082';
-            return 'http://dashboard.pay.netease.com/dashboard';
+            return 'http://localhost:7082';
+            // return 'http://dashboard.pay.netease.com/dashboard';
         }
     };
 

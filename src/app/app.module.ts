@@ -27,6 +27,7 @@ import {ChannelSettingComponent} from './+applications/application/settings/chan
 import {WebhookSettingComponent} from './+applications/application/settings/webhook-setting';
 import {TodayAnalysisComponent, IncomAnalysisComponent, OrderAnalysisComponent, ChannelAnalysisComponent} from './+applications/application/analysis';
 import {OrderComponent} from './+applications/application/orders';
+import {RefundOrderComponent} from './+applications/application/refund-orders';
 import {ProfileComponent} from './+profile/profile.component';
 import {ProfileBaseComponent} from './+profile/base';
 import {ProfileBindComponent} from './+profile/bind';
@@ -54,6 +55,7 @@ import {PageNotFoundComponent} from './shared';
         OrderAnalysisComponent,
         ChannelAnalysisComponent,
         OrderComponent,
+        RefundOrderComponent,
         ProfileComponent,
         ProfileBaseComponent,
         ProfileBindComponent,

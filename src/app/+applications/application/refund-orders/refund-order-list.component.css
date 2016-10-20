@@ -1,0 +1,107 @@
+.order{
+    width: 100%;
+    padding-bottom: 30px;
+    display: none;
+}
+.order_title{
+    padding-left: 25px;
+    width: 98.55%;
+    text-align: left;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    color: #354285;
+    font-weight: bold;
+    background-color: #fafbfe;
+}
+.order_search{
+    margin-left: 25px;
+    height: 40px;
+    margin-top: 30px;
+}
+.order_search p{
+    float: left;
+    /*border: 1px solid #eef1f9;*/
+    /*background-color: #fafbfe;*/
+    /*line-height: 38px;*/
+    /*font-size: 14px;*/
+    /*color: #354285;*/
+    /*height: 38px;*/
+    /*padding-left: 10px;*/
+    margin-right: 17px;
+    border-radius: 3px;
+}
+p.order_search_date{
+    position: relative;
+}
+p.order_search_date input{
+    width: 203px;
+}
+p.order_search_date span{
+    position: absolute;
+    float: right;
+    right: 10px;
+    top: 10px;
+    background: url("/public/images/sprite.png") no-repeat;
+    background-position: -53px -214px;
+    width: 20px;
+    height: 15px;
+}
+p.order_search_status{
+    width: 84px;
+    position: relative;
+}
+p.order_search_type{
+    width: 84px;
+    position: relative;
+}
+p.order_search_btn{
+    width: 67px;
+    height: 24px;
+    background-color: #4696e4;
+    color: #ffffff;
+    line-height: 24px;
+    text-align: center;
+    padding-left: 0px;
+    margin-top: 7px;
+    margin-left: 27px;
+    cursor: pointer;
+}
+.order_search_id{
+    float: left;
+}
+.order_search_id label{
+    color: #354285;
+    font-size: 14px;
+    line-height: 40px;
+}
+.order_search_id input{
+    width: 95px;
+    height: 40px;
+    outline: none;
+    border: 0;
+    border: 1px solid #eef1f9;
+    background-color: #fafbfe;
+    border-radius: 3px;
+}
+.order_table{
+    width: 95.55%;
+    margin-left: 25px;
+    margin-top: 20px;
+    border: 1px solid #eef1f9;
+    background-color: #fafbfe;
+}
+.order_table tr{
+    width: 100%;
+    font-size: 16px;
+    color: #354285;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+.order_table tr:nth-child(2n){
+    background-color: #f6f8fd;
+}
+tr.table_title{
+    color: #4696e4;
+}

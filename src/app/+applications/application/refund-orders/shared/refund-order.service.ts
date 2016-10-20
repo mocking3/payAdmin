@@ -6,16 +6,16 @@ import {Observable}     from 'rxjs/Observable';
 import {BaseService, Constants} from '../../../../shared';
 
 @Injectable()
-export class OrderService extends BaseService {
-    private url = Constants.getServerUrl() + '/apps/${appId}/orders';
+export class RefundOrderService extends BaseService {
+    private url = Constants.getServerUrl() + '/apps/${appId}/refunds';
     constructor(private http:Http) {
         super();
     }
 
-    getOrders(appId: number, orderTimeBegin: string, orderTimeEnd: string, channel: string, keyword: string,
+    getRefundOrders(appId: number, refundTimeBegin: string, refundTimeEnd: string, channel: string, keyword: string,
               pageNum: number, pageSize: number):Observable<any> {
         let url = this.url.replace(new RegExp('\\$\\{appId\\}','g'), appId + '') +
-            `?orderTimeBegin=${orderTimeBegin}&orderTimeEnd=${orderTimeEnd}&channel=${channel}&keyword=${keyword}&pageNum=${pageNum}&pageSize=${pageSize}`;
+            `?refundTimeBegin=${refundTimeBegin}&refundTimeEnd=${refundTimeEnd}&channel=${channel}&keyword=${keyword}&pageNum=${pageNum}&pageSize=${pageSize}`;
         // this.url = '/api/webhook-setting-get.json';
         let headers = this.getAuthHeaders();
         let options = new RequestOptions({ headers: headers });

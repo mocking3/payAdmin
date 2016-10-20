@@ -1,0 +1,78 @@
+<div class="pannel">
+    <p class="common_title">退款订单</p>
+    <div class="order_search clearfix">
+        <p class="order_search_date">
+            <input type="text" class="daterange" placeholder="创建日期"
+                   value="{{searchParams.refundTimeBegin.toDate() | date:'yyyy/MM/dd'}} - {{searchParams.refundTimeEnd.toDate() | date:'yyyy/MM/dd'}}" />
+            <span></span>
+        </p>
+        <p>
+            <select [(ngModel)]="searchParams.channel">
+                <option value="">渠道类型</option>
+                <option value="WX_NATIVE">微信扫码</option>
+                <option value="WX_APP">微信APP</option>
+                <option value="WX_JSAPI">微信公众号</option>
+            </select>
+        </p>
+        <p>
+            <input type="text" [(ngModel)]="searchParams.keyword"  placeholder="退款单号/订单号" />
+        </p>
+        <p class="order_search_btn" (click)="search(1)" >查询</p>
+    </div>
+    <table class="order_table">
+        <tbody>
+            <tr class="table_title">
+                <td>商户退款单号</td>
+                <td>商户订单号</td>
+                <td>退款金额</td>
+                <td>创建时间</td>
+                <td>支付渠道</td>
+            </tr>
+            <tr *ngFor="let refundOrderInfo of refundOrderInfos | paginate: { id: 'pagination', itemsPerPage: 10, currentPage: pageNum, totalItems: total }">
+                <td><a href="javascript:void(0);" (click)="openDetailDialog(refundOrderInfo)">{{refundOrderInfo.outRefundNo}}</a></td>
+                <td>{{refundOrderInfo.outTradeNo}}</td>
+                <td>{{refundOrderInfo.refundFee / 100}}</td>
+                <td>{{refundOrderInfo.refundTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{refundOrderInfo.channel | channel}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page_wrap">
+        <pagination-controls id="pagination" (pageChange)="search($event)"></pagination-controls>
+    </div>
+</div>
+<!-- 订单详情 -->
+<div class="full-dialog" [hidden]="!showDetail">
+    <div class="fd-header">
+        <span>退款单详情</span>
+        <span class="fd-close" (click)="closeDetailDialog()"></span>
+    </div>
+    <div class="fd-body">
+        <ul class="common_list">
+            <li>
+                <p class="list_name">商户退款单号</p>
+                <p class="list_value">{{refundOrderInfo.outRefundNo}}</p>
+            </li>
+            <li>
+                <p class="list_name">商户订单号</p>
+                <p class="list_value">{{refundOrderInfo.outTradeNo}}</p>
+            </li>
+            <li>
+                <p class="list_name">退款金额</p>
+                <p class="list_value">{{refundOrderInfo.refundFee / 100}}</p>
+            </li>
+            <li>
+                <p class="list_name">支付渠道</p>
+                <p class="list_value">{{refundOrderInfo.channel | channel}}</p>
+            </li>
+            <li>
+                <p class="list_name">渠道退款单号</p>
+                <p class="list_value">{{refundOrderInfo.channelRefundNo}}</p>
+            </li>
+            <li>
+                <p class="list_name">创建时间</p>
+                <p class="list_value">{{refundOrderInfo.refundTime | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -4,26 +4,26 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import Moment = moment.Moment;
 
-import {OrderService, OrderInfoModel} from './shared';
+import {RefundOrderService, RefundOrderInfoModel} from './shared';
 
 @Component({
-    templateUrl: './order-list.component.html',
-    styleUrls: ['./order-list.component.css'],
-    providers: [OrderService]
+    templateUrl: './refund-order-list.component.html',
+    styleUrls: ['./refund-order-list.component.css'],
+    providers: [RefundOrderService]
 })
-export class OrderComponent implements OnInit, OnDestroy {
+export class RefundOrderComponent implements OnInit, OnDestroy {
     appId: number;
     message: string;
     pageNum: number = 1;
 
     pageSize: number = 10;
     total: number;
-    orderInfo: OrderInfoModel = new OrderInfoModel();
-    orderInfos: OrderInfoModel[];
+    refundOrderInfo: RefundOrderInfoModel = new RefundOrderInfoModel();
+    refundOrderInfos: RefundOrderInfoModel[];
     loading: boolean;
     searchParams: any = {
-        orderTimeBegin: '',
-        orderTimeEnd: '',
+        refundTimeBegin: '',
+        refundTimeEnd: '',
         channel: '',
         keyword: ''
     };
@@ -31,7 +31,7 @@ export class OrderComponent implements OnInit, OnDestroy {
     showDetail: boolean = false;
 
     constructor(private route: ActivatedRoute,
-                private orderService: OrderService) {
+                private refundOrderService: RefundOrderService) {
     }
 
     ngOnInit() {
@@ -43,7 +43,7 @@ export class OrderComponent implements OnInit, OnDestroy {
             // 获取父路由变量
             this.route.parent.params.subscribe(params => {
                 this.appId = +params['id'];
-                this.getOrders();
+                this.getRefundOrders();
             });
         });
     }
@@ -52,17 +52,17 @@ export class OrderComponent implements OnInit, OnDestroy {
         
     }
 
-    getOrders() {
-        this.orderService.getOrders(this.appId,
-            this.searchParams.orderTimeBegin.format('YYYY/MM/DD'),
-            this.searchParams.orderTimeEnd.format('YYYY/MM/DD'),
+    getRefundOrders() {
+        this.refundOrderService.getRefundOrders(this.appId,
+            this.searchParams.refundTimeBegin.format('YYYY/MM/DD'),
+            this.searchParams.refundTimeEnd.format('YYYY/MM/DD'),
             this.searchParams.channel,
             this.searchParams.keyword,
             this.pageNum,
             this.pageSize).subscribe(
             data => {
                 this.total = data.total;
-                this.orderInfos = data.data;
+                this.refundOrderInfos = data.data;
                 this.loading = false;
             },
             error => {throw error});
@@ -70,16 +70,16 @@ export class OrderComponent implements OnInit, OnDestroy {
 
     search(currentPage: number) {
         this.pageNum = currentPage;
-        this.getOrders();
+        this.getRefundOrders();
     }
 
-    openDetailDialog(orderInfo: OrderInfoModel) {
-        this.orderInfo = orderInfo;
+    openDetailDialog(refundOrderInfo: RefundOrderInfoModel) {
+        this.refundOrderInfo = refundOrderInfo;
         this.showDetail = true;
     }
 
     closeDetailDialog() {
-        this.orderInfo = new OrderInfoModel();
+        this.refundOrderInfo = new RefundOrderInfoModel();
         this.showDetail = false;
     }
 
@@ -100,7 +100,7 @@ export class OrderComponent implements OnInit, OnDestroy {
     }
 
     cb(start: Moment, end: Moment) {
-        this.searchParams.orderTimeBegin = start;
-        this.searchParams.orderTimeEnd = end;
+        this.searchParams.refundTimeBegin = start;
+        this.searchParams.refundTimeEnd = end;
     }
 }
